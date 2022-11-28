@@ -10,12 +10,12 @@
 		5E0F55D72934FF2200E0178C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F55D62934FF2200E0178C /* AppDelegate.swift */; };
 		5E0F55D92934FF2200E0178C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F55D82934FF2200E0178C /* SceneDelegate.swift */; };
 		5E0F55DB2934FF2200E0178C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F55DA2934FF2200E0178C /* ViewController.swift */; };
-		5E0F55DE2934FF2200E0178C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E0F55DC2934FF2200E0178C /* Main.storyboard */; };
 		5E0F55E02934FF2300E0178C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E0F55DF2934FF2300E0178C /* Assets.xcassets */; };
 		5E0F55E32934FF2300E0178C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E0F55E12934FF2300E0178C /* LaunchScreen.storyboard */; };
 		5E0F55EE2934FF2300E0178C /* MyChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F55ED2934FF2300E0178C /* MyChatTests.swift */; };
 		5E0F55F82934FF2300E0178C /* MyChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F55F72934FF2300E0178C /* MyChatUITests.swift */; };
 		5E0F55FA2934FF2300E0178C /* MyChatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F55F92934FF2300E0178C /* MyChatUITestsLaunchTests.swift */; };
+		5E0F56072935026900E0178C /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F56062935026900E0178C /* ModuleBuilder.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +40,6 @@
 		5E0F55D62934FF2200E0178C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E0F55D82934FF2200E0178C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		5E0F55DA2934FF2200E0178C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		5E0F55DD2934FF2200E0178C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		5E0F55DF2934FF2300E0178C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E0F55E22934FF2300E0178C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E0F55E42934FF2300E0178C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		5E0F55F32934FF2300E0178C /* MyChatUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyChatUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E0F55F72934FF2300E0178C /* MyChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatUITests.swift; sourceTree = "<group>"; };
 		5E0F55F92934FF2300E0178C /* MyChatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		5E0F56062935026900E0178C /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,13 +99,9 @@
 		5E0F55D52934FF2200E0178C /* MyChat */ = {
 			isa = PBXGroup;
 			children = (
-				5E0F55D62934FF2200E0178C /* AppDelegate.swift */,
-				5E0F55D82934FF2200E0178C /* SceneDelegate.swift */,
+				5E0F56082935076500E0178C /* Aplication */,
 				5E0F55DA2934FF2200E0178C /* ViewController.swift */,
-				5E0F55DC2934FF2200E0178C /* Main.storyboard */,
-				5E0F55DF2934FF2300E0178C /* Assets.xcassets */,
-				5E0F55E12934FF2300E0178C /* LaunchScreen.storyboard */,
-				5E0F55E42934FF2300E0178C /* Info.plist */,
+				5E0F56062935026900E0178C /* ModuleBuilder.swift */,
 			);
 			path = MyChat;
 			sourceTree = "<group>";
@@ -125,6 +121,26 @@
 				5E0F55F92934FF2300E0178C /* MyChatUITestsLaunchTests.swift */,
 			);
 			path = MyChatUITests;
+			sourceTree = "<group>";
+		};
+		5E0F56082935076500E0178C /* Aplication */ = {
+			isa = PBXGroup;
+			children = (
+				5E0F56092935077900E0178C /* Resources */,
+				5E0F55D62934FF2200E0178C /* AppDelegate.swift */,
+				5E0F55D82934FF2200E0178C /* SceneDelegate.swift */,
+				5E0F55E12934FF2300E0178C /* LaunchScreen.storyboard */,
+				5E0F55E42934FF2300E0178C /* Info.plist */,
+			);
+			path = Aplication;
+			sourceTree = "<group>";
+		};
+		5E0F56092935077900E0178C /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				5E0F55DF2934FF2300E0178C /* Assets.xcassets */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +249,6 @@
 			files = (
 				5E0F55E32934FF2300E0178C /* LaunchScreen.storyboard in Resources */,
 				5E0F55E02934FF2300E0178C /* Assets.xcassets in Resources */,
-				5E0F55DE2934FF2200E0178C /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,6 +276,7 @@
 				5E0F55DB2934FF2200E0178C /* ViewController.swift in Sources */,
 				5E0F55D72934FF2200E0178C /* AppDelegate.swift in Sources */,
 				5E0F55D92934FF2200E0178C /* SceneDelegate.swift in Sources */,
+				5E0F56072935026900E0178C /* ModuleBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -297,14 +313,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		5E0F55DC2934FF2200E0178C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				5E0F55DD2934FF2200E0178C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		5E0F55E12934FF2300E0178C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -438,10 +446,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MyChat/Info.plist;
+				INFOPLIST_FILE = MyChat/Aplication/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -465,10 +472,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = MyChat/Info.plist;
+				INFOPLIST_FILE = MyChat/Aplication/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

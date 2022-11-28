@@ -1,0 +1,5 @@
+# Cocoa Pods
+
+/Pods
+*.xcworkspace
+.idea/
