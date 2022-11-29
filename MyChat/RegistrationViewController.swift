@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CountryPicker
 
 class RegistrationViewController: UIViewController {
     
@@ -27,6 +28,30 @@ class RegistrationViewController: UIViewController {
         textField.clearButtonMode = .whileEditing
         textField.returnKeyType = UIReturnKeyType.done
         return textField
+    }()
+    
+    private lazy var containerCountryTextField: TextField = {
+        let textField = TextField()
+        textField.placeholder = "Выберите страну"
+        textField.font = .systemFont(ofSize: 26)
+        textField.addBottomLine(with: .lightGray)
+        return textField
+    }()
+    
+    // TODO: - убрать force unwrap
+    private lazy var countryPicker: CountryPicker = {
+        let picker = CountryPicker()
+        let locale = Locale.current
+        let code = (locale as NSLocale).object(forKey: NSLocale.Key.countryCode) as! String?
+        let theme = CountryViewTheme(countryCodeTextColor: .black,
+                                     countryNameTextColor: .black,
+                                     rowBackgroundColor: .white,
+                                     showFlagsBorder: false)
+        picker.theme = theme
+        picker.countryPickerDelegate = self
+        picker.showPhoneNumbers = true
+        picker.setCountry(code!)
+        return picker
     }()
     
     private lazy var phoneTextField: TextField = {
@@ -97,6 +122,18 @@ class RegistrationViewController: UIViewController {
     }
 }
 
+// MARK: - CountryPickerDelegate Impl
+extension RegistrationViewController: CountryPickerDelegate {
+    
+    func countryPhoneCodePicker(_ picker: CountryPicker,
+                                didSelectCountryWithName name: String,
+                                countryCode: String, phoneCode: String, flag: UIImage) {
+        containerCountryTextField.setupLeftSideImage(with: flag)
+        containerCountryTextField.text = name
+        phoneTextField.text = phoneCode
+    }
+}
+
 // MARK: - UITextFieldDelegate Impl
 extension RegistrationViewController: UITextFieldDelegate {
     
@@ -118,6 +155,7 @@ fileprivate extension RegistrationViewController {
         view.addTapGestureToHideKeyboard()
         setupScrollView()
         setupRegistrLabel()
+        inputCountryPicker()
         addTargets()
         addSubViews()
         addConstraints()
@@ -133,6 +171,10 @@ fileprivate extension RegistrationViewController {
         registrLabel.attributedText = registrLabel.addLetterSpacing(label: registrLabel, spacing: 5.0)
     }
     
+    func inputCountryPicker() {
+        containerCountryTextField.inputView = countryPicker
+    }
+    
     func addTargets() {
         nameTextField.addTarget(self, action: #selector(isValidNameTextField), for: UIControl.Event.editingChanged)
         phoneTextField.addTarget(self, action: #selector(isValidNumberTextField), for: UIControl.Event.editingChanged)
@@ -141,7 +183,7 @@ fileprivate extension RegistrationViewController {
 
     func addSubViews() {
         view.myAddSubView(scrollView)
-        let arrayViews = [registrLabel, nameTextField, phoneTextField, accessButton]
+        let arrayViews = [registrLabel, nameTextField, containerCountryTextField, phoneTextField, accessButton]
         scrollView.addSubViewOnScrollVeiw(for: arrayViews, scrollView: scrollView)
     }
 
@@ -159,7 +201,11 @@ fileprivate extension RegistrationViewController {
                                      nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
                                      nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -45),
                                      
-                                     phoneTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 50),
+                                     containerCountryTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 50),
+                                     containerCountryTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+                                     containerCountryTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -45),
+                                     
+                                     phoneTextField.topAnchor.constraint(equalTo: containerCountryTextField.bottomAnchor, constant: 50),
                                      phoneTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
                                      phoneTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -45),
                                      
