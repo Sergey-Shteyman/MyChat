@@ -22,7 +22,7 @@ final class ModuleBuilder {
 extension ModuleBuilder: Buildable {
     
     func buildMainModule() -> RegistrationViewController {
-        let viewController = ViewController()
+        let viewController = RegistrationViewController()
 //        let presenter = MainPresenter(fileReaderManager: fileReaderManager,
 //                                      jsonDecoderManager: jsonDecoderManager,
 //                                      moduleBuilder: self)

@@ -18,6 +18,7 @@
 		5E0F56072935026900E0178C /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F56062935026900E0178C /* ModuleBuilder.swift */; };
 		5E0F560F29361C5E00E0178C /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F560E29361C5E00E0178C /* UIView.swift */; };
 		5E0F561129361C8600E0178C /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F561029361C8600E0178C /* UIScrollView.swift */; };
+		5E0F5614293620F500E0178C /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F5613293620F500E0178C /* TextField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +54,7 @@
 		5E0F56062935026900E0178C /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
 		5E0F560E29361C5E00E0178C /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		5E0F561029361C8600E0178C /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
+		5E0F5613293620F500E0178C /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +152,7 @@
 		5E0F560B29361BE800E0178C /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				5E0F5612293620D100E0178C /* Classes */,
 				5E0F560D29361C0B00E0178C /* ServiceLayers */,
 				5E0F560C29361BF100E0178C /* Extensions */,
 			);
@@ -171,6 +174,14 @@
 				5E0F56062935026900E0178C /* ModuleBuilder.swift */,
 			);
 			path = ServiceLayers;
+			sourceTree = "<group>";
+		};
+		5E0F5612293620D100E0178C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				5E0F5613293620F500E0178C /* TextField.swift */,
+			);
+			path = Classes;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -306,6 +317,7 @@
 				5E0F560F29361C5E00E0178C /* UIView.swift in Sources */,
 				5E0F55DB2934FF2200E0178C /* RegistrationViewController.swift in Sources */,
 				5E0F55D72934FF2200E0178C /* AppDelegate.swift in Sources */,
+				5E0F5614293620F500E0178C /* TextField.swift in Sources */,
 				5E0F561129361C8600E0178C /* UIScrollView.swift in Sources */,
 				5E0F55D92934FF2200E0178C /* SceneDelegate.swift in Sources */,
 				5E0F56072935026900E0178C /* ModuleBuilder.swift in Sources */,
