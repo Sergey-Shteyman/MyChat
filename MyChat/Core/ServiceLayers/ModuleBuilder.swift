@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Buildable
 protocol Buildable {
-    func buildMainModule() -> ViewController
+    func buildMainModule() -> RegistrationViewController
 }
 
 // MARK: - ModuleBuilder
@@ -21,7 +21,7 @@ final class ModuleBuilder {
 // MARK: - Buildable Impl
 extension ModuleBuilder: Buildable {
     
-    func buildMainModule() -> ViewController {
+    func buildMainModule() -> RegistrationViewController {
         let viewController = ViewController()
 //        let presenter = MainPresenter(fileReaderManager: fileReaderManager,
 //                                      jsonDecoderManager: jsonDecoderManager,

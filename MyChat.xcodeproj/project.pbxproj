@@ -9,13 +9,15 @@
 /* Begin PBXBuildFile section */
 		5E0F55D72934FF2200E0178C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F55D62934FF2200E0178C /* AppDelegate.swift */; };
 		5E0F55D92934FF2200E0178C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F55D82934FF2200E0178C /* SceneDelegate.swift */; };
-		5E0F55DB2934FF2200E0178C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F55DA2934FF2200E0178C /* ViewController.swift */; };
+		5E0F55DB2934FF2200E0178C /* RegistrationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F55DA2934FF2200E0178C /* RegistrationViewController.swift */; };
 		5E0F55E02934FF2300E0178C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5E0F55DF2934FF2300E0178C /* Assets.xcassets */; };
 		5E0F55E32934FF2300E0178C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5E0F55E12934FF2300E0178C /* LaunchScreen.storyboard */; };
 		5E0F55EE2934FF2300E0178C /* MyChatTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F55ED2934FF2300E0178C /* MyChatTests.swift */; };
 		5E0F55F82934FF2300E0178C /* MyChatUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F55F72934FF2300E0178C /* MyChatUITests.swift */; };
 		5E0F55FA2934FF2300E0178C /* MyChatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F55F92934FF2300E0178C /* MyChatUITestsLaunchTests.swift */; };
 		5E0F56072935026900E0178C /* ModuleBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F56062935026900E0178C /* ModuleBuilder.swift */; };
+		5E0F560F29361C5E00E0178C /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F560E29361C5E00E0178C /* UIView.swift */; };
+		5E0F561129361C8600E0178C /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F561029361C8600E0178C /* UIScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -39,7 +41,7 @@
 		5E0F55D32934FF2200E0178C /* MyChat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyChat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5E0F55D62934FF2200E0178C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		5E0F55D82934FF2200E0178C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		5E0F55DA2934FF2200E0178C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5E0F55DA2934FF2200E0178C /* RegistrationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationViewController.swift; sourceTree = "<group>"; };
 		5E0F55DF2934FF2300E0178C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5E0F55E22934FF2300E0178C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		5E0F55E42934FF2300E0178C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +51,8 @@
 		5E0F55F72934FF2300E0178C /* MyChatUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatUITests.swift; sourceTree = "<group>"; };
 		5E0F55F92934FF2300E0178C /* MyChatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyChatUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		5E0F56062935026900E0178C /* ModuleBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleBuilder.swift; sourceTree = "<group>"; };
+		5E0F560E29361C5E00E0178C /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		5E0F561029361C8600E0178C /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +103,9 @@
 		5E0F55D52934FF2200E0178C /* MyChat */ = {
 			isa = PBXGroup;
 			children = (
+				5E0F560B29361BE800E0178C /* Core */,
 				5E0F56082935076500E0178C /* Aplication */,
-				5E0F55DA2934FF2200E0178C /* ViewController.swift */,
-				5E0F56062935026900E0178C /* ModuleBuilder.swift */,
+				5E0F55DA2934FF2200E0178C /* RegistrationViewController.swift */,
 			);
 			path = MyChat;
 			sourceTree = "<group>";
@@ -141,6 +145,32 @@
 				5E0F55DF2934FF2300E0178C /* Assets.xcassets */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		5E0F560B29361BE800E0178C /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				5E0F560D29361C0B00E0178C /* ServiceLayers */,
+				5E0F560C29361BF100E0178C /* Extensions */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		5E0F560C29361BF100E0178C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5E0F560E29361C5E00E0178C /* UIView.swift */,
+				5E0F561029361C8600E0178C /* UIScrollView.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5E0F560D29361C0B00E0178C /* ServiceLayers */ = {
+			isa = PBXGroup;
+			children = (
+				5E0F56062935026900E0178C /* ModuleBuilder.swift */,
+			);
+			path = ServiceLayers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,8 +303,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5E0F55DB2934FF2200E0178C /* ViewController.swift in Sources */,
+				5E0F560F29361C5E00E0178C /* UIView.swift in Sources */,
+				5E0F55DB2934FF2200E0178C /* RegistrationViewController.swift in Sources */,
 				5E0F55D72934FF2200E0178C /* AppDelegate.swift in Sources */,
+				5E0F561129361C8600E0178C /* UIScrollView.swift in Sources */,
 				5E0F55D92934FF2200E0178C /* SceneDelegate.swift in Sources */,
 				5E0F56072935026900E0178C /* ModuleBuilder.swift in Sources */,
 			);

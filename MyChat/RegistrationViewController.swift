@@ -7,12 +7,11 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class RegistrationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .purple
+        
     }
-
 }
 
