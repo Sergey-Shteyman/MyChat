@@ -1,0 +1,20 @@
+PODS:
+  - CountryPickerSwift (1.8.2)
+  - InputMask (6.1.0)
+
+DEPENDENCIES:
+  - CountryPickerSwift
+  - InputMask
+
+SPEC REPOS:
+  trunk:
+    - CountryPickerSwift
+    - InputMask
+
+SPEC CHECKSUMS:
+  CountryPickerSwift: b2cd8b391a0222bd9a97d09ea30426303adac810
+  InputMask: 71d291dc54d2deaeac6512afb6ec2304228c0bb7
+
+PODFILE CHECKSUM: 3113fbdab6c8bf6be30a5a99845c9d2b29d952d2
+
+COCOAPODS: 1.11.3

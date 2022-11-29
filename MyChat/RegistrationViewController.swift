@@ -38,11 +38,10 @@ class RegistrationViewController: UIViewController {
         return textField
     }()
     
-    // TODO: - убрать force unwrap
     private lazy var countryPicker: CountryPicker = {
         let picker = CountryPicker()
         let locale = Locale.current
-        let code = (locale as NSLocale).object(forKey: NSLocale.Key.countryCode) as! String?
+        let code = (locale as NSLocale).object(forKey: NSLocale.Key.countryCode) as? String
         let theme = CountryViewTheme(countryCodeTextColor: .black,
                                      countryNameTextColor: .black,
                                      rowBackgroundColor: .white,
@@ -50,7 +49,9 @@ class RegistrationViewController: UIViewController {
         picker.theme = theme
         picker.countryPickerDelegate = self
         picker.showPhoneNumbers = true
-        picker.setCountry(code!)
+        if let code = code {
+            picker.setCountry(code)
+        }
         return picker
     }()
     
