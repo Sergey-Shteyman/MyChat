@@ -7,12 +7,14 @@
 
 import UIKit
 
-class RegistrationViewController: UIViewController {
+
+// MARK: - RegistrationViewController
+final class RegistrationViewController: UIViewController {
         
     private lazy var registrLabel: UILabel = {
         let label = UILabel()
         label.text = "Регистрация"
-        label.font = UIFont(name: "Roboto-Black", size: 28) 
+        label.font = UIFont(name: UIFont.Roboto.regular.rawValue, size: 28)
         label.textAlignment = .center
         return label
     }()
@@ -20,9 +22,10 @@ class RegistrationViewController: UIViewController {
     private lazy var nameTextField: TextField = {
         let textField = TextField()
         textField.placeholder = "Имя"
-        textField.font = .systemFont(ofSize: 26)
+        textField.font = UIFont(name: UIFont.Roboto.regular.rawValue, size: 26)
         textField.clearButtonMode = .whileEditing
         textField.returnKeyType = UIReturnKeyType.done
+        textField.backgroundColor = .clear
         textField.delegate = self
         return textField
     }()
@@ -30,16 +33,17 @@ class RegistrationViewController: UIViewController {
     private lazy var phoneNumberLabel: UILabel = {
         let label = UILabel()
         label.font = .preferredFont(forTextStyle: .title1)
-        label.font = .systemFont(ofSize: 28)
+        label.font = UIFont(name: UIFont.Roboto.thin.rawValue, size: 28)
         label.textAlignment = .center
-        label.textColor = .lightGray
+        label.textColor = .black
+        label.backgroundColor = .clear
         label.text = "+7 9109774325"
         return label
     }()
     
     private lazy var accessButton: UIButton = {
         let button = UIButton()
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+        button.titleLabel?.font = UIFont(name: UIFont.Roboto.regular.rawValue, size: 20)
         button.setTitle("Зарегистрироваться", for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 20
@@ -94,7 +98,7 @@ extension RegistrationViewController: UITextFieldDelegate {
 }
 
 // MARK: - Private Methods
-fileprivate extension RegistrationViewController {
+private extension RegistrationViewController {
 
     func setupViewController() {
         view.addTapGestureToHideKeyboard()
@@ -125,7 +129,7 @@ fileprivate extension RegistrationViewController {
     }
 
     func addConstraints() {
-        NSLayoutConstraint.activate([registrLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 150),
+        NSLayoutConstraint.activate([registrLabel.topAnchor.constraint(lessThanOrEqualTo: view.topAnchor, constant: 150),
                                      registrLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                                      
                                      phoneNumberLabel.topAnchor.constraint(equalTo: registrLabel.bottomAnchor, constant: 50),
@@ -135,7 +139,10 @@ fileprivate extension RegistrationViewController {
                                      nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
                                      nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -45),
                                      
-                                     accessButton.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -120),
+                                     accessButton.topAnchor.constraint(greaterThanOrEqualTo: nameTextField.bottomAnchor,
+                                                                       constant: 50),
+                                     accessButton.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor,
+                                                                          constant: -80),
                                      accessButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
                                      accessButton.widthAnchor.constraint(equalToConstant: 220),
                                      accessButton.heightAnchor.constraint(equalToConstant: 40)

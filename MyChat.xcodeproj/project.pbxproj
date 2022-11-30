@@ -34,6 +34,7 @@
 		5ECAC3302937BBA1003FD519 /* Roboto-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ECAC3242937BBA1003FD519 /* Roboto-LightItalic.ttf */; };
 		5ECAC3312937BBA1003FD519 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ECAC3252937BBA1003FD519 /* Roboto-Thin.ttf */; };
 		5ECAC3322937BBA1003FD519 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ECAC3262937BBA1003FD519 /* Roboto-ThinItalic.ttf */; };
+		5ECAC3352937CF5D003FD519 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAC3342937CF5D003FD519 /* UIFont.swift */; };
 		6CC7B3915A63C275FAC1EAC4 /* Pods_MyChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 053F36F2D3E2C71E19EEA135 /* Pods_MyChat.framework */; };
 		AE6C6ED595ACCC96DAE937B6 /* Pods_MyChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8389818949CCD262AF8E891 /* Pods_MyChatTests.framework */; };
 /* End PBXBuildFile section */
@@ -89,6 +90,7 @@
 		5ECAC3242937BBA1003FD519 /* Roboto-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-LightItalic.ttf"; sourceTree = "<group>"; };
 		5ECAC3252937BBA1003FD519 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		5ECAC3262937BBA1003FD519 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
+		5ECAC3342937CF5D003FD519 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
 		60AC7C1B3F9BC3E29456D9A1 /* Pods-MyChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChat.debug.xcconfig"; path = "Target Support Files/Pods-MyChat/Pods-MyChat.debug.xcconfig"; sourceTree = "<group>"; };
 		79E1F9568403EA35859DDFD2 /* Pods_MyChat_MyChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyChat_MyChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8389818949CCD262AF8E891 /* Pods_MyChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -234,6 +236,7 @@
 				5E0F560E29361C5E00E0178C /* UIView.swift */,
 				5E0F561029361C8600E0178C /* UIScrollView.swift */,
 				5E0F5615293651DF00E0178C /* UITextField.swift */,
+				5ECAC3342937CF5D003FD519 /* UIFont.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -556,6 +559,7 @@
 				5E0F5614293620F500E0178C /* TextField.swift in Sources */,
 				5E0F561129361C8600E0178C /* UIScrollView.swift in Sources */,
 				5E0F55D92934FF2200E0178C /* SceneDelegate.swift in Sources */,
+				5ECAC3352937CF5D003FD519 /* UIFont.swift in Sources */,
 				5E0F56072935026900E0178C /* ModuleBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -730,6 +734,7 @@
 				INFOPLIST_FILE = MyChat/Aplication/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -757,6 +762,7 @@
 				INFOPLIST_FILE = MyChat/Aplication/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
