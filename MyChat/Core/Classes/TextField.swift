@@ -11,7 +11,7 @@ import UIKit
 final class TextField: UITextField {
     
     let bottomLine = CALayer()
-    var colorLine: UIColor = .lightGray
+    var colorLine: UIColor = .systemBlue
     
     override func layoutSubviews() {
         super.layoutSubviews()

@@ -7,6 +7,7 @@ target 'MyChat' do
 
   pod 'InputMask'
   pod 'CountryPickerSwift'
+  pod 'PhoneNumberKit', :git => 'https://github.com/marmelroy/PhoneNumberKit'
 
   target 'MyChatTests' do
     inherit! :search_paths
