@@ -11,6 +11,7 @@ import Foundation
 // MARK: - Buildable
 protocol Buildable {
     func buildMainModule() -> RegistrationViewController
+    func buildSelectionPageModule() -> SelectionPageViewController
 }
 
 // MARK: - ModuleBuilder
@@ -25,6 +26,16 @@ extension ModuleBuilder: Buildable {
         let viewController = RegistrationViewController()
         let presenter = RegistrationPresenter(moduleBuilder: self)
 
+        viewController.presenter = presenter
+        presenter.viewController = viewController
+        
+        return viewController
+    }
+    
+    func buildSelectionPageModule() -> SelectionPageViewController {
+        let viewController = SelectionPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
+        let presenter = SelectionPagePresenter()
+        
         viewController.presenter = presenter
         presenter.viewController = viewController
         
