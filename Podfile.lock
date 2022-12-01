@@ -1,0 +1,37 @@
+PODS:
+  - CountryPickerSwift (1.8.2)
+  - InputMask (6.1.0)
+  - PhoneNumberKit (3.5.1):
+    - PhoneNumberKit/PhoneNumberKitCore (= 3.5.1)
+    - PhoneNumberKit/UIKit (= 3.5.1)
+  - PhoneNumberKit/PhoneNumberKitCore (3.5.1)
+  - PhoneNumberKit/UIKit (3.5.1):
+    - PhoneNumberKit/PhoneNumberKitCore
+
+DEPENDENCIES:
+  - CountryPickerSwift
+  - InputMask
+  - PhoneNumberKit (from `https://github.com/marmelroy/PhoneNumberKit`)
+
+SPEC REPOS:
+  trunk:
+    - CountryPickerSwift
+    - InputMask
+
+EXTERNAL SOURCES:
+  PhoneNumberKit:
+    :git: https://github.com/marmelroy/PhoneNumberKit
+
+CHECKOUT OPTIONS:
+  PhoneNumberKit:
+    :commit: 143ea15033dc6fede5ec73d96d9296a54dad8fef
+    :git: https://github.com/marmelroy/PhoneNumberKit
+
+SPEC CHECKSUMS:
+  CountryPickerSwift: b2cd8b391a0222bd9a97d09ea30426303adac810
+  InputMask: 71d291dc54d2deaeac6512afb6ec2304228c0bb7
+  PhoneNumberKit: 67009e416fa6aceb4b7d4ac9e28c5e6be5db796e
+
+PODFILE CHECKSUM: d7e6eaa11d1f8f8239f391d555b7146af0cc10e9
+
+COCOAPODS: 1.11.3
