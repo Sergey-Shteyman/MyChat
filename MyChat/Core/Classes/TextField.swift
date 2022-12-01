@@ -18,10 +18,14 @@ final class TextField: UITextField {
         bottomLine.removeFromSuperlayer()
         addBottomLine(with: colorLine)
     }
+    
+    func changeStateBottomLine(with state: BottomLineState) {
+        addBottomLine(with: state.color)
+    }
 }
 
-// MARK: - Public Methods
-extension TextField {
+// MARK: - methods
+private extension TextField {
     
     func addBottomLine(with color: UIColor) {
         colorLine = color

@@ -8,12 +8,21 @@
 import UIKit
 
 
+// MARK: - RegistrationDisplayLogic
+protocol RegistrationDisplayLogic: AnyObject {
+    func showNameValidationError()
+    func showNameValidationCorrect()
+}
+
 // MARK: - RegistrationViewController
 final class RegistrationViewController: UIViewController {
+    
+    var presenter: RegistrationPresentationLogic?
+    let registrationModel = RegistrationPageModel()
         
     private lazy var registrLabel: UILabel = {
         let label = UILabel()
-        label.text = "Регистрация"
+        label.text = registrationModel.regTextForLabel
         label.font = UIFont(name: UIFont.Roboto.regular.rawValue, size: 28)
         label.textAlignment = .center
         return label
@@ -21,7 +30,7 @@ final class RegistrationViewController: UIViewController {
     
     private lazy var nameTextField: TextField = {
         let textField = TextField()
-        textField.placeholder = "Имя"
+        textField.placeholder = registrationModel.namePlaceholder
         textField.font = UIFont(name: UIFont.Roboto.regular.rawValue, size: 26)
         textField.clearButtonMode = .whileEditing
         textField.returnKeyType = UIReturnKeyType.done
@@ -37,14 +46,14 @@ final class RegistrationViewController: UIViewController {
         label.textAlignment = .center
         label.textColor = .black
         label.backgroundColor = .clear
-        label.text = "+7 9109774325"
+        label.text = registrationModel.userPhone
         return label
     }()
     
     private lazy var accessButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = UIFont(name: UIFont.Roboto.regular.rawValue, size: 20)
-        button.setTitle("Зарегистрироваться", for: .normal)
+        button.setTitle(registrationModel.regButtonText, for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 20
         button.titleLabel?.textAlignment = .center
@@ -55,33 +64,28 @@ final class RegistrationViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         setupViewController()
-        for family: String in UIFont.familyNames
-        {
-           print("\(family)")
-            for names: String in UIFont.fontNames(forFamilyName: family)
-           {
-               print("== \(names)")
-           }
-        }
     }
 
-    @objc func isValidNameTextField() -> Bool {
-        let validateNameExpression = #"^[A-Z]{1,26}[a-z]{1,26}[0-9]{0,10}[_]{0,2}$"#
-        if self.nameTextField.text?.range(of: validateNameExpression,
-                                          options: .regularExpression,
-                                          range: nil) != nil {
-            nameTextField.addBottomLine(with: .systemBlue)
-            return true
-        } else {
-            nameTextField.addBottomLine(with: .red)
-            return false
-        }
+    @objc
+    func isValidNameTextField() {
+        presenter?.didChangeName(nameTextField.text)
     }
     
-    @objc func buttonIsTapped() {
-        if !isValidNameTextField() {
-            nameTextField.addBottomLine(with: .red)
-        }
+    @objc
+    func buttonIsTapped() {
+        presenter?.didTapRegisterButton()
+    }
+}
+
+// MARK: - RegistrationDisplayLogic Impl
+extension RegistrationViewController: RegistrationDisplayLogic {
+    
+    func showNameValidationCorrect() {
+        nameTextField.changeStateBottomLine(with: .normal)
+    }
+    
+    func showNameValidationError() {
+        nameTextField.changeStateBottomLine(with: .error)
     }
 }
 
@@ -89,9 +93,6 @@ final class RegistrationViewController: UIViewController {
 extension RegistrationViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        guard isValidNameTextField() else {
-            return false
-        }
         nameTextField.resignFirstResponder()
         return true
     }

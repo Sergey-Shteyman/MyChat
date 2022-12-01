@@ -35,6 +35,9 @@
 		5ECAC3312937BBA1003FD519 /* Roboto-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ECAC3252937BBA1003FD519 /* Roboto-Thin.ttf */; };
 		5ECAC3322937BBA1003FD519 /* Roboto-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ECAC3262937BBA1003FD519 /* Roboto-ThinItalic.ttf */; };
 		5ECAC3352937CF5D003FD519 /* UIFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAC3342937CF5D003FD519 /* UIFont.swift */; };
+		5ECAC3392937E760003FD519 /* BottomLineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAC3382937E760003FD519 /* BottomLineState.swift */; };
+		5ECAC33C2938D405003FD519 /* RegistrationPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAC33B2938D405003FD519 /* RegistrationPageModel.swift */; };
+		5ECAC33E2938D52D003FD519 /* MasksValidationFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAC33D2938D52D003FD519 /* MasksValidationFields.swift */; };
 		6CC7B3915A63C275FAC1EAC4 /* Pods_MyChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 053F36F2D3E2C71E19EEA135 /* Pods_MyChat.framework */; };
 		AE6C6ED595ACCC96DAE937B6 /* Pods_MyChatTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A8389818949CCD262AF8E891 /* Pods_MyChatTests.framework */; };
 /* End PBXBuildFile section */
@@ -91,6 +94,9 @@
 		5ECAC3252937BBA1003FD519 /* Roboto-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Thin.ttf"; sourceTree = "<group>"; };
 		5ECAC3262937BBA1003FD519 /* Roboto-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-ThinItalic.ttf"; sourceTree = "<group>"; };
 		5ECAC3342937CF5D003FD519 /* UIFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIFont.swift; sourceTree = "<group>"; };
+		5ECAC3382937E760003FD519 /* BottomLineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomLineState.swift; sourceTree = "<group>"; };
+		5ECAC33B2938D405003FD519 /* RegistrationPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPageModel.swift; sourceTree = "<group>"; };
+		5ECAC33D2938D52D003FD519 /* MasksValidationFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasksValidationFields.swift; sourceTree = "<group>"; };
 		60AC7C1B3F9BC3E29456D9A1 /* Pods-MyChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChat.debug.xcconfig"; path = "Target Support Files/Pods-MyChat/Pods-MyChat.debug.xcconfig"; sourceTree = "<group>"; };
 		79E1F9568403EA35859DDFD2 /* Pods_MyChat_MyChatUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyChat_MyChatUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A8389818949CCD262AF8E891 /* Pods_MyChatTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MyChatTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -223,6 +229,9 @@
 		5E0F560B29361BE800E0178C /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				5ECAC33A2938D3C0003FD519 /* Models */,
+				5ECAC3372937E74A003FD519 /* Entities */,
+				5ECAC3362937E737003FD519 /* Models */,
 				5E0F5612293620D100E0178C /* Classes */,
 				5E0F560D29361C0B00E0178C /* ServiceLayers */,
 				5E0F560C29361BF100E0178C /* Extensions */,
@@ -299,6 +308,30 @@
 				5ECAC3262937BBA1003FD519 /* Roboto-ThinItalic.ttf */,
 			);
 			path = Roboto;
+			sourceTree = "<group>";
+		};
+		5ECAC3362937E737003FD519 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5ECAC3372937E74A003FD519 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				5ECAC3382937E760003FD519 /* BottomLineState.swift */,
+				5ECAC33D2938D52D003FD519 /* MasksValidationFields.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		5ECAC33A2938D3C0003FD519 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5ECAC33B2938D405003FD519 /* RegistrationPageModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -556,7 +589,10 @@
 				5E0F55DB2934FF2200E0178C /* RegistrationViewController.swift in Sources */,
 				5E0F55D72934FF2200E0178C /* AppDelegate.swift in Sources */,
 				5E0F5616293651DF00E0178C /* UITextField.swift in Sources */,
+				5ECAC3392937E760003FD519 /* BottomLineState.swift in Sources */,
 				5E0F5614293620F500E0178C /* TextField.swift in Sources */,
+				5ECAC33C2938D405003FD519 /* RegistrationPageModel.swift in Sources */,
+				5ECAC33E2938D52D003FD519 /* MasksValidationFields.swift in Sources */,
 				5E0F561129361C8600E0178C /* UIScrollView.swift in Sources */,
 				5E0F55D92934FF2200E0178C /* SceneDelegate.swift in Sources */,
 				5ECAC3352937CF5D003FD519 /* UIFont.swift in Sources */,
