@@ -34,7 +34,7 @@ extension ModuleBuilder: Buildable {
     
     func buildSelectionPageModule() -> SelectionPageViewController {
         let viewController = SelectionPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-        let presenter = SelectionPagePresenter()
+        let presenter = SelectionPagePresenter(moduleBuilder: self)
         
         viewController.presenter = presenter
         presenter.viewController = viewController

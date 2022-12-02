@@ -10,14 +10,17 @@ import UIKit
 
 // MARK: - PageDisplayLogic
 protocol PageDisplaySelectionLogic: AnyObject {
-    
+    func routTo(_ viewController: UIViewController)
+//    func showViewControllers(_ viewControllers: [UIViewController])
 }
 
 // MARK: - SelectionPageViewController
 final class SelectionPageViewController: UIPageViewController {
     
     private lazy var arrayViewControllers = [UIViewController]()
-    
+    private lazy var displayViewController = UIViewController()
+    private let muduleBuilder = ModuleBuilder()
+        
     var presenter: PageSelectionLogic?
     
     override init(transitionStyle style: UIPageViewController.TransitionStyle, navigationOrientation: UIPageViewController.NavigationOrientation, options: [UIPageViewController.OptionsKey : Any]? = nil) {
@@ -28,6 +31,7 @@ final class SelectionPageViewController: UIPageViewController {
         view.backgroundColor = .black
         addControllersToArray()
         self.setViewControllers([arrayViewControllers[0]], direction: .forward, animated: true)
+//        setupController()
     }
     
     required init?(coder: NSCoder) {
@@ -35,13 +39,16 @@ final class SelectionPageViewController: UIPageViewController {
     }
     
     private func addControllersToArray() {
-        arrayViewControllers.append(RegistrationViewController())
+        arrayViewControllers.append(muduleBuilder.buildMainModule())
     }
 }
 
 // MARK: - PageDisplaySelectionLogic Impl
 extension SelectionPageViewController: PageDisplaySelectionLogic {
     
+    func routTo(_ viewController: UIViewController) {
+        displayViewController = viewController
+    }
 }
 
 // MARK: - UIPageViewControllerDelegate
@@ -58,13 +65,26 @@ extension SelectionPageViewController: UIPageViewControllerDelegate {
 
 // MARK: - UIPageViewControllerDataSource
 extension SelectionPageViewController: UIPageViewControllerDataSource {
+    
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerBefore viewController: UIViewController) -> UIViewController? {
-        return RegistrationViewController()
+//        presenter?.nextViewController()
+//        return displayViewController
+        muduleBuilder.buildSelectionPageModule()
     }
     
     func pageViewController(_ pageViewController: UIPageViewController, viewControllerAfter viewController: UIViewController) -> UIViewController? {
-        return RegistrationViewController()
+//        presenter?.previousViewController()
+//        return displayViewController
+        muduleBuilder.buildSelectionPageModule()
     }
+}
+
+// MARK: - private methods
+private extension SelectionPageViewController {
     
-    
+    func setupController() {
+
+        addControllersToArray()
+        self.setViewControllers([arrayViewControllers[0]], direction: .forward, animated: true)
+    }
 }
