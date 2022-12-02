@@ -6,17 +6,24 @@
 //
 
 
-// MARK: - AuthLogicProtocol
-protocol AuthLogicProtocol: AnyObject {
+// MARK: - PresentationAuthLogic
+protocol PresentationAuthLogic: AnyObject {
     
 }
 
 // MARK: - AuthPresenter
 final class AuthPresenter {
     
+    weak var viewController: DisplayAuthLogic?
+    
+    private let moduleBuilder: Buildable
+    
+    init(moduleBuilder: Buildable) {
+        self.moduleBuilder = moduleBuilder
+    }
 }
 
-// MARK: - AuthLogicProtocol Impl
-extension AuthPresenter: AuthLogicProtocol {
+// MARK: - PresentationAuthLogic Impl
+extension AuthPresenter: PresentationAuthLogic {
     
 }

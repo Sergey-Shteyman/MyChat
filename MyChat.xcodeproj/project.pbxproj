@@ -25,6 +25,7 @@
 		5E6B8F8C293A466D00C70E54 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F8B293A466D00C70E54 /* AuthViewController.swift */; };
 		5E6B8F8E293A467900C70E54 /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F8D293A467900C70E54 /* AuthPresenter.swift */; };
 		5E6B8F90293A482100C70E54 /* WelcomePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F8F293A482100C70E54 /* WelcomePageModel.swift */; };
+		5E6B8F92293A849100C70E54 /* WellcomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F91293A849100C70E54 /* WellcomePresenter.swift */; };
 		5ECAC3272937BBA1003FD519 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ECAC31B2937BBA1003FD519 /* Roboto-Medium.ttf */; };
 		5ECAC3282937BBA1003FD519 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ECAC31C2937BBA1003FD519 /* Roboto-Italic.ttf */; };
 		5ECAC3292937BBA1003FD519 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ECAC31D2937BBA1003FD519 /* Roboto-Light.ttf */; };
@@ -91,6 +92,7 @@
 		5E6B8F8B293A466D00C70E54 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		5E6B8F8D293A467900C70E54 /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
 		5E6B8F8F293A482100C70E54 /* WelcomePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageModel.swift; sourceTree = "<group>"; };
+		5E6B8F91293A849100C70E54 /* WellcomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellcomePresenter.swift; sourceTree = "<group>"; };
 		5ECAC31B2937BBA1003FD519 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		5ECAC31C2937BBA1003FD519 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		5ECAC31D2937BBA1003FD519 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
@@ -367,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				5EFE69652939FD6A00F9740C /* WellcomViewController.swift */,
+				5E6B8F91293A849100C70E54 /* WellcomePresenter.swift */,
 			);
 			path = Wellcome;
 			sourceTree = "<group>";
@@ -624,6 +627,7 @@
 				5E0F560F29361C5E00E0178C /* UIView.swift in Sources */,
 				5E6B8F90293A482100C70E54 /* WelcomePageModel.swift in Sources */,
 				5E6B8F8E293A467900C70E54 /* AuthPresenter.swift in Sources */,
+				5E6B8F92293A849100C70E54 /* WellcomePresenter.swift in Sources */,
 				5E0F561A293763A900E0178C /* RegistrationPresenter.swift in Sources */,
 				5ECAC3412938EF44003FD519 /* SelectionPageViewController.swift in Sources */,
 				5E0F55DB2934FF2200E0178C /* RegistrationViewController.swift in Sources */,

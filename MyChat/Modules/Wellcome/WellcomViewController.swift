@@ -7,9 +7,15 @@
 
 import UIKit
 
+// MARK: - WellcomDisplayLogic
+protocol WellcomDisplayLogic: AnyObject {
+    func routTo(_ viewController: UIViewController)
+}
 
 // MARK: - WellcomViewController
 final class WellcomViewController: UIViewController {
+    
+    var presenter: WellcomPresentationLogic?
     
     private let robotoFont = RobotoFont()
     private let welcomePage = WelcomePageModel()
@@ -57,7 +63,15 @@ final class WellcomViewController: UIViewController {
     
     @objc
     func buttonIsTapped() {
-        print("Hello")
+        presenter?.didTapButton()
+    }
+}
+
+// MARK: - WellcomDisplayLogic Impl
+extension WellcomViewController: WellcomDisplayLogic {
+    
+    func routTo(_ viewController: UIViewController) {
+        self.navigationController?.pushViewController(viewController, animated: true)
     }
 }
 

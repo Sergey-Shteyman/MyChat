@@ -7,20 +7,24 @@
 
 import UIKit
 
-// MARK: - DisplayAuthorization
-protocol DisplayAuthorization: AnyObject {
+
+// MARK: - DisplayAuthLogic
+protocol DisplayAuthLogic: AnyObject {
     
 }
 
 // MARK: - AuthViewController
 final class AuthViewController: UIViewController {
     
+    var presenter: PresentationAuthLogic?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        view.backgroundColor = .green
     }
 }
 
-// MARK: - DisplayAuthorization Impl
-extension AuthViewController: DisplayAuthorization {
+// MARK: - DisplayAuthLogic Impl
+extension AuthViewController: DisplayAuthLogic {
     
 }
