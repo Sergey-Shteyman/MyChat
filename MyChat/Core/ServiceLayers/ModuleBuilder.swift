@@ -41,4 +41,14 @@ extension ModuleBuilder: Buildable {
         
         return viewController
     }
+    
+    func buildAuthPageModule() -> AuthViewController {
+        let viewController = AuthViewController()
+        let presenter = AuthPresenter()
+
+        viewController.presenter = presenter
+        presenter.viewController = viewController
+        
+        return viewController
+    }
 }
