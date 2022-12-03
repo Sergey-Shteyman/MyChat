@@ -119,7 +119,8 @@ private extension RegistrationViewController {
     }
     
     func addTargets() {
-        nameTextField.addTarget(self, action: #selector(isValidNameTextField), for: UIControl.Event.editingChanged)
+        nameTextField.addTarget(self, action: #selector(isValidNameTextField),
+                                for: UIControl.Event.editingChanged)
         accessButton.addTarget(self, action: #selector(buttonIsTapped), for: .touchDown)
     }
 

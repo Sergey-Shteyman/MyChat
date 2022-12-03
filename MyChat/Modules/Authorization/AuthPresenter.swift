@@ -8,7 +8,7 @@
 
 // MARK: - PresentationAuthLogic
 protocol PresentationAuthLogic: AnyObject {
-    
+    func didChangeNumber(_ number: String?)
 }
 
 // MARK: - AuthPresenter
@@ -26,4 +26,29 @@ final class AuthPresenter {
 // MARK: - PresentationAuthLogic Impl
 extension AuthPresenter: PresentationAuthLogic {
     
+    func didChangeNumber(_ number: String?) {
+        if validateNumber(number) {
+            viewController?.showValidationCorrect()
+        } else {
+            viewController?.showValidationError()
+        }
+    }
+}
+
+// MARK: - Private methods
+private extension AuthPresenter {
+    
+    func validateNumber(_ number: String?) -> Bool {
+        let validateNumberExpression = #"^[0-9]{10,10}$"#
+        guard let number = number else {
+            return false
+        }
+        guard number.count == 10 && number.range(
+            of: validateNumberExpression,
+            options: .regularExpression,
+            range: nil) != nil else {
+            return false
+        }
+        return true
+    }
 }
