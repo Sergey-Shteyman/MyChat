@@ -31,8 +31,8 @@ extension AuthPresenter: PresentationAuthLogic {
     
     func didTapAuthButton() {
         if validNumber {
-//            let viewController = moduleBuilder.buildVeryfyModule()
-//            viewController.routTo(viewController)
+            let viewController = moduleBuilder.buildVerificationModule()
+            self.viewController?.routTo(viewController)
         } else {
             viewController?.showValidationError()
         }

@@ -26,6 +26,8 @@
 		5E6B8F8E293A467900C70E54 /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F8D293A467900C70E54 /* AuthPresenter.swift */; };
 		5E6B8F90293A482100C70E54 /* WelcomePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F8F293A482100C70E54 /* WelcomePageModel.swift */; };
 		5E6B8F92293A849100C70E54 /* WellcomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F91293A849100C70E54 /* WellcomePresenter.swift */; };
+		5E6B8F99293B670B00C70E54 /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F98293B670B00C70E54 /* VerificationViewController.swift */; };
+		5E6B8F9B293B671E00C70E54 /* VerificationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F9A293B671E00C70E54 /* VerificationPresenter.swift */; };
 		5ECAC3272937BBA1003FD519 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ECAC31B2937BBA1003FD519 /* Roboto-Medium.ttf */; };
 		5ECAC3282937BBA1003FD519 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ECAC31C2937BBA1003FD519 /* Roboto-Italic.ttf */; };
 		5ECAC3292937BBA1003FD519 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ECAC31D2937BBA1003FD519 /* Roboto-Light.ttf */; };
@@ -91,6 +93,8 @@
 		5E6B8F8D293A467900C70E54 /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
 		5E6B8F8F293A482100C70E54 /* WelcomePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageModel.swift; sourceTree = "<group>"; };
 		5E6B8F91293A849100C70E54 /* WellcomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellcomePresenter.swift; sourceTree = "<group>"; };
+		5E6B8F98293B670B00C70E54 /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
+		5E6B8F9A293B671E00C70E54 /* VerificationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationPresenter.swift; sourceTree = "<group>"; };
 		5ECAC31B2937BBA1003FD519 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		5ECAC31C2937BBA1003FD519 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		5ECAC31D2937BBA1003FD519 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
@@ -282,6 +286,7 @@
 			children = (
 				5EFE69642939FD3700F9740C /* Wellcome */,
 				5E6B8F8A293A463200C70E54 /* Authorization */,
+				5E6B8F97293B66E200C70E54 /* Verification */,
 				5E0F56182937638F00E0178C /* Registration */,
 			);
 			path = Modules;
@@ -303,6 +308,15 @@
 				5E6B8F8D293A467900C70E54 /* AuthPresenter.swift */,
 			);
 			path = Authorization;
+			sourceTree = "<group>";
+		};
+		5E6B8F97293B66E200C70E54 /* Verification */ = {
+			isa = PBXGroup;
+			children = (
+				5E6B8F98293B670B00C70E54 /* VerificationViewController.swift */,
+				5E6B8F9A293B671E00C70E54 /* VerificationPresenter.swift */,
+			);
+			path = Verification;
 			sourceTree = "<group>";
 		};
 		5ECAC31A2937BB84003FD519 /* Fonts */ = {
@@ -612,6 +626,7 @@
 			files = (
 				5E0F560F29361C5E00E0178C /* UIView.swift in Sources */,
 				5E6B8F90293A482100C70E54 /* WelcomePageModel.swift in Sources */,
+				5E6B8F99293B670B00C70E54 /* VerificationViewController.swift in Sources */,
 				5E6B8F8E293A467900C70E54 /* AuthPresenter.swift in Sources */,
 				5E6B8F92293A849100C70E54 /* WellcomePresenter.swift in Sources */,
 				5E0F561A293763A900E0178C /* RegistrationPresenter.swift in Sources */,
@@ -624,6 +639,7 @@
 				5EFE69682939FF3000F9740C /* RobotoFont.swift in Sources */,
 				5ECAC33C2938D405003FD519 /* RegistrationPageModel.swift in Sources */,
 				5ECAC33E2938D52D003FD519 /* MasksValidationFields.swift in Sources */,
+				5E6B8F9B293B671E00C70E54 /* VerificationPresenter.swift in Sources */,
 				5E0F561129361C8600E0178C /* UIScrollView.swift in Sources */,
 				5E0F55D92934FF2200E0178C /* SceneDelegate.swift in Sources */,
 				5ECAC3352937CF5D003FD519 /* UIFont.swift in Sources */,
