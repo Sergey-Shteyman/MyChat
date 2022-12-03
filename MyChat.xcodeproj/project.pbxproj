@@ -22,6 +22,10 @@
 		5E0F5614293620F500E0178C /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F5613293620F500E0178C /* TextField.swift */; };
 		5E0F5616293651DF00E0178C /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F5615293651DF00E0178C /* UITextField.swift */; };
 		5E0F561A293763A900E0178C /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F5619293763A900E0178C /* RegistrationPresenter.swift */; };
+		5E6B8F8C293A466D00C70E54 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F8B293A466D00C70E54 /* AuthViewController.swift */; };
+		5E6B8F8E293A467900C70E54 /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F8D293A467900C70E54 /* AuthPresenter.swift */; };
+		5E6B8F90293A482100C70E54 /* WelcomePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F8F293A482100C70E54 /* WelcomePageModel.swift */; };
+		5E6B8F92293A849100C70E54 /* WellcomePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F91293A849100C70E54 /* WellcomePresenter.swift */; };
 		5ECAC3272937BBA1003FD519 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ECAC31B2937BBA1003FD519 /* Roboto-Medium.ttf */; };
 		5ECAC3282937BBA1003FD519 /* Roboto-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ECAC31C2937BBA1003FD519 /* Roboto-Italic.ttf */; };
 		5ECAC3292937BBA1003FD519 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5ECAC31D2937BBA1003FD519 /* Roboto-Light.ttf */; };
@@ -38,8 +42,6 @@
 		5ECAC3392937E760003FD519 /* BottomLineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAC3382937E760003FD519 /* BottomLineState.swift */; };
 		5ECAC33C2938D405003FD519 /* RegistrationPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAC33B2938D405003FD519 /* RegistrationPageModel.swift */; };
 		5ECAC33E2938D52D003FD519 /* MasksValidationFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAC33D2938D52D003FD519 /* MasksValidationFields.swift */; };
-		5ECAC3412938EF44003FD519 /* SelectionPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAC3402938EF44003FD519 /* SelectionPageViewController.swift */; };
-		5ECAC3432938EF71003FD519 /* SelectionPagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAC3422938EF71003FD519 /* SelectionPagePresenter.swift */; };
 		5EFE69662939FD6A00F9740C /* WellcomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE69652939FD6A00F9740C /* WellcomViewController.swift */; };
 		5EFE69682939FF3000F9740C /* RobotoFont.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE69672939FF3000F9740C /* RobotoFont.swift */; };
 		6CC7B3915A63C275FAC1EAC4 /* Pods_MyChat.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 053F36F2D3E2C71E19EEA135 /* Pods_MyChat.framework */; };
@@ -85,6 +87,10 @@
 		5E0F5613293620F500E0178C /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		5E0F5615293651DF00E0178C /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		5E0F5619293763A900E0178C /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
+		5E6B8F8B293A466D00C70E54 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
+		5E6B8F8D293A467900C70E54 /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
+		5E6B8F8F293A482100C70E54 /* WelcomePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageModel.swift; sourceTree = "<group>"; };
+		5E6B8F91293A849100C70E54 /* WellcomePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellcomePresenter.swift; sourceTree = "<group>"; };
 		5ECAC31B2937BBA1003FD519 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		5ECAC31C2937BBA1003FD519 /* Roboto-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Italic.ttf"; sourceTree = "<group>"; };
 		5ECAC31D2937BBA1003FD519 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
@@ -101,8 +107,6 @@
 		5ECAC3382937E760003FD519 /* BottomLineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomLineState.swift; sourceTree = "<group>"; };
 		5ECAC33B2938D405003FD519 /* RegistrationPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPageModel.swift; sourceTree = "<group>"; };
 		5ECAC33D2938D52D003FD519 /* MasksValidationFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasksValidationFields.swift; sourceTree = "<group>"; };
-		5ECAC3402938EF44003FD519 /* SelectionPageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionPageViewController.swift; sourceTree = "<group>"; };
-		5ECAC3422938EF71003FD519 /* SelectionPagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionPagePresenter.swift; sourceTree = "<group>"; };
 		5EFE69652939FD6A00F9740C /* WellcomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellcomViewController.swift; sourceTree = "<group>"; };
 		5EFE69672939FF3000F9740C /* RobotoFont.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RobotoFont.swift; sourceTree = "<group>"; };
 		60AC7C1B3F9BC3E29456D9A1 /* Pods-MyChat.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyChat.debug.xcconfig"; path = "Target Support Files/Pods-MyChat/Pods-MyChat.debug.xcconfig"; sourceTree = "<group>"; };
@@ -277,7 +281,7 @@
 			isa = PBXGroup;
 			children = (
 				5EFE69642939FD3700F9740C /* Wellcome */,
-				5ECAC33F2938EEEA003FD519 /* Selection */,
+				5E6B8F8A293A463200C70E54 /* Authorization */,
 				5E0F56182937638F00E0178C /* Registration */,
 			);
 			path = Modules;
@@ -290,6 +294,15 @@
 				5E0F5619293763A900E0178C /* RegistrationPresenter.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		5E6B8F8A293A463200C70E54 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				5E6B8F8B293A466D00C70E54 /* AuthViewController.swift */,
+				5E6B8F8D293A467900C70E54 /* AuthPresenter.swift */,
+			);
+			path = Authorization;
 			sourceTree = "<group>";
 		};
 		5ECAC31A2937BB84003FD519 /* Fonts */ = {
@@ -333,23 +346,16 @@
 			isa = PBXGroup;
 			children = (
 				5ECAC33B2938D405003FD519 /* RegistrationPageModel.swift */,
+				5E6B8F8F293A482100C70E54 /* WelcomePageModel.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		5ECAC33F2938EEEA003FD519 /* Selection */ = {
-			isa = PBXGroup;
-			children = (
-				5ECAC3402938EF44003FD519 /* SelectionPageViewController.swift */,
-				5ECAC3422938EF71003FD519 /* SelectionPagePresenter.swift */,
-			);
-			path = Selection;
 			sourceTree = "<group>";
 		};
 		5EFE69642939FD3700F9740C /* Wellcome */ = {
 			isa = PBXGroup;
 			children = (
 				5EFE69652939FD6A00F9740C /* WellcomViewController.swift */,
+				5E6B8F91293A849100C70E54 /* WellcomePresenter.swift */,
 			);
 			path = Wellcome;
 			sourceTree = "<group>";
@@ -605,8 +611,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				5E0F560F29361C5E00E0178C /* UIView.swift in Sources */,
+				5E6B8F90293A482100C70E54 /* WelcomePageModel.swift in Sources */,
+				5E6B8F8E293A467900C70E54 /* AuthPresenter.swift in Sources */,
+				5E6B8F92293A849100C70E54 /* WellcomePresenter.swift in Sources */,
 				5E0F561A293763A900E0178C /* RegistrationPresenter.swift in Sources */,
-				5ECAC3412938EF44003FD519 /* SelectionPageViewController.swift in Sources */,
 				5E0F55DB2934FF2200E0178C /* RegistrationViewController.swift in Sources */,
 				5E0F55D72934FF2200E0178C /* AppDelegate.swift in Sources */,
 				5E0F5616293651DF00E0178C /* UITextField.swift in Sources */,
@@ -618,8 +626,8 @@
 				5ECAC33E2938D52D003FD519 /* MasksValidationFields.swift in Sources */,
 				5E0F561129361C8600E0178C /* UIScrollView.swift in Sources */,
 				5E0F55D92934FF2200E0178C /* SceneDelegate.swift in Sources */,
-				5ECAC3432938EF71003FD519 /* SelectionPagePresenter.swift in Sources */,
 				5ECAC3352937CF5D003FD519 /* UIFont.swift in Sources */,
+				5E6B8F8C293A466D00C70E54 /* AuthViewController.swift in Sources */,
 				5E0F56072935026900E0178C /* ModuleBuilder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
