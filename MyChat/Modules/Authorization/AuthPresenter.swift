@@ -9,6 +9,7 @@
 // MARK: - PresentationAuthLogic
 protocol PresentationAuthLogic: AnyObject {
     func didChangeNumber(_ number: String?)
+    func didTapAuthButton()
 }
 
 // MARK: - AuthPresenter
@@ -18,6 +19,8 @@ final class AuthPresenter {
     
     private let moduleBuilder: Buildable
     
+    lazy var validNumber = Bool()
+    
     init(moduleBuilder: Buildable) {
         self.moduleBuilder = moduleBuilder
     }
@@ -25,6 +28,15 @@ final class AuthPresenter {
 
 // MARK: - PresentationAuthLogic Impl
 extension AuthPresenter: PresentationAuthLogic {
+    
+    func didTapAuthButton() {
+        if validNumber {
+//            let viewController = moduleBuilder.buildVeryfyModule()
+//            viewController.routTo(viewController)
+        } else {
+            viewController?.showValidationError()
+        }
+    }
     
     func didChangeNumber(_ number: String?) {
         if validateNumber(number) {
@@ -49,6 +61,7 @@ private extension AuthPresenter {
             range: nil) != nil else {
             return false
         }
+        validNumber = true
         return true
     }
 }

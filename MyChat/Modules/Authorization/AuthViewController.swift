@@ -13,6 +13,7 @@ import CountryPicker
 protocol DisplayAuthLogic: AnyObject {
     func showValidationCorrect()
     func showValidationError()
+    func routTo(_ viewController: UIViewController)
 }
 
 // MARK: - AuthViewController
@@ -33,7 +34,7 @@ final class AuthViewController: UIViewController {
     private lazy var telephoneDescription: UILabel = {
         let label = UILabel()
         label.lineBreakMode = .byWordWrapping
-        label.numberOfLines = 2
+        label.numberOfLines = 0
         label.font = UIFont(name: robotoFont.regular, size: 15)
         label.textAlignment = .center
         label.text = "Пожалуйста укажите код страны и введите номер своего телефона."
@@ -44,7 +45,6 @@ final class AuthViewController: UIViewController {
         let textField = TextField()
         textField.placeholder = "Выберите страну"
         textField.font = .systemFont(ofSize: 26)
-//        textField.addBottomLine(with: .lightGray)
         return textField
     }()
 
@@ -68,7 +68,6 @@ final class AuthViewController: UIViewController {
     private lazy var phoneCodeTextField: TextField = {
         let textField = TextField()
         textField.font = .systemFont(ofSize: 26)
-//        textField.addBottomLine(with: .lightGray)
         return textField
     }()
 
@@ -107,12 +106,16 @@ final class AuthViewController: UIViewController {
     
     @objc
     func buttonIsTapped() {
-        print("privet")
+        presenter?.didTapAuthButton()
     }
 }
 
 // MARK: - DisplayAuthLogic Impl
 extension AuthViewController: DisplayAuthLogic {
+    
+    func routTo(_ viewController: UIViewController) {
+        navigationController?.pushViewController(viewController, animated: true)
+    }
     
     func showValidationCorrect() {
         phoneNumberTextField.changeStateBottomLine(with: .normal)
@@ -164,8 +167,8 @@ private extension AuthViewController {
             telephoneLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             telephoneDescription.topAnchor.constraint(equalTo: telephoneLabel.bottomAnchor, constant: 20),
-            telephoneDescription.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 50),
-            telephoneDescription.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -45),
+            telephoneDescription.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 45),
+            telephoneDescription.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -45),
             
             containerCountryTextField.topAnchor.constraint(equalTo: telephoneDescription.bottomAnchor, constant: 50),
             containerCountryTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
