@@ -59,6 +59,7 @@ private extension AuthPresenter {
             of: validateNumberExpression,
             options: .regularExpression,
             range: nil) != nil else {
+            validNumber = false
             return false
         }
         validNumber = true
