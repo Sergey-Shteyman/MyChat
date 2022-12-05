@@ -12,8 +12,8 @@ import Foundation
 protocol Buildable {
     func buildWellcomeModule() -> WellcomViewController
     func buildAuthPageModule() -> AuthViewController
-    func buildRegistrationModule() -> RegistrationViewController
-//    func buildSelectionPageModule() -> SelectionPageViewController
+    func buildVerificationModule(codeTelephoneNumber: String, telephoneNumber: String) -> VerificationViewController
+    func buildRegistrationModule(_ phoneNumberCode: String, _ telephoneNumber: String) -> RegistrationViewController
 }
 
 // MARK: - ModuleBuilder
@@ -27,40 +27,36 @@ extension ModuleBuilder: Buildable {
     func buildWellcomeModule() -> WellcomViewController {
         let viewController = WellcomViewController()
         let presenter = WellcomePresenter(moduleBuilder: self)
-
         viewController.presenter = presenter
         presenter.viewController = viewController
-        
         return viewController
     }
     
     func buildAuthPageModule() -> AuthViewController {
         let viewController = AuthViewController()
         let presenter = AuthPresenter(moduleBuilder: self)
-
         viewController.presenter = presenter
         presenter.viewController = viewController
-        
         return viewController
     }
     
-    func buildRegistrationModule() -> RegistrationViewController {
+    func buildVerificationModule(codeTelephoneNumber: String, telephoneNumber: String) -> VerificationViewController {
+        let viewController = VerificationViewController()
+        let presenter = VerificationPresenter(moduleBuilder: self,
+                                              codeTelephoneNumber: codeTelephoneNumber,
+                                              telephoneNumber: telephoneNumber)
+        viewController.presenter = presenter
+        presenter.viewController = viewController
+        return viewController
+    }
+    
+    func buildRegistrationModule(_ phoneNumberCode: String, _ telephoneNumber: String) -> RegistrationViewController {
         let viewController = RegistrationViewController()
-        let presenter = RegistrationPresenter(moduleBuilder: self)
-
+        let presenter = RegistrationPresenter(phoneNumberCode: phoneNumberCode,
+                                              telephoneNumber: telephoneNumber,
+                                              moduleBuilder: self)
         viewController.presenter = presenter
         presenter.viewController = viewController
-        
         return viewController
     }
-    
-//    func buildSelectionPageModule() -> SelectionPageViewController {
-//        let viewController = SelectionPageViewController(transitionStyle: .scroll, navigationOrientation: .horizontal)
-//        let presenter = SelectionPagePresenter(moduleBuilder: self)
-//
-//        viewController.presenter = presenter
-//        presenter.viewController = viewController
-//
-//        return viewController
-//    }
 }

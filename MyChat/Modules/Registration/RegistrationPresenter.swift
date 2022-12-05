@@ -10,6 +10,7 @@
 protocol RegistrationPresentationLogic: AnyObject {
     func didChangeName(_ name: String?)
     func didTapRegisterButton()
+    func addTelephoneNumber()
 }
 
 // MARK: - RegistrationPresenter
@@ -21,14 +22,22 @@ final class RegistrationPresenter {
     
     weak var viewController: RegistrationDisplayLogic?
     private let moduleBuilder: Buildable
+    private let phoneNumberCode: String
+    private let telephoneNumber: String
     
-    init(moduleBuilder: Buildable) {
+    init(phoneNumberCode: String, telephoneNumber: String, moduleBuilder: Buildable) {
+        self.phoneNumberCode = phoneNumberCode
+        self.telephoneNumber = telephoneNumber
         self.moduleBuilder = moduleBuilder
     }
 }
 
 // MARK: - RegistrationPresentationLogic Impl
 extension RegistrationPresenter: RegistrationPresentationLogic {
+    
+    func addTelephoneNumber() {
+        viewController?.setupTelephoneNumber(phoneNumberCode, telephoneNumber)
+    }
     
     func didTapRegisterButton() {
         if isFieldsAreCorrect() {

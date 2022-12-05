@@ -9,7 +9,7 @@
 // MARK: - PresentationAuthLogic
 protocol PresentationAuthLogic: AnyObject {
     func didChangeNumber(_ number: String?)
-    func didTapAuthButton()
+    func didTapAuthButton(_ codeNumberPhone: String?, _ number: String?)
 }
 
 // MARK: - AuthPresenter
@@ -29,10 +29,15 @@ final class AuthPresenter {
 // MARK: - PresentationAuthLogic Impl
 extension AuthPresenter: PresentationAuthLogic {
     
-    func didTapAuthButton() {
+    func didTapAuthButton(_ codeNumberPhone: String?, _ number: String?) {
         if validNumber {
-//            let viewController = moduleBuilder.buildVeryfyModule()
-//            viewController.routTo(viewController)
+            guard let number = number,
+                  let codeNumberPhone = codeNumberPhone else {
+                return
+            }
+            let viewController = moduleBuilder.buildVerificationModule(codeTelephoneNumber: codeNumberPhone,
+                                                                       telephoneNumber: number)
+            self.viewController?.routTo(viewController)
         } else {
             viewController?.showValidationError()
         }
@@ -59,6 +64,7 @@ private extension AuthPresenter {
             of: validateNumberExpression,
             options: .regularExpression,
             range: nil) != nil else {
+            validNumber = false
             return false
         }
         validNumber = true

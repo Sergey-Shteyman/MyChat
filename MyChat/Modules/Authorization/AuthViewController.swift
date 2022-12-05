@@ -21,13 +21,14 @@ final class AuthViewController: UIViewController {
     
     var presenter: PresentationAuthLogic?
     
+    private let authPageModel = AuthPageModel()
     private let robotoFont = RobotoFont()
     
     private lazy var telephoneLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: robotoFont.regular, size: 28)
         label.textAlignment = .center
-        label.text = "Т Е Л Е Ф О Н"
+        label.text = authPageModel.phoneNumber
         return label
     }()
     
@@ -37,13 +38,13 @@ final class AuthViewController: UIViewController {
         label.numberOfLines = 0
         label.font = UIFont(name: robotoFont.regular, size: 15)
         label.textAlignment = .center
-        label.text = "Пожалуйста укажите код страны и введите номер своего телефона."
+        label.text = authPageModel.descriptionPhone
         return label
     }()
     
     private lazy var containerCountryTextField: TextField = {
         let textField = TextField()
-        textField.placeholder = "Выберите страну"
+        textField.placeholder = authPageModel.chouseCountry
         textField.font = .systemFont(ofSize: 26)
         return textField
     }()
@@ -73,7 +74,7 @@ final class AuthViewController: UIViewController {
 
     private lazy var phoneNumberTextField: TextField = {
         let textField = TextField()
-        textField.placeholder = "---  ---  -- --"
+        textField.placeholder = authPageModel.phonePlaceholder
         textField.font = .systemFont(ofSize: 26)
         textField.clearButtonMode = .whileEditing
         textField.keyboardType = UIKeyboardType.numberPad
@@ -86,7 +87,7 @@ final class AuthViewController: UIViewController {
     private lazy var authButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = UIFont(name: UIFont.Roboto.regular.rawValue, size: 20)
-        button.setTitle("П Р О Д О Л Ж И Т Ь", for: .normal)
+        button.setTitle(authPageModel.authButton, for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 20
         button.titleLabel?.textAlignment = .center
@@ -106,7 +107,7 @@ final class AuthViewController: UIViewController {
     
     @objc
     func buttonIsTapped() {
-        presenter?.didTapAuthButton()
+        presenter?.didTapAuthButton(phoneCodeTextField.text, phoneNumberTextField.text)
     }
 }
 
