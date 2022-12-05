@@ -11,6 +11,7 @@ protocol VerificationPresentationLogic: AnyObject {
     func firstSquareSelected(_ value: String?)
     func didTapVerifyButton(fields: [String?])
     func getPhoneNumber()
+    func prepareScreen()
 }
 
 // MARK: - VerificationPresenter
@@ -33,6 +34,11 @@ final class VerificationPresenter {
 // MARK: - VerificationPresentationLogic
 extension VerificationPresenter: VerificationPresentationLogic {
     
+    func prepareScreen() {
+        viewController?.clearFields()
+        viewController?.filedsResignSelection()
+    }
+    
     func getPhoneNumber() {
         viewController?.setupTitle(phoneCode: codeTelephoneNumber, phone: telephoneNumber)
     }
@@ -51,7 +57,7 @@ extension VerificationPresenter: VerificationPresentationLogic {
         } else {
             codeValue = ""
             viewController?.showInvalidCodeAllert()
-            viewController?.clearFields()
+//            viewController?.clearFields()
         }
     }
     

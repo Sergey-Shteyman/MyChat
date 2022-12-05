@@ -13,6 +13,7 @@ protocol VerificationDisplayLogic: AnyObject {
     func showInvalidCodeAllert()
     func setupTitle(phoneCode: String, phone: String)
     func clearFields()
+    func filedsResignSelection()
     func routTo(_ viewController: UIViewController)
 }
 
@@ -66,85 +67,49 @@ final class VerificationViewController: UIViewController {
     
     private lazy var firstCodeSquare: UITextField = {
         let textField = UITextField()
-        textField.keyboardType = UIKeyboardType.numberPad
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.gray.cgColor
-        textField.layer.cornerRadius = 6
-        textField.textAlignment = .center
-        textField.font = UIFont(name: UIFont.Roboto.medium.rawValue, size: 23)
-        textField.addTarget(self,
-                            action: #selector(firstCodeSquareChanged),
-                            for: .editingChanged)
+        textField.setDefauldOTP(fontSize: 23)
+        textField.delegate = self
+        textField.addTarget(self, action: #selector(changeCharacter), for: .editingChanged)
         return textField
     }()
     
     private lazy var secondCodeSquare: UITextField = {
         let textField = UITextField()
-        textField.keyboardType = UIKeyboardType.numberPad
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.gray.cgColor
-        textField.layer.cornerRadius = 6
-        textField.textAlignment = .center
-        textField.font = UIFont(name: UIFont.Roboto.medium.rawValue, size: 23)
-        textField.addTarget(self,
-                            action: #selector(secondCodeSquareChanged),
-                            for: .editingChanged)
+        textField.setDefauldOTP(fontSize: 23)
+        textField.delegate = self
+        textField.addTarget(self, action: #selector(changeCharacter), for: .editingChanged)
         return textField
     }()
     
     private lazy var thirdCodeSquare: UITextField = {
         let textField = UITextField()
-        textField.keyboardType = UIKeyboardType.numberPad
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.gray.cgColor
-        textField.layer.cornerRadius = 6
-        textField.textAlignment = .center
-        textField.font = UIFont(name: UIFont.Roboto.medium.rawValue, size: 23)
-        textField.addTarget(self,
-                            action: #selector(thirdCodeSquareChanged),
-                            for: .editingChanged)
+        textField.setDefauldOTP(fontSize: 23)
+        textField.delegate = self
+        textField.addTarget(self, action: #selector(changeCharacter), for: .editingChanged)
         return textField
     }()
     
     private lazy var fourthCodeSquare: UITextField = {
         let textField = UITextField()
-        textField.keyboardType = UIKeyboardType.numberPad
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.gray.cgColor
-        textField.layer.cornerRadius = 6
-        textField.textAlignment = .center
-        textField.font = UIFont(name: UIFont.Roboto.medium.rawValue, size: 23)
-        textField.addTarget(self,
-                            action: #selector(fourthCodeSquareChanged),
-                            for: .editingChanged)
+        textField.setDefauldOTP(fontSize: 23)
+        textField.delegate = self
+        textField.addTarget(self, action: #selector(changeCharacter), for: .editingChanged)
         return textField
     }()
     
     private lazy var fifthCodeSquare: UITextField = {
         let textField = UITextField()
-        textField.keyboardType = UIKeyboardType.numberPad
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.gray.cgColor
-        textField.layer.cornerRadius = 6
-        textField.textAlignment = .center
-        textField.font = UIFont(name: UIFont.Roboto.medium.rawValue, size: 23)
-        textField.addTarget(self,
-                            action: #selector(fifthCodeSquareChanged),
-                            for: .editingChanged)
+        textField.setDefauldOTP(fontSize: 23)
+        textField.delegate = self
+        textField.addTarget(self, action: #selector(changeCharacter), for: .editingChanged)
         return textField
     }()
     
     private lazy var sixthCodeSquare: UITextField = {
         let textField = UITextField()
-        textField.keyboardType = UIKeyboardType.numberPad
-        textField.layer.borderWidth = 1
-        textField.layer.borderColor = UIColor.gray.cgColor
-        textField.layer.cornerRadius = 6
-        textField.textAlignment = .center
-        textField.font = UIFont(name: UIFont.Roboto.medium.rawValue, size: 23)
-        textField.addTarget(self,
-                            action: #selector(sixthCodeSquareChanged),
-                            for: .editingChanged)
+        textField.setDefauldOTP(fontSize: 23)
+        textField.delegate = self
+        textField.addTarget(self, action: #selector(changeCharacter), for: .editingChanged)
         return textField
     }()
     
@@ -172,69 +137,103 @@ final class VerificationViewController: UIViewController {
     }
     
     @objc
-    func firstCodeSquareChanged() {
-        firstCodeSquare.stateForTextField(with: .selected)
-        if firstCodeSquare.text?.count == 1 {
-            firstCodeSquare.stateForTextField(with: .normal)
-        }
-        secondCodeSquare.stateForTextField(with: .selected)
-        secondCodeSquare.becomeFirstResponder()
-//        presenter?.firstSquareSelected(firstCodeSquare.text)
-    }
-    
-    @objc
-    func secondCodeSquareChanged() {
-        secondCodeSquare.stateForTextField(with: .selected)
-        if secondCodeSquare.text?.count == 1 {
-            secondCodeSquare.stateForTextField(with: .normal)
-        }
-        thirdCodeSquare.stateForTextField(with: .selected)
-        thirdCodeSquare.becomeFirstResponder()
-    }
-    
-    @objc
-    func thirdCodeSquareChanged() {
-        thirdCodeSquare.stateForTextField(with: .selected)
-        if thirdCodeSquare.text?.count == 1 {
-            thirdCodeSquare.stateForTextField(with: .normal)
-        }
-        fourthCodeSquare.stateForTextField(with: .selected)
-        fourthCodeSquare.becomeFirstResponder()
-    }
-    
-    @objc
-    func fourthCodeSquareChanged() {
-        fourthCodeSquare.stateForTextField(with: .selected)
-        if fourthCodeSquare.text?.count == 1 {
-            fourthCodeSquare.stateForTextField(with: .normal)
-        }
-        fifthCodeSquare.stateForTextField(with: .selected)
-        fifthCodeSquare.becomeFirstResponder()
-    }
-    
-    @objc
-    func fifthCodeSquareChanged() {
-        fifthCodeSquare.stateForTextField(with: .selected)
-        if fifthCodeSquare.text?.count == 1 {
-            fifthCodeSquare.stateForTextField(with: .normal)
-        }
-        sixthCodeSquare.stateForTextField(with: .selected)
-        sixthCodeSquare.becomeFirstResponder()
-    }
-    
-    @objc
-    func sixthCodeSquareChanged() {
-        sixthCodeSquare.stateForTextField(with: .selected)
-        if sixthCodeSquare.text?.count == 1 {
-            sixthCodeSquare.stateForTextField(with: .normal)
-            sixthCodeSquare.resignFirstResponder()
-        }
-    }
-    
-    @objc
     func buttonIsTapped() {
         let codeInFields = getCode()
         presenter?.didTapVerifyButton(fields: codeInFields)
+    }
+    
+    @objc
+    func changeCharacter(textField: UITextField) {
+        guard let text = textField.text else {
+            return
+        }
+        if text.count == 1 {
+            switch textField {
+            case firstCodeSquare:
+                secondCodeSquare.becomeFirstResponder()
+            case secondCodeSquare:
+                thirdCodeSquare.becomeFirstResponder()
+            case thirdCodeSquare:
+                fourthCodeSquare.becomeFirstResponder()
+            case fourthCodeSquare:
+                fifthCodeSquare.becomeFirstResponder()
+            case fifthCodeSquare:
+                sixthCodeSquare.becomeFirstResponder()
+            case sixthCodeSquare:
+                fourthCodeSquare.resignFirstResponder()
+            default:
+                break
+            }
+        } else if text.isEmpty {
+            switch textField {
+            case sixthCodeSquare:
+                fifthCodeSquare.becomeFirstResponder()
+            case fifthCodeSquare:
+                fourthCodeSquare.becomeFirstResponder()
+            case fourthCodeSquare:
+                thirdCodeSquare.becomeFirstResponder()
+            case thirdCodeSquare:
+                secondCodeSquare.becomeFirstResponder()
+            case secondCodeSquare:
+                firstCodeSquare.becomeFirstResponder()
+            default:
+                break
+            }
+        }
+    }
+}
+
+// MARK: - UITextFieldDelegate Impl
+extension VerificationViewController: UITextFieldDelegate {
+    
+    func textField(_ textField: UITextField,
+                   shouldChangeCharactersIn range: NSRange,
+                   replacementString string: String) -> Bool {
+        guard let textFieldText = textField.text,
+              let rangeOfTextToReplace = Range(range, in: textFieldText) else {
+                   return false
+           }
+           let substringToReplace = textFieldText[rangeOfTextToReplace]
+           let count = textFieldText.count - substringToReplace.count + string.count
+           return count <= 1
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        switch textField {
+        case firstCodeSquare:
+            firstCodeSquare.stateForTextField(with: .selected)
+        case secondCodeSquare:
+            secondCodeSquare.stateForTextField(with: .selected)
+        case thirdCodeSquare:
+            thirdCodeSquare.stateForTextField(with: .selected)
+        case fourthCodeSquare:
+            fourthCodeSquare.stateForTextField(with: .selected)
+        case fifthCodeSquare:
+            fifthCodeSquare.stateForTextField(with: .selected)
+        case sixthCodeSquare:
+            sixthCodeSquare.stateForTextField(with: .selected)
+        default:
+            break
+        }
+    }
+    
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        switch textField {
+        case firstCodeSquare:
+            firstCodeSquare.stateForTextField(with: .normal)
+        case secondCodeSquare:
+            secondCodeSquare.stateForTextField(with: .normal)
+        case thirdCodeSquare:
+            thirdCodeSquare.stateForTextField(with: .normal)
+        case fourthCodeSquare:
+            fourthCodeSquare.stateForTextField(with: .normal)
+        case fifthCodeSquare:
+            fifthCodeSquare.stateForTextField(with: .normal)
+        case sixthCodeSquare:
+            sixthCodeSquare.stateForTextField(with: .normal)
+        default:
+            break
+        }
     }
 }
 
@@ -255,12 +254,21 @@ extension VerificationViewController: VerificationDisplayLogic {
     }
     
     func clearFields() {
-        firstCodeSquare.text = verifyModel.clearField
-        secondCodeSquare.text = verifyModel.clearField
-        thirdCodeSquare.text = verifyModel.clearField
-        fourthCodeSquare.text = verifyModel.clearField
-        fifthCodeSquare.text = verifyModel.clearField
-        sixthCodeSquare.text = verifyModel.clearField
+        firstCodeSquare.text = ""
+        secondCodeSquare.text = ""
+        thirdCodeSquare.text = ""
+        fourthCodeSquare.text = ""
+        fifthCodeSquare.text = ""
+        sixthCodeSquare.text = ""
+    }
+    
+    func filedsResignSelection() {
+        firstCodeSquare.stateForTextField(with: .normal)
+        secondCodeSquare.stateForTextField(with: .normal)
+        thirdCodeSquare.stateForTextField(with: .normal)
+        fourthCodeSquare.stateForTextField(with: .normal)
+        fifthCodeSquare.stateForTextField(with: .normal)
+        sixthCodeSquare.stateForTextField(with: .normal)
     }
 }
 
@@ -286,9 +294,10 @@ private extension VerificationViewController {
         lazy var allert = UIAlertController()
         allert = .init(title: verifyModel.wrongSMS,
                        message: verifyModel.checkCorrectFields, preferredStyle: .alert)
-        allert.addAction(UIAlertAction(title: verifyModel.inputOneMoreCode, style: .default, handler: { _ in
-            self.firstCodeSquare.becomeFirstResponder()
-            self.firstCodeSquare.stateForTextField(with: .selected)
+        allert.addAction(UIAlertAction(title: verifyModel.inputOneMoreCode, style: .default, handler: {[weak self] _ in
+            // TODO: - Можно в презентер
+            self?.presenter?.prepareScreen()
+            self?.firstCodeSquare.becomeFirstResponder()
         }))
         return allert
     }
