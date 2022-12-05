@@ -21,6 +21,7 @@ final class VerificationPresenter {
     private let moduleBuilder: Buildable
     private let codeTelephoneNumber: String
     private let telephoneNumber: String
+    private let validFields = MasksValidationFields()
     
     init(moduleBuilder: Buildable, codeTelephoneNumber: String, telephoneNumber: String) {
         self.moduleBuilder = moduleBuilder
@@ -44,7 +45,7 @@ extension VerificationPresenter: VerificationPresentationLogic {
             }
             codeValue.append(value)
         }
-        if codeValue == "133337" {
+        if codeValue == validFields.validCodeSMS {
             let viewConroller = moduleBuilder.buildRegistrationModule(codeTelephoneNumber, telephoneNumber)
             self.viewController?.routTo(viewConroller)
         } else {

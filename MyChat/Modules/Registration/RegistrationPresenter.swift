@@ -11,6 +11,8 @@ protocol RegistrationPresentationLogic: AnyObject {
     func didChangeName(_ name: String?)
     func didTapRegisterButton()
     func addTelephoneNumber()
+    func didTapCancelButton()
+    func cancelRegistration()
 }
 
 // MARK: - RegistrationPresenter
@@ -34,6 +36,14 @@ final class RegistrationPresenter {
 
 // MARK: - RegistrationPresentationLogic Impl
 extension RegistrationPresenter: RegistrationPresentationLogic {
+    
+    func cancelRegistration() {
+        self.viewController?.routToRoot()
+    }
+    
+    func didTapCancelButton() {
+        viewController?.showCancelAllert()
+    }
     
     func addTelephoneNumber() {
         viewController?.setupTelephoneNumber(phoneNumberCode, telephoneNumber)

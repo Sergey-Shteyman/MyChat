@@ -20,6 +20,9 @@ protocol VerificationDisplayLogic: AnyObject {
 final class VerificationViewController: UIViewController {
 
     private let robotoFont = RobotoFont()
+    private let verifyModel = VerificationModel()
+    private let messageImage = Images.message.rawValue
+    private let phoneImage = Images.iphone.rawValue
     
     var presenter: VerificationPresentationLogic?
     
@@ -32,14 +35,14 @@ final class VerificationViewController: UIViewController {
     
     private lazy var messageImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "message")?.withRenderingMode(.alwaysTemplate)
+        imageView.image = UIImage(named: messageImage)?.withRenderingMode(.alwaysTemplate)
         imageView.tintColor = .systemBlue
         return imageView
     }()
     
     private lazy var phoneImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: "iphone")
+        imageView.image = UIImage(named: phoneImage)
         return imageView
     }()
     
@@ -47,7 +50,7 @@ final class VerificationViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont(name: UIFont.Roboto.medium.rawValue, size: 25)
         label.textAlignment = .center
-        label.text = "Проверьте свои сообщения"
+        label.text = verifyModel.checkYorSMS
         return label
     }()
     
@@ -55,7 +58,7 @@ final class VerificationViewController: UIViewController {
         let label = UILabel()
         label.font = UIFont(name: UIFont.Roboto.regular.rawValue, size: 15)
         label.textAlignment = .center
-        label.text = "Мы отправили сообщение с кодом подтверждения на ваш мобильный телефон"
+        label.text = verifyModel.smsDescription
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 2
         return label
@@ -148,7 +151,7 @@ final class VerificationViewController: UIViewController {
     private lazy var verifyButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = UIFont(name: UIFont.Roboto.regular.rawValue, size: 20)
-        button.setTitle("Д А Л Е Е", for: .normal)
+        button.setTitle(verifyModel.nextButton, for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 20
         button.titleLabel?.textAlignment = .center
@@ -252,12 +255,12 @@ extension VerificationViewController: VerificationDisplayLogic {
     }
     
     func clearFields() {
-        firstCodeSquare.text = ""
-        secondCodeSquare.text = ""
-        thirdCodeSquare.text = ""
-        fourthCodeSquare.text = ""
-        fifthCodeSquare.text = ""
-        sixthCodeSquare.text = ""
+        firstCodeSquare.text = verifyModel.clearField
+        secondCodeSquare.text = verifyModel.clearField
+        thirdCodeSquare.text = verifyModel.clearField
+        fourthCodeSquare.text = verifyModel.clearField
+        fifthCodeSquare.text = verifyModel.clearField
+        sixthCodeSquare.text = verifyModel.clearField
     }
 }
 
@@ -281,9 +284,9 @@ private extension VerificationViewController {
     
     func invalidCodeAllert() -> UIAlertController {
         lazy var allert = UIAlertController()
-        allert = .init(title: "Неверный код из смс",
-                       message: "Пожалуйста, проверьте правильность заполнения полей", preferredStyle: .alert)
-        allert.addAction(UIAlertAction(title: "Ввести код еще раз", style: .default, handler: { _ in
+        allert = .init(title: verifyModel.wrongSMS,
+                       message: verifyModel.checkCorrectFields, preferredStyle: .alert)
+        allert.addAction(UIAlertAction(title: verifyModel.inputOneMoreCode, style: .default, handler: { _ in
             self.firstCodeSquare.becomeFirstResponder()
             self.firstCodeSquare.stateForTextField(with: .selected)
         }))

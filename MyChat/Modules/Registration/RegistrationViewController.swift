@@ -13,11 +13,13 @@ protocol RegistrationDisplayLogic: AnyObject {
     func showNameValidationError()
     func showNameValidationCorrect()
     func setupTelephoneNumber(_ codeNumberTelephone: String, _ numberTelephone: String)
+    func showCancelAllert()
+    func routToRoot()
 }
 
 // MARK: - RegistrationViewController
 final class RegistrationViewController: UIViewController {
-    
+        
     var presenter: RegistrationPresentationLogic?
     let registrationModel = RegistrationPageModel()
         
@@ -75,10 +77,23 @@ final class RegistrationViewController: UIViewController {
     func buttonIsTapped() {
         presenter?.didTapRegisterButton()
     }
+    
+    @objc
+    func backButtontapped() {
+        presenter?.didTapCancelButton()
+    }
 }
 
 // MARK: - RegistrationDisplayLogic Impl
 extension RegistrationViewController: RegistrationDisplayLogic {
+    
+    func routToRoot() {
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+    func showCancelAllert() {
+        present(cancelAllert(), animated: true)
+    }
     
     func showNameValidationCorrect() {
         nameTextField.changeStateBottomLine(with: .normal)
@@ -107,11 +122,29 @@ private extension RegistrationViewController {
 
     func setupViewController() {
         view.addTapGestureToHideKeyboard()
+        setupBackBarItem()
         setupRegistrLabel()
         setupNumberPhoneLabel()
         addTargets()
         addSubViews()
         addConstraints()
+    }
+    
+    func cancelAllert() -> UIAlertController {
+        lazy var allert = UIAlertController()
+        allert = .init(title: registrationModel.shureClouseRegistration,
+                       message: registrationModel.shouldShure, preferredStyle: .alert)
+        allert.addAction(UIAlertAction(title: registrationModel.exit, style: .destructive, handler: { _ in
+            self.presenter?.cancelRegistration()
+        }))
+        allert.addAction(UIAlertAction(title: registrationModel.continueRegistration, style: .default))
+        return allert
+    }
+    
+    func setupBackBarItem() {
+        let backButton = UIBarButtonItem(title: registrationModel.backBarButton,
+                                         style: .done, target: self, action: #selector(backButtontapped))
+        self.navigationItem.leftBarButtonItem = backButton
     }
 
     func setupRegistrLabel() {

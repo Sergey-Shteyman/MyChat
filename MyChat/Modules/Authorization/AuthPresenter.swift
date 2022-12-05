@@ -18,6 +18,7 @@ final class AuthPresenter {
     weak var viewController: DisplayAuthLogic?
     
     private let moduleBuilder: Buildable
+    private let masksValidation = MasksValidationFields()
     
     lazy var validNumber = Bool()
     
@@ -56,7 +57,7 @@ extension AuthPresenter: PresentationAuthLogic {
 private extension AuthPresenter {
     
     func validateNumber(_ number: String?) -> Bool {
-        let validateNumberExpression = #"^[0-9]{10,10}$"#
+        let validateNumberExpression = masksValidation.validPhone
         guard let number = number else {
             return false
         }
