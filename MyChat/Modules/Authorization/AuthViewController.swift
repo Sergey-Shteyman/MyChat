@@ -107,7 +107,7 @@ final class AuthViewController: UIViewController {
     
     @objc
     func buttonIsTapped() {
-        presenter?.didTapAuthButton()
+        presenter?.didTapAuthButton(phoneCodeTextField.text, phoneNumberTextField.text)
     }
 }
 

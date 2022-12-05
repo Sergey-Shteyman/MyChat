@@ -12,8 +12,8 @@ import Foundation
 protocol Buildable {
     func buildWellcomeModule() -> WellcomViewController
     func buildAuthPageModule() -> AuthViewController
-    func buildVerificationModule() -> VerificationViewController
-    func buildRegistrationModule() -> RegistrationViewController
+    func buildVerificationModule(codeTelephoneNumber: String, telephoneNumber: String) -> VerificationViewController
+    func buildRegistrationModule(_ phoneNumberCode: String, _ telephoneNumber: String) -> RegistrationViewController
 }
 
 // MARK: - ModuleBuilder
@@ -40,17 +40,21 @@ extension ModuleBuilder: Buildable {
         return viewController
     }
     
-    func buildVerificationModule() -> VerificationViewController {
+    func buildVerificationModule(codeTelephoneNumber: String, telephoneNumber: String) -> VerificationViewController {
         let viewController = VerificationViewController()
-        let presenter = VerificationPresenter(moduleBuilder: self)
+        let presenter = VerificationPresenter(moduleBuilder: self,
+                                              codeTelephoneNumber: codeTelephoneNumber,
+                                              telephoneNumber: telephoneNumber)
         viewController.presenter = presenter
         presenter.viewController = viewController
         return viewController
     }
     
-    func buildRegistrationModule() -> RegistrationViewController {
+    func buildRegistrationModule(_ phoneNumberCode: String, _ telephoneNumber: String) -> RegistrationViewController {
         let viewController = RegistrationViewController()
-        let presenter = RegistrationPresenter(moduleBuilder: self)
+        let presenter = RegistrationPresenter(phoneNumberCode: phoneNumberCode,
+                                              telephoneNumber: telephoneNumber,
+                                              moduleBuilder: self)
         viewController.presenter = presenter
         presenter.viewController = viewController
         return viewController

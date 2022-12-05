@@ -12,6 +12,7 @@ import UIKit
 protocol RegistrationDisplayLogic: AnyObject {
     func showNameValidationError()
     func showNameValidationCorrect()
+    func setupTelephoneNumber(_ codeNumberTelephone: String, _ numberTelephone: String)
 }
 
 // MARK: - RegistrationViewController
@@ -46,7 +47,6 @@ final class RegistrationViewController: UIViewController {
         label.textAlignment = .center
         label.textColor = .black
         label.backgroundColor = .clear
-        label.text = registrationModel.userPhone
         return label
     }()
     
@@ -87,6 +87,10 @@ extension RegistrationViewController: RegistrationDisplayLogic {
     func showNameValidationError() {
         nameTextField.changeStateBottomLine(with: .error)
     }
+    
+    func setupTelephoneNumber(_ codeNumberTelephone: String, _ numberTelephone: String) {
+        phoneNumberLabel.text = "\(codeNumberTelephone) \(numberTelephone)"
+    }
 }
 
 // MARK: - UITextFieldDelegate Impl
@@ -116,6 +120,7 @@ private extension RegistrationViewController {
     
     func setupNumberPhoneLabel() {
         phoneNumberLabel.attributedText = phoneNumberLabel.addLetterSpacing(label: phoneNumberLabel, spacing: 5.0)
+        presenter?.addTelephoneNumber()
     }
     
     func addTargets() {

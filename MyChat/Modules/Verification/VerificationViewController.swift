@@ -10,7 +10,10 @@ import UIKit
 
 // MARK: - VerificationDisplayLogic
 protocol VerificationDisplayLogic: AnyObject {
-    
+    func showInvalidCodeAllert()
+    func setupTitle(phoneCode: String, phone: String)
+    func clearFields()
+    func routTo(_ viewController: UIViewController)
 }
 
 // MARK: - VerificationViewController
@@ -80,9 +83,9 @@ final class VerificationViewController: UIViewController {
         textField.layer.cornerRadius = 6
         textField.textAlignment = .center
         textField.font = UIFont(name: UIFont.Roboto.medium.rawValue, size: 23)
-//        textField.addTarget(self,
-//                            action: #selector(firstCodeSquareChanged),
-//                            for: .editingChanged)
+        textField.addTarget(self,
+                            action: #selector(secondCodeSquareChanged),
+                            for: .editingChanged)
         return textField
     }()
     
@@ -94,9 +97,9 @@ final class VerificationViewController: UIViewController {
         textField.layer.cornerRadius = 6
         textField.textAlignment = .center
         textField.font = UIFont(name: UIFont.Roboto.medium.rawValue, size: 23)
-//        textField.addTarget(self,
-//                            action: #selector(firstCodeSquareChanged),
-//                            for: .editingChanged)
+        textField.addTarget(self,
+                            action: #selector(thirdCodeSquareChanged),
+                            for: .editingChanged)
         return textField
     }()
     
@@ -108,9 +111,9 @@ final class VerificationViewController: UIViewController {
         textField.layer.cornerRadius = 6
         textField.textAlignment = .center
         textField.font = UIFont(name: UIFont.Roboto.medium.rawValue, size: 23)
-//        textField.addTarget(self,
-//                            action: #selector(firstCodeSquareChanged),
-//                            for: .editingChanged)
+        textField.addTarget(self,
+                            action: #selector(fourthCodeSquareChanged),
+                            for: .editingChanged)
         return textField
     }()
     
@@ -122,9 +125,9 @@ final class VerificationViewController: UIViewController {
         textField.layer.cornerRadius = 6
         textField.textAlignment = .center
         textField.font = UIFont(name: UIFont.Roboto.medium.rawValue, size: 23)
-//        textField.addTarget(self,
-//                            action: #selector(firstCodeSquareChanged),
-//                            for: .editingChanged)
+        textField.addTarget(self,
+                            action: #selector(fifthCodeSquareChanged),
+                            for: .editingChanged)
         return textField
     }()
     
@@ -136,10 +139,21 @@ final class VerificationViewController: UIViewController {
         textField.layer.cornerRadius = 6
         textField.textAlignment = .center
         textField.font = UIFont(name: UIFont.Roboto.medium.rawValue, size: 23)
-//        textField.addTarget(self,
-//                            action: #selector(firstCodeSquareChanged),
-//                            for: .editingChanged)
+        textField.addTarget(self,
+                            action: #selector(sixthCodeSquareChanged),
+                            for: .editingChanged)
         return textField
+    }()
+    
+    private lazy var verifyButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.font = UIFont(name: UIFont.Roboto.regular.rawValue, size: 20)
+        button.setTitle("Д А Л Е Е", for: .normal)
+        button.backgroundColor = .systemBlue
+        button.layer.cornerRadius = 20
+        button.titleLabel?.textAlignment = .center
+        button.addTarget(self, action: #selector(buttonIsTapped), for: .touchDown)
+        return button
     }()
     
     override func viewDidAppear(_ animated: Bool) {
@@ -151,27 +165,99 @@ final class VerificationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
-        setupTitle(phoneCode: "+7", phone: "232342234")
         setupViewController()
     }
     
     @objc
     func firstCodeSquareChanged() {
+        firstCodeSquare.stateForTextField(with: .selected)
         if firstCodeSquare.text?.count == 1 {
-            firstCodeSquare.resignFirstResponder()
             firstCodeSquare.stateForTextField(with: .normal)
+        }
+        secondCodeSquare.stateForTextField(with: .selected)
+        secondCodeSquare.becomeFirstResponder()
+//        presenter?.firstSquareSelected(firstCodeSquare.text)
+    }
+    
+    @objc
+    func secondCodeSquareChanged() {
+        secondCodeSquare.stateForTextField(with: .selected)
+        if secondCodeSquare.text?.count == 1 {
+            secondCodeSquare.stateForTextField(with: .normal)
+        }
+        thirdCodeSquare.stateForTextField(with: .selected)
+        thirdCodeSquare.becomeFirstResponder()
+    }
+    
+    @objc
+    func thirdCodeSquareChanged() {
+        thirdCodeSquare.stateForTextField(with: .selected)
+        if thirdCodeSquare.text?.count == 1 {
+            thirdCodeSquare.stateForTextField(with: .normal)
+        }
+        fourthCodeSquare.stateForTextField(with: .selected)
+        fourthCodeSquare.becomeFirstResponder()
+    }
+    
+    @objc
+    func fourthCodeSquareChanged() {
+        fourthCodeSquare.stateForTextField(with: .selected)
+        if fourthCodeSquare.text?.count == 1 {
+            fourthCodeSquare.stateForTextField(with: .normal)
+        }
+        fifthCodeSquare.stateForTextField(with: .selected)
+        fifthCodeSquare.becomeFirstResponder()
+    }
+    
+    @objc
+    func fifthCodeSquareChanged() {
+        fifthCodeSquare.stateForTextField(with: .selected)
+        if fifthCodeSquare.text?.count == 1 {
+            fifthCodeSquare.stateForTextField(with: .normal)
+        }
+        sixthCodeSquare.stateForTextField(with: .selected)
+        sixthCodeSquare.becomeFirstResponder()
+    }
+    
+    @objc
+    func sixthCodeSquareChanged() {
+        sixthCodeSquare.stateForTextField(with: .selected)
+        if sixthCodeSquare.text?.count == 1 {
+            sixthCodeSquare.stateForTextField(with: .normal)
+            sixthCodeSquare.resignFirstResponder()
         }
     }
     
+    @objc
+    func buttonIsTapped() {
+        let codeInFields = getCode()
+        presenter?.didTapVerifyButton(fields: codeInFields)
+    }
 }
 
 // MARK: - VerificationDisplayLogic
 extension VerificationViewController: VerificationDisplayLogic {
     
-    // TODO: - presenter
+    func routTo(_ viewController: UIViewController) {
+        navigationController?.pushViewController(viewController, animated: true)
+    }
+    
+    func showInvalidCodeAllert() {
+        present(invalidCodeAllert(), animated: true)
+    }
+    
     func setupTitle(phoneCode: String, phone: String) {
         phoneTitile.text = "\(phoneCode) \(phone)"
         self.navigationItem.titleView = phoneTitile
+    }
+    
+    func clearFields() {
+        firstCodeSquare.text = ""
+        secondCodeSquare.text = ""
+        thirdCodeSquare.text = ""
+        fourthCodeSquare.text = ""
+        fifthCodeSquare.text = ""
+        sixthCodeSquare.text = ""
     }
 }
 
@@ -179,15 +265,37 @@ extension VerificationViewController: VerificationDisplayLogic {
 private extension VerificationViewController {
     func setupViewController() {
         view.addTapGestureToHideKeyboard()
+        addTitlePhone()
         setupSubviews()
         setupConstraints()
+    }
+    
+    func addTitlePhone() {
+        presenter?.getPhoneNumber()
+    }
+    
+    func getCode() -> [String?] {
+        return [firstCodeSquare.text, secondCodeSquare.text, thirdCodeSquare.text,
+                fourthCodeSquare.text, fifthCodeSquare.text, sixthCodeSquare.text]
+    }
+    
+    func invalidCodeAllert() -> UIAlertController {
+        lazy var allert = UIAlertController()
+        allert = .init(title: "Неверный код из смс",
+                       message: "Пожалуйста, проверьте правильность заполнения полей", preferredStyle: .alert)
+        allert.addAction(UIAlertAction(title: "Ввести код еще раз", style: .default, handler: { _ in
+            self.firstCodeSquare.becomeFirstResponder()
+            self.firstCodeSquare.stateForTextField(with: .selected)
+        }))
+        return allert
     }
     
     func setupSubviews() {
         let subViewws = [messageImageView, phoneImageView,
                          messagePhoneLabel, messagePhoneDescriptionLabel,
                          firstCodeSquare, secondCodeSquare, thirdCodeSquare,
-                         fourthCodeSquare, fifthCodeSquare, sixthCodeSquare]
+                         fourthCodeSquare, fifthCodeSquare, sixthCodeSquare,
+                         verifyButton]
         view.myAddSubViews(from: subViewws)
     }
     
@@ -237,7 +345,15 @@ private extension VerificationViewController {
             sixthCodeSquare.topAnchor.constraint(equalTo: messagePhoneDescriptionLabel.bottomAnchor, constant: 40),
             sixthCodeSquare.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 100),
             sixthCodeSquare.widthAnchor.constraint(equalToConstant: 35),
-            sixthCodeSquare.heightAnchor.constraint(equalToConstant: 40)
+            sixthCodeSquare.heightAnchor.constraint(equalToConstant: 40),
+            
+            verifyButton.topAnchor.constraint(greaterThanOrEqualTo: sixthCodeSquare.bottomAnchor,
+                                              constant: 50),
+            verifyButton.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor,
+                                                 constant: -80),
+            verifyButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            verifyButton.widthAnchor.constraint(equalToConstant: 220),
+            verifyButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 }

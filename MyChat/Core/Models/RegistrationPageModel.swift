@@ -9,7 +9,6 @@
 struct RegistrationPageModel {
     
     let regTextForLabel = "Регистрация"
-    let userPhone = "+7 9109774325"
     let namePlaceholder = "Имя"
     let regButtonText = "Зарегистрироваться"
 }
