@@ -48,6 +48,12 @@
 		5E3A1322293F89BB00BC08EE /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1321293F89BB00BC08EE /* KeychainService.swift */; };
 		5E3A1324293F89D000BC08EE /* KeychainKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1323293F89D000BC08EE /* KeychainKey.swift */; };
 		5E3A1327293F8A9900BC08EE /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1326293F8A9900BC08EE /* ProfileViewModel.swift */; };
+		5E3A132C293F8DA300BC08EE /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A132B293F8DA300BC08EE /* ProfileViewController.swift */; };
+		5E3A132E293F8DBB00BC08EE /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A132D293F8DBB00BC08EE /* ProfilePresenter.swift */; };
+		5E3A1330293F8DE400BC08EE /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A132F293F8DE400BC08EE /* ChatListViewController.swift */; };
+		5E3A1332293F8DFA00BC08EE /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1331293F8DFA00BC08EE /* ChatViewController.swift */; };
+		5E3A1335293F8E3A00BC08EE /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1334293F8E3A00BC08EE /* SplashViewController.swift */; };
+		5E3A1337293F8E4A00BC08EE /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1336293F8E4A00BC08EE /* SplashPresenter.swift */; };
 		5E6B8F8C293A466D00C70E54 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F8B293A466D00C70E54 /* AuthViewController.swift */; };
 		5E6B8F8E293A467900C70E54 /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F8D293A467900C70E54 /* AuthPresenter.swift */; };
 		5E6B8F90293A482100C70E54 /* WelcomePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F8F293A482100C70E54 /* WelcomePageModel.swift */; };
@@ -144,6 +150,12 @@
 		5E3A1321293F89BB00BC08EE /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		5E3A1323293F89D000BC08EE /* KeychainKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainKey.swift; sourceTree = "<group>"; };
 		5E3A1326293F8A9900BC08EE /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		5E3A132B293F8DA300BC08EE /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		5E3A132D293F8DBB00BC08EE /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		5E3A132F293F8DE400BC08EE /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
+		5E3A1331293F8DFA00BC08EE /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		5E3A1334293F8E3A00BC08EE /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
+		5E3A1336293F8E4A00BC08EE /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
 		5E6B8F8B293A466D00C70E54 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		5E6B8F8D293A467900C70E54 /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
 		5E6B8F8F293A482100C70E54 /* WelcomePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageModel.swift; sourceTree = "<group>"; };
@@ -348,10 +360,14 @@
 		5E0F56172937637200E0178C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				5E3A1333293F8E1400BC08EE /* Splash */,
 				5EFE69642939FD3700F9740C /* Wellcome */,
 				5E6B8F8A293A463200C70E54 /* Authorization */,
 				5E6B8F97293B66E200C70E54 /* Verification */,
 				5E0F56182937638F00E0178C /* Registration */,
+				5E3A1328293F8D4900BC08EE /* Profile */,
+				5E3A1329293F8D7200BC08EE /* ChatList */,
+				5E3A132A293F8D7F00BC08EE /* Chat */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -445,6 +461,40 @@
 				5E3A1326293F8A9900BC08EE /* ProfileViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		5E3A1328293F8D4900BC08EE /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				5E3A132B293F8DA300BC08EE /* ProfileViewController.swift */,
+				5E3A132D293F8DBB00BC08EE /* ProfilePresenter.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		5E3A1329293F8D7200BC08EE /* ChatList */ = {
+			isa = PBXGroup;
+			children = (
+				5E3A132F293F8DE400BC08EE /* ChatListViewController.swift */,
+			);
+			path = ChatList;
+			sourceTree = "<group>";
+		};
+		5E3A132A293F8D7F00BC08EE /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				5E3A1331293F8DFA00BC08EE /* ChatViewController.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		5E3A1333293F8E1400BC08EE /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				5E3A1334293F8E3A00BC08EE /* SplashViewController.swift */,
+				5E3A1336293F8E4A00BC08EE /* SplashPresenter.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		5E6B8F8A293A463200C70E54 /* Authorization */ = {
@@ -799,8 +849,10 @@
 				5E3A1301293F87E300BC08EE /* NetworkService.swift in Sources */,
 				5EF216D2293CF73E000C13EA /* BorderState.swift in Sources */,
 				5E0F55D72934FF2200E0178C /* AppDelegate.swift in Sources */,
+				5E3A132C293F8DA300BC08EE /* ProfileViewController.swift in Sources */,
 				5ECAC3392937E760003FD519 /* BottomLineState.swift in Sources */,
 				5EF216D4293CF7A7000C13EA /* UITextField.swift in Sources */,
+				5E3A1330293F8DE400BC08EE /* ChatListViewController.swift in Sources */,
 				5E0F5614293620F500E0178C /* TextField.swift in Sources */,
 				5EFE69662939FD6A00F9740C /* WellcomViewController.swift in Sources */,
 				5E3A1317293F890800BC08EE /* VerifyCodeResponse.swift in Sources */,
@@ -812,9 +864,11 @@
 				5E3A12F4293F73A000BC08EE /* DefaultsKey.swift in Sources */,
 				5E3A131D293F893E00BC08EE /* UpdateUserResponse.swift in Sources */,
 				5ECAC33C2938D405003FD519 /* RegistrationPageModel.swift in Sources */,
+				5E3A132E293F8DBB00BC08EE /* ProfilePresenter.swift in Sources */,
 				5E6B8F9D293BCDBC00C70E54 /* AuthPageModel.swift in Sources */,
 				5E3A1324293F89D000BC08EE /* KeychainKey.swift in Sources */,
 				5ECAC33E2938D52D003FD519 /* MasksValidationFields.swift in Sources */,
+				5E3A1337293F8E4A00BC08EE /* SplashPresenter.swift in Sources */,
 				5E6B8F9B293B671E00C70E54 /* VerificationPresenter.swift in Sources */,
 				5E0F561129361C8600E0178C /* UIScrollView.swift in Sources */,
 				5E3A12FC293F85FD00BC08EE /* UserDBModel.swift in Sources */,
@@ -824,7 +878,9 @@
 				5ECAC3352937CF5D003FD519 /* UIFont.swift in Sources */,
 				5E3A1305293F881B00BC08EE /* APIEndpoint.swift in Sources */,
 				5E6B8F8C293A466D00C70E54 /* AuthViewController.swift in Sources */,
+				5E3A1332293F8DFA00BC08EE /* ChatViewController.swift in Sources */,
 				5E0F56072935026900E0178C /* ModuleBuilder.swift in Sources */,
+				5E3A1335293F8E3A00BC08EE /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
