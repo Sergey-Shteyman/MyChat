@@ -5,9 +5,10 @@ target 'MyChat' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  pod 'InputMask'
   pod 'CountryPickerSwift'
-  pod 'PhoneNumberKit', :git => 'https://github.com/marmelroy/PhoneNumberKit'
+  pod 'Moya'
+  pod 'KeychainSwift'
+  pod 'RealmSwift'
 
   target 'MyChatTests' do
     inherit! :search_paths

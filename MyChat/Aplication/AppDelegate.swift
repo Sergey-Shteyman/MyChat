@@ -29,3 +29,43 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
+//import RealmSwift
+//import UIKit
+//
+//@main
+//class AppDelegate: UIResponder, UIApplicationDelegate {
+//
+//    private let databaseService = DatabaseService()
+//    private lazy var moduleBuilder = ModuleBuilderService(databaseService: databaseService)
+//
+//    var window: UIWindow?
+//
+//    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+//        setupRootViewController()
+//        setupRealmConficuration()
+//        return true
+//    }
+//
+//    private func setupRootViewController() {
+//        let window = UIWindow(frame: UIScreen.main.bounds)
+//        let mainViewController = moduleBuilder.buildSplashViewController()
+//        let navigationController = UINavigationController(rootViewController: mainViewController)
+//        window.rootViewController = navigationController
+//        window.makeKeyAndVisible()
+//        self.window = window
+//    }
+//
+//    private func setupRealmConficuration() {
+//        let version: UInt64 = 2
+//        let config = Realm.Configuration(
+//            schemaVersion: version,
+//            migrationBlock: { migration, oldSchemaVersion in
+//                if (oldSchemaVersion < version) {
+//                    print("Realm Updated to version - \(version)")
+//                    self.databaseService.deleteAll(with: migration)
+//                }
+//            })
+//        Realm.Configuration.defaultConfiguration = config
+//    }
+//}
+
