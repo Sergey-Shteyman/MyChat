@@ -29,6 +29,25 @@
 		5E3A12F6293F742A00BC08EE /* DecoderService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A12F5293F742A00BC08EE /* DecoderService.swift */; };
 		5E3A12F9293F85C600BC08EE /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A12F8293F85C600BC08EE /* DatabaseService.swift */; };
 		5E3A12FC293F85FD00BC08EE /* UserDBModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A12FB293F85FD00BC08EE /* UserDBModel.swift */; };
+		5E3A1301293F87E300BC08EE /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1300293F87E300BC08EE /* NetworkService.swift */; };
+		5E3A1303293F880500BC08EE /* RefreshInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1302293F880500BC08EE /* RefreshInterceptor.swift */; };
+		5E3A1305293F881B00BC08EE /* APIEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1304293F881B00BC08EE /* APIEndpoint.swift */; };
+		5E3A1307293F883800BC08EE /* APIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1306293F883800BC08EE /* APIService.swift */; };
+		5E3A1309293F886900BC08EE /* AuthRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1308293F886900BC08EE /* AuthRequest.swift */; };
+		5E3A130B293F887F00BC08EE /* VerifyCodeRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A130A293F887F00BC08EE /* VerifyCodeRequest.swift */; };
+		5E3A130D293F889800BC08EE /* GetUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A130C293F889800BC08EE /* GetUserRequest.swift */; };
+		5E3A130F293F88A800BC08EE /* RefreshRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A130E293F88A800BC08EE /* RefreshRequest.swift */; };
+		5E3A1311293F88BF00BC08EE /* UpdateUserRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1310293F88BF00BC08EE /* UpdateUserRequest.swift */; };
+		5E3A1313293F88D200BC08EE /* RegisterRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1312293F88D200BC08EE /* RegisterRequest.swift */; };
+		5E3A1315293F88F500BC08EE /* AuthResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1314293F88F500BC08EE /* AuthResponse.swift */; };
+		5E3A1317293F890800BC08EE /* VerifyCodeResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1316293F890800BC08EE /* VerifyCodeResponse.swift */; };
+		5E3A1319293F891900BC08EE /* GetUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1318293F891900BC08EE /* GetUserResponse.swift */; };
+		5E3A131B293F892D00BC08EE /* RefreshResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A131A293F892D00BC08EE /* RefreshResponse.swift */; };
+		5E3A131D293F893E00BC08EE /* UpdateUserResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A131C293F893E00BC08EE /* UpdateUserResponse.swift */; };
+		5E3A131F293F895000BC08EE /* RegisterResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A131E293F895000BC08EE /* RegisterResponse.swift */; };
+		5E3A1322293F89BB00BC08EE /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1321293F89BB00BC08EE /* KeychainService.swift */; };
+		5E3A1324293F89D000BC08EE /* KeychainKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1323293F89D000BC08EE /* KeychainKey.swift */; };
+		5E3A1327293F8A9900BC08EE /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1326293F8A9900BC08EE /* ProfileViewModel.swift */; };
 		5E6B8F8C293A466D00C70E54 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F8B293A466D00C70E54 /* AuthViewController.swift */; };
 		5E6B8F8E293A467900C70E54 /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F8D293A467900C70E54 /* AuthPresenter.swift */; };
 		5E6B8F90293A482100C70E54 /* WelcomePageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F8F293A482100C70E54 /* WelcomePageModel.swift */; };
@@ -106,6 +125,25 @@
 		5E3A12F5293F742A00BC08EE /* DecoderService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoderService.swift; sourceTree = "<group>"; };
 		5E3A12F8293F85C600BC08EE /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
 		5E3A12FB293F85FD00BC08EE /* UserDBModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDBModel.swift; sourceTree = "<group>"; };
+		5E3A1300293F87E300BC08EE /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
+		5E3A1302293F880500BC08EE /* RefreshInterceptor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshInterceptor.swift; sourceTree = "<group>"; };
+		5E3A1304293F881B00BC08EE /* APIEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIEndpoint.swift; sourceTree = "<group>"; };
+		5E3A1306293F883800BC08EE /* APIService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIService.swift; sourceTree = "<group>"; };
+		5E3A1308293F886900BC08EE /* AuthRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequest.swift; sourceTree = "<group>"; };
+		5E3A130A293F887F00BC08EE /* VerifyCodeRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyCodeRequest.swift; sourceTree = "<group>"; };
+		5E3A130C293F889800BC08EE /* GetUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserRequest.swift; sourceTree = "<group>"; };
+		5E3A130E293F88A800BC08EE /* RefreshRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshRequest.swift; sourceTree = "<group>"; };
+		5E3A1310293F88BF00BC08EE /* UpdateUserRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserRequest.swift; sourceTree = "<group>"; };
+		5E3A1312293F88D200BC08EE /* RegisterRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterRequest.swift; sourceTree = "<group>"; };
+		5E3A1314293F88F500BC08EE /* AuthResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthResponse.swift; sourceTree = "<group>"; };
+		5E3A1316293F890800BC08EE /* VerifyCodeResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyCodeResponse.swift; sourceTree = "<group>"; };
+		5E3A1318293F891900BC08EE /* GetUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetUserResponse.swift; sourceTree = "<group>"; };
+		5E3A131A293F892D00BC08EE /* RefreshResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshResponse.swift; sourceTree = "<group>"; };
+		5E3A131C293F893E00BC08EE /* UpdateUserResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateUserResponse.swift; sourceTree = "<group>"; };
+		5E3A131E293F895000BC08EE /* RegisterResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResponse.swift; sourceTree = "<group>"; };
+		5E3A1321293F89BB00BC08EE /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		5E3A1323293F89D000BC08EE /* KeychainKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainKey.swift; sourceTree = "<group>"; };
+		5E3A1326293F8A9900BC08EE /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		5E6B8F8B293A466D00C70E54 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		5E6B8F8D293A467900C70E54 /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
 		5E6B8F8F293A482100C70E54 /* WelcomePageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomePageModel.swift; sourceTree = "<group>"; };
@@ -265,6 +303,7 @@
 		5E0F560B29361BE800E0178C /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				5E3A1325293F8A8800BC08EE /* ViewModels */,
 				5ECAC33A2938D3C0003FD519 /* Models */,
 				5ECAC3372937E74A003FD519 /* Entities */,
 				5E0F5612293620D100E0178C /* Classes */,
@@ -288,8 +327,10 @@
 		5E0F560D29361C0B00E0178C /* ServiceLayers */ = {
 			isa = PBXGroup;
 			children = (
+				5E3A1320293F897200BC08EE /* KeyChain */,
 				5E3A12F7293F859F00BC08EE /* Database */,
 				5E3A12F0293F737B00BC08EE /* Defaults */,
+				5E3A12FD293F879500BC08EE /* Network */,
 				5E0F56062935026900E0178C /* ModuleBuilder.swift */,
 				5E3A12F5293F742A00BC08EE /* DecoderService.swift */,
 			);
@@ -348,6 +389,62 @@
 				5E3A12FB293F85FD00BC08EE /* UserDBModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		5E3A12FD293F879500BC08EE /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				5E3A12FE293F87A500BC08EE /* Requests */,
+				5E3A12FF293F87BC00BC08EE /* Responses */,
+				5E3A1300293F87E300BC08EE /* NetworkService.swift */,
+				5E3A1302293F880500BC08EE /* RefreshInterceptor.swift */,
+				5E3A1304293F881B00BC08EE /* APIEndpoint.swift */,
+				5E3A1306293F883800BC08EE /* APIService.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		5E3A12FE293F87A500BC08EE /* Requests */ = {
+			isa = PBXGroup;
+			children = (
+				5E3A1308293F886900BC08EE /* AuthRequest.swift */,
+				5E3A130A293F887F00BC08EE /* VerifyCodeRequest.swift */,
+				5E3A130C293F889800BC08EE /* GetUserRequest.swift */,
+				5E3A130E293F88A800BC08EE /* RefreshRequest.swift */,
+				5E3A1310293F88BF00BC08EE /* UpdateUserRequest.swift */,
+				5E3A1312293F88D200BC08EE /* RegisterRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		5E3A12FF293F87BC00BC08EE /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				5E3A1314293F88F500BC08EE /* AuthResponse.swift */,
+				5E3A1316293F890800BC08EE /* VerifyCodeResponse.swift */,
+				5E3A1318293F891900BC08EE /* GetUserResponse.swift */,
+				5E3A131A293F892D00BC08EE /* RefreshResponse.swift */,
+				5E3A131C293F893E00BC08EE /* UpdateUserResponse.swift */,
+				5E3A131E293F895000BC08EE /* RegisterResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		5E3A1320293F897200BC08EE /* KeyChain */ = {
+			isa = PBXGroup;
+			children = (
+				5E3A1321293F89BB00BC08EE /* KeychainService.swift */,
+				5E3A1323293F89D000BC08EE /* KeychainKey.swift */,
+			);
+			path = KeyChain;
+			sourceTree = "<group>";
+		};
+		5E3A1325293F8A8800BC08EE /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				5E3A1326293F8A9900BC08EE /* ProfileViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		5E6B8F8A293A463200C70E54 /* Authorization */ = {
@@ -678,35 +775,54 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E3A131F293F895000BC08EE /* RegisterResponse.swift in Sources */,
 				5E3A12EF293F733D00BC08EE /* LocalError.swift in Sources */,
+				5E3A130D293F889800BC08EE /* GetUserRequest.swift in Sources */,
+				5E3A1319293F891900BC08EE /* GetUserResponse.swift in Sources */,
+				5E3A1307293F883800BC08EE /* APIService.swift in Sources */,
 				5E0F560F29361C5E00E0178C /* UIView.swift in Sources */,
+				5E3A1315293F88F500BC08EE /* AuthResponse.swift in Sources */,
+				5E3A1313293F88D200BC08EE /* RegisterRequest.swift in Sources */,
+				5E3A1309293F886900BC08EE /* AuthRequest.swift in Sources */,
 				5E6B8F90293A482100C70E54 /* WelcomePageModel.swift in Sources */,
+				5E3A130F293F88A800BC08EE /* RefreshRequest.swift in Sources */,
 				5E6B8F99293B670B00C70E54 /* VerificationViewController.swift in Sources */,
 				5E6B8F8E293A467900C70E54 /* AuthPresenter.swift in Sources */,
 				5E6B8F92293A849100C70E54 /* WellcomePresenter.swift in Sources */,
+				5E3A1327293F8A9900BC08EE /* ProfileViewModel.swift in Sources */,
 				5E3A12F9293F85C600BC08EE /* DatabaseService.swift in Sources */,
 				5E0F561A293763A900E0178C /* RegistrationPresenter.swift in Sources */,
 				5E0F55DB2934FF2200E0178C /* RegistrationViewController.swift in Sources */,
+				5E3A1311293F88BF00BC08EE /* UpdateUserRequest.swift in Sources */,
 				5E3A12F2293F739400BC08EE /* DefaultsService.swift in Sources */,
+				5E3A130B293F887F00BC08EE /* VerifyCodeRequest.swift in Sources */,
+				5E3A1301293F87E300BC08EE /* NetworkService.swift in Sources */,
 				5EF216D2293CF73E000C13EA /* BorderState.swift in Sources */,
 				5E0F55D72934FF2200E0178C /* AppDelegate.swift in Sources */,
 				5ECAC3392937E760003FD519 /* BottomLineState.swift in Sources */,
 				5EF216D4293CF7A7000C13EA /* UITextField.swift in Sources */,
 				5E0F5614293620F500E0178C /* TextField.swift in Sources */,
 				5EFE69662939FD6A00F9740C /* WellcomViewController.swift in Sources */,
+				5E3A1317293F890800BC08EE /* VerifyCodeResponse.swift in Sources */,
 				5E3A12E9293E473400BC08EE /* Images.swift in Sources */,
+				5E3A1322293F89BB00BC08EE /* KeychainService.swift in Sources */,
 				5EFE69682939FF3000F9740C /* RobotoFont.swift in Sources */,
 				5E3A12F6293F742A00BC08EE /* DecoderService.swift in Sources */,
+				5E3A131B293F892D00BC08EE /* RefreshResponse.swift in Sources */,
 				5E3A12F4293F73A000BC08EE /* DefaultsKey.swift in Sources */,
+				5E3A131D293F893E00BC08EE /* UpdateUserResponse.swift in Sources */,
 				5ECAC33C2938D405003FD519 /* RegistrationPageModel.swift in Sources */,
 				5E6B8F9D293BCDBC00C70E54 /* AuthPageModel.swift in Sources */,
+				5E3A1324293F89D000BC08EE /* KeychainKey.swift in Sources */,
 				5ECAC33E2938D52D003FD519 /* MasksValidationFields.swift in Sources */,
 				5E6B8F9B293B671E00C70E54 /* VerificationPresenter.swift in Sources */,
 				5E0F561129361C8600E0178C /* UIScrollView.swift in Sources */,
 				5E3A12FC293F85FD00BC08EE /* UserDBModel.swift in Sources */,
+				5E3A1303293F880500BC08EE /* RefreshInterceptor.swift in Sources */,
 				5E3A12EB293E4ACB00BC08EE /* VerificationModel.swift in Sources */,
 				5E0F55D92934FF2200E0178C /* SceneDelegate.swift in Sources */,
 				5ECAC3352937CF5D003FD519 /* UIFont.swift in Sources */,
+				5E3A1305293F881B00BC08EE /* APIEndpoint.swift in Sources */,
 				5E6B8F8C293A466D00C70E54 /* AuthViewController.swift in Sources */,
 				5E0F56072935026900E0178C /* ModuleBuilder.swift in Sources */,
 			);
