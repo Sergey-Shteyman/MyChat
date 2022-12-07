@@ -9,7 +9,7 @@ import UIKit
 
 
 // MARK: - VerificationDisplayLogic
-protocol VerificationDisplayLogic: AnyObject {
+protocol VerificationDisplayLogic: ViewController {
     func showInvalidCodeAllert()
     func setupPhoneNumberTitle(phoneCode: String, phone: String)
     func clearFields()
@@ -19,7 +19,7 @@ protocol VerificationDisplayLogic: AnyObject {
 }
 
 // MARK: - VerificationViewController
-final class VerificationViewController: UIViewController {
+final class VerificationViewController: ViewController {
 
     private let robotoFont = RobotoFont()
     private let verifyModel = VerificationModel()

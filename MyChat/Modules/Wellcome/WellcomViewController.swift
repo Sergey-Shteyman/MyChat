@@ -8,12 +8,12 @@
 import UIKit
 
 // MARK: - WellcomDisplayLogic
-protocol WellcomDisplayLogic: AnyObject {
+protocol WellcomDisplayLogic: ViewController {
     func routTo(_ viewController: UIViewController)
 }
 
 // MARK: - WellcomViewController
-final class WellcomViewController: UIViewController {
+final class WellcomViewController: ViewController {
     
     var presenter: WellcomPresentationLogic?
     

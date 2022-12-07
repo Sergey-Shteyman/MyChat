@@ -9,7 +9,7 @@ import UIKit
 
 
 // MARK: - RegistrationDisplayLogic
-protocol RegistrationDisplayLogic: AnyObject {
+protocol RegistrationDisplayLogic: ViewController {
     func showUserNameValidationError()
     func showUserNameValidationCorrect()
     func showNameValidationCorrect()
@@ -22,7 +22,7 @@ protocol RegistrationDisplayLogic: AnyObject {
 }
 
 // MARK: - RegistrationViewController
-final class RegistrationViewController: UIViewController {
+final class RegistrationViewController: ViewController {
         
     var presenter: RegistrationPresentationLogic?
     let registrationModel = RegistrationPageModel()

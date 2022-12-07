@@ -7,12 +7,12 @@
 
 import UIKit
 
-protocol ProfileDisplayLogic: AnyObject {
+protocol ProfileDisplayLogic: ViewController {
     func updateView(_ viewModel: ProfileViewModel)
     func showError()
 }
 
-final class ProfileViewController: UIViewController {
+final class ProfileViewController: ViewController {
     var presenter: ProfilePresentationLogic?
 
     private let avatarButton = UIButton(type: .system)

@@ -7,4 +7,4 @@
 
 import UIKit
 
-final class ChatViewController: UIViewController {}
+final class ChatViewController: ViewController {}

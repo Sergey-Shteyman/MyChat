@@ -7,11 +7,11 @@
 
 import UIKit
 
-protocol SplashDisplayLogic: UIViewController {
+protocol SplashDisplayLogic: ViewController {
     func showError()
 }
 
-final class SplashViewController: UIViewController {
+final class SplashViewController: ViewController {
 
     var presenter: SplashPresentationLogic?
 

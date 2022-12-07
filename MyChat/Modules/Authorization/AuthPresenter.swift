@@ -53,6 +53,7 @@ extension AuthPresenter: PresentationAuthLogic {
 private extension AuthPresenter {
     
     func authUser(_ codeNumberPhone: String?, _ number: String?) {
+        viewController?.showLoading()
         guard let number = number,
               let codeNumberPhone = codeNumberPhone else {
             return
@@ -65,6 +66,7 @@ private extension AuthPresenter {
                 let response = try await apiService.auth(request: request)
                 
                 await MainActor.run {
+                    viewController?.hideLoading()
                     if response.isSuccess {
                         let verifyPage = moduleBuilder.buildVerificationModule(codeTelephoneNumber: codeNumberPhone,
                                                                                telephoneNumber: number)
@@ -75,6 +77,7 @@ private extension AuthPresenter {
                 }
             } catch {
                 await MainActor.run {
+                    viewController?.hideLoading()
                     viewController?.showAuthError()
                 }
             }

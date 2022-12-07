@@ -26,14 +26,17 @@ final class VerificationPresenter {
     private let validFields = MasksValidationFields()
     private let apiService: APIServiceable
     private let keychainService: Storagable
+    private let defaultService: DefaultServicable
     
     init(
+        defaultService: DefaultServicable,
         apiService: APIServiceable,
         keychainService: Storagable,
         moduleBuilder: Buildable,
         codeTelephoneNumber: String,
         telephoneNumber: String
     ) {
+        self.defaultService = defaultService
         self.apiService = apiService
         self.keychainService = keychainService
         self.moduleBuilder = moduleBuilder
@@ -83,6 +86,10 @@ private extension VerificationPresenter {
                 let response = try await apiService.verifyCode(request: request)
                 try keychainService.save(response.accessToken, for: .accessToken)
                 try keychainService.save(response.refreshToken, for: .refreshToken)
+                
+                if response.isUserExists {
+                    defaultService.save(true, forKey: .isUserAuth)
+                }
 
                 await MainActor.run {
                     if response.isUserExists {

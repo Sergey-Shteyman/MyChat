@@ -29,17 +29,20 @@ final class RegistrationPresenter {
     weak var viewController: RegistrationDisplayLogic?
     private let apiService: APIServiceable
     private let keychainService: Storagable
+    private let defaultService: DefaultServicable
     private let moduleBuilder: Buildable
     private let phoneNumberCode: String
     private let telephoneNumber: String
     
     init(
+        defaultService: DefaultServicable,
         apiService: APIServiceable,
         keychainService: Storagable,
         phoneNumberCode: String,
         telephoneNumber: String,
         moduleBuilder: Buildable
     ) {
+        self.defaultService = defaultService
         self.apiService = apiService
         self.keychainService = keychainService
         self.phoneNumberCode = phoneNumberCode
@@ -83,6 +86,7 @@ extension RegistrationPresenter: RegistrationPresentationLogic {
 
                     try keychainService.save(response.accessToken, for: .accessToken)
                     try keychainService.save(response.refreshToken, for: .refreshToken)
+                    defaultService.save(true, forKey: .isUserAuth)
 
                     await MainActor.run {
                         // TODO: - Вынести в роутер?

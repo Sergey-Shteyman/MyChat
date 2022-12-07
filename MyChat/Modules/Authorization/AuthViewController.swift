@@ -10,7 +10,7 @@ import CountryPicker
 
 
 // MARK: - DisplayAuthLogic
-protocol DisplayAuthLogic: AnyObject {
+protocol DisplayAuthLogic: ViewController {
     func showValidationCorrect()
     func showValidationError()
     func routTo(_ viewController: UIViewController)
@@ -18,7 +18,7 @@ protocol DisplayAuthLogic: AnyObject {
 }
 
 // MARK: - AuthViewController
-final class AuthViewController: UIViewController {
+final class AuthViewController: ViewController {
     
     var presenter: PresentationAuthLogic?
     

@@ -77,6 +77,7 @@
 		5ECAC3392937E760003FD519 /* BottomLineState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAC3382937E760003FD519 /* BottomLineState.swift */; };
 		5ECAC33C2938D405003FD519 /* RegistrationPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAC33B2938D405003FD519 /* RegistrationPageModel.swift */; };
 		5ECAC33E2938D52D003FD519 /* MasksValidationFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAC33D2938D52D003FD519 /* MasksValidationFields.swift */; };
+		5ED751162940C4EB00B4607C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED751152940C4EB00B4607C /* ViewController.swift */; };
 		5EF216D2293CF73E000C13EA /* BorderState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF216D1293CF73E000C13EA /* BorderState.swift */; };
 		5EF216D4293CF7A7000C13EA /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF216D3293CF7A7000C13EA /* UITextField.swift */; };
 		5EFE69662939FD6A00F9740C /* WellcomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE69652939FD6A00F9740C /* WellcomViewController.swift */; };
@@ -179,6 +180,7 @@
 		5ECAC3382937E760003FD519 /* BottomLineState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomLineState.swift; sourceTree = "<group>"; };
 		5ECAC33B2938D405003FD519 /* RegistrationPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPageModel.swift; sourceTree = "<group>"; };
 		5ECAC33D2938D52D003FD519 /* MasksValidationFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasksValidationFields.swift; sourceTree = "<group>"; };
+		5ED751152940C4EB00B4607C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		5EF216D1293CF73E000C13EA /* BorderState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderState.swift; sourceTree = "<group>"; };
 		5EF216D3293CF7A7000C13EA /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		5EFE69652939FD6A00F9740C /* WellcomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellcomViewController.swift; sourceTree = "<group>"; };
@@ -353,6 +355,7 @@
 			isa = PBXGroup;
 			children = (
 				5E0F5613293620F500E0178C /* TextField.swift */,
+				5ED751152940C4EB00B4607C /* ViewController.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -864,6 +867,7 @@
 				5E3A12F4293F73A000BC08EE /* DefaultsKey.swift in Sources */,
 				5E3A131D293F893E00BC08EE /* UpdateUserResponse.swift in Sources */,
 				5ECAC33C2938D405003FD519 /* RegistrationPageModel.swift in Sources */,
+				5ED751162940C4EB00B4607C /* ViewController.swift in Sources */,
 				5E3A132E293F8DBB00BC08EE /* ProfilePresenter.swift in Sources */,
 				5E6B8F9D293BCDBC00C70E54 /* AuthPageModel.swift in Sources */,
 				5E3A1324293F89D000BC08EE /* KeychainKey.swift in Sources */,
