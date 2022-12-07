@@ -41,7 +41,7 @@ extension SplashPresenter: SplashPresentationLogic {
 
         let viewController = isUserAuth
         ? moduleBuilder.buildChatListViewController()
-        : moduleBuilder.buildAuthPageModule()
+        : moduleBuilder.buildWellcomeModule()
 
         appDelegate.window?.rootViewController = UINavigationController(rootViewController: viewController)
     }

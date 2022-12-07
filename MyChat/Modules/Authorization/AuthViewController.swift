@@ -14,6 +14,7 @@ protocol DisplayAuthLogic: AnyObject {
     func showValidationCorrect()
     func showValidationError()
     func routTo(_ viewController: UIViewController)
+    func showAuthError()
 }
 
 // MARK: - AuthViewController
@@ -113,6 +114,10 @@ final class AuthViewController: UIViewController {
 
 // MARK: - DisplayAuthLogic Impl
 extension AuthViewController: DisplayAuthLogic {
+    
+    func showAuthError() {
+        print(#function)
+    }
     
     func routTo(_ viewController: UIViewController) {
         navigationController?.pushViewController(viewController, animated: true)

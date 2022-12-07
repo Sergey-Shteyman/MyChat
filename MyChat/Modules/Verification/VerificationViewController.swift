@@ -11,10 +11,11 @@ import UIKit
 // MARK: - VerificationDisplayLogic
 protocol VerificationDisplayLogic: AnyObject {
     func showInvalidCodeAllert()
-    func setupTitle(phoneCode: String, phone: String)
+    func setupPhoneNumberTitle(phoneCode: String, phone: String)
     func clearFields()
     func filedsResignSelection()
     func routTo(_ viewController: UIViewController)
+    func showVerificationError()
 }
 
 // MARK: - VerificationViewController
@@ -134,6 +135,7 @@ final class VerificationViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         setupViewController()
+        presenter?.viewDidLoad()
     }
     
     @objc
@@ -240,6 +242,10 @@ extension VerificationViewController: UITextFieldDelegate {
 // MARK: - VerificationDisplayLogic
 extension VerificationViewController: VerificationDisplayLogic {
     
+    func showVerificationError() {
+        print(#function)
+    }
+    
     func routTo(_ viewController: UIViewController) {
         navigationController?.pushViewController(viewController, animated: true)
     }
@@ -248,7 +254,7 @@ extension VerificationViewController: VerificationDisplayLogic {
         present(invalidCodeAllert(), animated: true)
     }
     
-    func setupTitle(phoneCode: String, phone: String) {
+    func setupPhoneNumberTitle(phoneCode: String, phone: String) {
         phoneTitile.text = "\(phoneCode) \(phone)"
         self.navigationItem.titleView = phoneTitile
     }
@@ -276,13 +282,8 @@ extension VerificationViewController: VerificationDisplayLogic {
 private extension VerificationViewController {
     func setupViewController() {
         view.addTapGestureToHideKeyboard()
-        addTitlePhone()
         setupSubviews()
         setupConstraints()
-    }
-    
-    func addTitlePhone() {
-        presenter?.getPhoneNumber()
     }
     
     func getCode() -> [String?] {
@@ -295,7 +296,6 @@ private extension VerificationViewController {
         allert = .init(title: verifyModel.wrongSMS,
                        message: verifyModel.checkCorrectFields, preferredStyle: .alert)
         allert.addAction(UIAlertAction(title: verifyModel.inputOneMoreCode, style: .default, handler: {[weak self] _ in
-            // TODO: - Можно в презентер
             self?.presenter?.prepareScreen()
             self?.firstCodeSquare.becomeFirstResponder()
         }))

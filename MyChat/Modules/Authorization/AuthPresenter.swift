@@ -18,11 +18,13 @@ final class AuthPresenter {
     weak var viewController: DisplayAuthLogic?
     
     private let moduleBuilder: Buildable
+    private let apiService: APIServiceable
     private let masksValidation = MasksValidationFields()
     
     lazy var validNumber = Bool()
     
-    init(moduleBuilder: Buildable) {
+    init(apiService: APIServiceable, moduleBuilder: Buildable) {
+        self.apiService = apiService
         self.moduleBuilder = moduleBuilder
     }
 }
@@ -32,13 +34,7 @@ extension AuthPresenter: PresentationAuthLogic {
     
     func didTapAuthButton(_ codeNumberPhone: String?, _ number: String?) {
         if validNumber {
-            guard let number = number,
-                  let codeNumberPhone = codeNumberPhone else {
-                return
-            }
-            let viewController = moduleBuilder.buildVerificationModule(codeTelephoneNumber: codeNumberPhone,
-                                                                       telephoneNumber: number)
-            self.viewController?.routTo(viewController)
+            authUser(codeNumberPhone, number)
         } else {
             viewController?.showValidationError()
         }
@@ -55,6 +51,35 @@ extension AuthPresenter: PresentationAuthLogic {
 
 // MARK: - Private methods
 private extension AuthPresenter {
+    
+    func authUser(_ codeNumberPhone: String?, _ number: String?) {
+        guard let number = number,
+              let codeNumberPhone = codeNumberPhone else {
+            return
+        }
+        let phone = "\(codeNumberPhone)\(number)"
+        Task {
+            do {
+                let body = AuthBody(phone: phone)
+                let request = AuthRequest(body: body)
+                let response = try await apiService.auth(request: request)
+                
+                await MainActor.run {
+                    if response.isSuccess {
+                        let verifyPage = moduleBuilder.buildVerificationModule(codeTelephoneNumber: codeNumberPhone,
+                                                                               telephoneNumber: number)
+                        viewController?.routTo(verifyPage)
+                    } else {
+                        viewController?.showAuthError()
+                    }
+                }
+            } catch {
+                await MainActor.run {
+                    viewController?.showAuthError()
+                }
+            }
+        }
+    }
     
     func validateNumber(_ number: String?) -> Bool {
         let validateNumberExpression = masksValidation.validPhone

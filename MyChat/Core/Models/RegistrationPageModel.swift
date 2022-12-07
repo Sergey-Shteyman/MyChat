@@ -9,7 +9,8 @@
 struct RegistrationPageModel {
     
     let regTextForLabel = "Регистрация"
-    let namePlaceholder = "Имя"
+    let namePlaceHolder = "Ваше имя:"
+    let userNamePlaceholder = "Ваше имя пользователя:"
     let regButtonText = "Зарегистрироваться"
     let backBarButton = "Cancel"
     let shureClouseRegistration = "Вы уверены, что хотите отменить регистрацию?"

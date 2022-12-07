@@ -10,11 +10,15 @@ import UIKit
 
 // MARK: - RegistrationDisplayLogic
 protocol RegistrationDisplayLogic: AnyObject {
-    func showNameValidationError()
+    func showUserNameValidationError()
+    func showUserNameValidationCorrect()
     func showNameValidationCorrect()
+    func showNameValidationError()
     func setupTelephoneNumber(_ codeNumberTelephone: String, _ numberTelephone: String)
     func showCancelAllert()
     func routToRoot()
+    func routTo(_ viewController: UIViewController)
+    func showUserErrorRegisteration()
 }
 
 // MARK: - RegistrationViewController
@@ -33,12 +37,25 @@ final class RegistrationViewController: UIViewController {
     
     private lazy var nameTextField: TextField = {
         let textField = TextField()
-        textField.placeholder = registrationModel.namePlaceholder
+        textField.placeholder = registrationModel.namePlaceHolder
         textField.font = UIFont(name: UIFont.Roboto.regular.rawValue, size: 26)
         textField.clearButtonMode = .whileEditing
         textField.returnKeyType = UIReturnKeyType.done
         textField.backgroundColor = .clear
         textField.delegate = self
+        textField.addTarget(self, action: #selector(isValidNameTextField), for: .editingChanged)
+        return textField
+    }()
+    
+    private lazy var userNameTextField: TextField = {
+        let textField = TextField()
+        textField.placeholder = registrationModel.userNamePlaceholder
+        textField.font = UIFont(name: UIFont.Roboto.regular.rawValue, size: 26)
+        textField.clearButtonMode = .whileEditing
+        textField.returnKeyType = UIReturnKeyType.done
+        textField.backgroundColor = .clear
+        textField.delegate = self
+        textField.addTarget(self, action: #selector(isValidUserNameTextField), for: .editingChanged)
         return textField
     }()
     
@@ -59,6 +76,7 @@ final class RegistrationViewController: UIViewController {
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 20
         button.titleLabel?.textAlignment = .center
+        accessButton.addTarget(self, action: #selector(buttonIsTapped), for: .touchDown)
         return button
     }()
     
@@ -66,16 +84,22 @@ final class RegistrationViewController: UIViewController {
         super.viewDidLoad()
         self.view.backgroundColor = .white
         setupViewController()
+        presenter?.viewDidLoad()
     }
-
+    
     @objc
     func isValidNameTextField() {
         presenter?.didChangeName(nameTextField.text)
     }
+
+    @objc
+    func isValidUserNameTextField() {
+        presenter?.didChangeUserName(userNameTextField.text)
+    }
     
     @objc
     func buttonIsTapped() {
-        presenter?.didTapRegisterButton()
+        presenter?.didTapRegisterButton(nameTextField.text, userNameTextField.text)
     }
     
     @objc
@@ -87,12 +111,8 @@ final class RegistrationViewController: UIViewController {
 // MARK: - RegistrationDisplayLogic Impl
 extension RegistrationViewController: RegistrationDisplayLogic {
     
-    func routToRoot() {
-        navigationController?.popToRootViewController(animated: true)
-    }
-    
-    func showCancelAllert() {
-        present(cancelAllert(), animated: true)
+    func routTo(_ viewController: UIViewController) {
+        navigationController?.pushViewController(viewController, animated: true)
     }
     
     func showNameValidationCorrect() {
@@ -103,8 +123,30 @@ extension RegistrationViewController: RegistrationDisplayLogic {
         nameTextField.changeStateBottomLine(with: .error)
     }
     
+    func showUserErrorRegisteration() {
+        print(#function)
+    }
+    
+    func routToRoot() {
+        navigationController?.popToRootViewController(animated: true)
+    }
+    
+    func showCancelAllert() {
+        present(cancelAllert(), animated: true)
+    }
+    
+    func showUserNameValidationCorrect() {
+        userNameTextField.changeStateBottomLine(with: .normal)
+    }
+    
+    func showUserNameValidationError() {
+        userNameTextField.changeStateBottomLine(with: .error)
+    }
+    
     func setupTelephoneNumber(_ codeNumberTelephone: String, _ numberTelephone: String) {
         phoneNumberLabel.text = "\(codeNumberTelephone) \(numberTelephone)"
+        phoneNumberLabel.attributedText = phoneNumberLabel.addLetterSpacing(label: phoneNumberLabel,
+                                                                            spacing: 5.0)
     }
 }
 
@@ -112,7 +154,7 @@ extension RegistrationViewController: RegistrationDisplayLogic {
 extension RegistrationViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        nameTextField.resignFirstResponder()
+        userNameTextField.resignFirstResponder()
         return true
     }
 }
@@ -124,8 +166,6 @@ private extension RegistrationViewController {
         view.addTapGestureToHideKeyboard()
         setupBackBarItem()
         setupRegistrLabel()
-        setupNumberPhoneLabel()
-        addTargets()
         addSubViews()
         addConstraints()
     }
@@ -150,20 +190,9 @@ private extension RegistrationViewController {
     func setupRegistrLabel() {
         registrLabel.attributedText = registrLabel.addLetterSpacing(label: registrLabel, spacing: 5.0)
     }
-    
-    func setupNumberPhoneLabel() {
-        phoneNumberLabel.attributedText = phoneNumberLabel.addLetterSpacing(label: phoneNumberLabel, spacing: 5.0)
-        presenter?.addTelephoneNumber()
-    }
-    
-    func addTargets() {
-        nameTextField.addTarget(self, action: #selector(isValidNameTextField),
-                                for: UIControl.Event.editingChanged)
-        accessButton.addTarget(self, action: #selector(buttonIsTapped), for: .touchDown)
-    }
 
     func addSubViews() {
-        let arrayViews = [registrLabel, phoneNumberLabel, nameTextField,
+        let arrayViews = [registrLabel, nameTextField, phoneNumberLabel, userNameTextField,
                           accessButton]
         view.myAddSubViews(from: arrayViews)
     }
@@ -179,7 +208,11 @@ private extension RegistrationViewController {
                                      nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
                                      nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -45),
                                      
-                                     accessButton.topAnchor.constraint(greaterThanOrEqualTo: nameTextField.bottomAnchor,
+                                     userNameTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 50),
+                                     userNameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+                                     userNameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -45),
+                                     
+                                     accessButton.topAnchor.constraint(greaterThanOrEqualTo: userNameTextField.bottomAnchor,
                                                                        constant: 50),
                                      accessButton.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor,
                                                                           constant: -80),

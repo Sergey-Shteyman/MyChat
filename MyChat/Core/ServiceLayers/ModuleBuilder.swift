@@ -66,7 +66,7 @@ extension ModuleBuilder: Buildable {
     
     func buildAuthPageModule() -> AuthViewController {
         let viewController = AuthViewController()
-        let presenter = AuthPresenter(moduleBuilder: self)
+        let presenter = AuthPresenter(apiService: apiService, moduleBuilder: self)
         viewController.presenter = presenter
         presenter.viewController = viewController
         return viewController
@@ -74,7 +74,9 @@ extension ModuleBuilder: Buildable {
     
     func buildVerificationModule(codeTelephoneNumber: String, telephoneNumber: String) -> VerificationViewController {
         let viewController = VerificationViewController()
-        let presenter = VerificationPresenter(moduleBuilder: self,
+        let presenter = VerificationPresenter(apiService: apiService,
+                                              keychainService: keychainService,
+                                              moduleBuilder: self,
                                               codeTelephoneNumber: codeTelephoneNumber,
                                               telephoneNumber: telephoneNumber)
         viewController.presenter = presenter
@@ -84,7 +86,9 @@ extension ModuleBuilder: Buildable {
     
     func buildRegistrationModule(_ phoneNumberCode: String, _ telephoneNumber: String) -> RegistrationViewController {
         let viewController = RegistrationViewController()
-        let presenter = RegistrationPresenter(phoneNumberCode: phoneNumberCode,
+        let presenter = RegistrationPresenter(apiService: apiService,
+                                              keychainService: keychainService,
+                                              phoneNumberCode: phoneNumberCode,
                                               telephoneNumber: telephoneNumber,
                                               moduleBuilder: self)
         viewController.presenter = presenter
