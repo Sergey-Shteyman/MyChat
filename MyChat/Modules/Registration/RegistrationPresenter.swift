@@ -5,8 +5,6 @@
 //  Created by Сергей Штейман on 30.11.2022.
 //
 
-import UIKit
-
 
 // MARK: - RegistrationPresentationLogic
 protocol RegistrationPresentationLogic: AnyObject {
@@ -91,15 +89,11 @@ extension RegistrationPresenter: RegistrationPresentationLogic {
                     await MainActor.run {
                         // TODO: - Вынести в роутер?
                         let chatListPage = moduleBuilder.buildChatListViewController()
-                        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                            return
-                        }
                         viewController?.routTo(chatListPage)
-                        appDelegate.window?.rootViewController = UINavigationController(rootViewController: chatListPage)
                     }
                 } catch {
                     await MainActor.run {
-                        viewController?.showUserErrorRegisteration
+                        viewController?.showUserErrorRegisteration()
                     }
                 }
             }

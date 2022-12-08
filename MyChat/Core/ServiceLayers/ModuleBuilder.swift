@@ -33,8 +33,13 @@ final class ModuleBuilder {
     private let apiService: APIServiceable
     private let keychainService: Storagable
     private let defaultsService: DefaultServicable
+    private let router: Router
 
-    init(databaseService: DatabaseServicable) {
+    init(
+        databaseService: DatabaseServicable,
+        router: Router
+    ) {
+        self.router = router
         self.databaseService = databaseService
         self.decoderService = DecoderService()
         self.networkService = NetworkService(decoderService: decoderService)
@@ -50,6 +55,7 @@ extension ModuleBuilder: Buildable {
     func buildSplashViewController() -> SplashViewController {
         let viewController = SplashViewController()
         let presenter = SplashPresenter(
+            router: router,
             keychainService: keychainService,
             defaultsService: defaultsService,
             moduleBuilder: self

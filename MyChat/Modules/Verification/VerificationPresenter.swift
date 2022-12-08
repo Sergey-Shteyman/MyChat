@@ -5,8 +5,6 @@
 //  Created by Сергей Штейман on 03.12.2022.
 //
 
-import UIKit
-
 
 // MARK: - VerificationPresentationLogic
 protocol VerificationPresentationLogic: AnyObject {
@@ -95,10 +93,7 @@ private extension VerificationPresenter {
                     if response.isUserExists {
                         // TODO: - Вынести в роутер?
                         let chatListViewController = moduleBuilder.buildChatListViewController()
-                        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-                            return
-                        }
-                        appDelegate.window?.rootViewController = UINavigationController(rootViewController: chatListViewController)
+                        viewController?.routTo(chatListViewController)
                     } else {
                         let registerPage = moduleBuilder.buildRegistrationModule(codeTelephoneNumber,
                                                                                            telephoneNumber)
@@ -107,7 +102,7 @@ private extension VerificationPresenter {
                 }
             } catch {
                 await MainActor.run {
-                    viewController?.showVerificationError
+                    viewController?.showVerificationError()
                 }
             }
         }

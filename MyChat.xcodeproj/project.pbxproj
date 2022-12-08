@@ -83,6 +83,7 @@
 		5ED7511D2940D13D00B4607C /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED7511C2940D13D00B4607C /* UIStackView.swift */; };
 		5ED7511F2941125400B4607C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED7511E2941125400B4607C /* UserModel.swift */; };
 		5ED751212941125E00B4607C /* UserAvatarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED751202941125E00B4607C /* UserAvatarModel.swift */; };
+		5ED751232941E5C600B4607C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED751222941E5C600B4607C /* Router.swift */; };
 		5EF216D2293CF73E000C13EA /* BorderState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF216D1293CF73E000C13EA /* BorderState.swift */; };
 		5EF216D4293CF7A7000C13EA /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF216D3293CF7A7000C13EA /* UITextField.swift */; };
 		5EFE69662939FD6A00F9740C /* WellcomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE69652939FD6A00F9740C /* WellcomViewController.swift */; };
@@ -191,6 +192,7 @@
 		5ED7511C2940D13D00B4607C /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
 		5ED7511E2941125400B4607C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		5ED751202941125E00B4607C /* UserAvatarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatarModel.swift; sourceTree = "<group>"; };
+		5ED751222941E5C600B4607C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
 		5EF216D1293CF73E000C13EA /* BorderState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderState.swift; sourceTree = "<group>"; };
 		5EF216D3293CF7A7000C13EA /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		5EFE69652939FD6A00F9740C /* WellcomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellcomViewController.swift; sourceTree = "<group>"; };
@@ -307,6 +309,7 @@
 			isa = PBXGroup;
 			children = (
 				5E0F56092935077900E0178C /* Resources */,
+				5ED751222941E5C600B4607C /* Router.swift */,
 				5E0F55D62934FF2200E0178C /* AppDelegate.swift */,
 				5E0F55D82934FF2200E0178C /* SceneDelegate.swift */,
 				5E0F55E12934FF2300E0178C /* LaunchScreen.storyboard */,
@@ -882,6 +885,7 @@
 				5EF216D4293CF7A7000C13EA /* UITextField.swift in Sources */,
 				5E3A1330293F8DE400BC08EE /* ChatListViewController.swift in Sources */,
 				5E0F5614293620F500E0178C /* TextField.swift in Sources */,
+				5ED751232941E5C600B4607C /* Router.swift in Sources */,
 				5ED751212941125E00B4607C /* UserAvatarModel.swift in Sources */,
 				5EFE69662939FD6A00F9740C /* WellcomViewController.swift in Sources */,
 				5E3A1317293F890800BC08EE /* VerifyCodeResponse.swift in Sources */,
