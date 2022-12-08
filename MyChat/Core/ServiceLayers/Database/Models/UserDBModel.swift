@@ -38,9 +38,16 @@ final class UserDBModel: Object {
         self.avatar = avatar
     }
 
-    convenience init(viewModel: ProfileViewModel) {
+    convenience init(userModel: UserModel) {
         self.init()
-        self.name = viewModel.name
+        self.name = userModel.name
+        self.username = userModel.username
+        self.birthday = userModel.birthday
+        self.city = userModel.city
+        self.vkk = userModel.vk
+        self.instagram = userModel.instagram
+        self.status = userModel.status
+        self.avatar = UserAvatarDBModel(userAvatarModel: userModel.avatar)
     }
 }
 
@@ -56,27 +63,16 @@ final class UserAvatarDBModel: Object {
         self.filename = filename
         self.base64 = base64
     }
+    
+    convenience init?(userAvatarModel: UserAvatarModel?) {
+        guard let filename = userAvatarModel?.filename,
+              let base64 = userAvatarModel?.base64
+        else {
+            return nil
+        }
+        self.init()
+        self.filename = filename
+        self.base64 = base64
+    }
 }
-
-/*
- struct UpdateUserBody: Encodable {
-     let name: String
-     let username: String
-     let birthday: String
-     let city: String
-     let vk: String
-     let instagram: String
-     let status: String
-     let avatar: UpdateUserAvatar?
- }
-
- struct UpdateUserAvatar: Encodable {
-     let filename: String
-     let base64: String
-
-     enum CodingKeys: String, CodingKey {
-         case base64 = "base_64"
-     }
- }
- */
 

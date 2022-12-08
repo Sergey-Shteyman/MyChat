@@ -17,6 +17,11 @@ protocol Buildable {
     func buildRegistrationModule(_ phoneNumberCode: String, _ telephoneNumber: String) -> RegistrationViewController
     func buildChatViewController() -> ChatViewController
     func buildChatListViewController() -> ChatListViewController
+    func buildProfileViewContrioller(_ phoneNumberCode: String, _ telephoneNumber: String) -> ProfileViewController
+    func buildEditProfileModule(_ userModel: UserModel,
+                                _ delegate: EditProfilePresenterDelegate?,
+                                _ phoneNumberCode: String,
+                                _ telephoneNumber: String) -> EditProfileViewController
 }
 
 // MARK: - ModuleBuilder
@@ -95,6 +100,35 @@ extension ModuleBuilder: Buildable {
                                               moduleBuilder: self)
         viewController.presenter = presenter
         presenter.viewController = viewController
+        return viewController
+    }
+    
+    func buildProfileViewContrioller(_ phoneNumberCode: String, _ telephoneNumber: String) -> ProfileViewController {
+        let viewController = ProfileViewController()
+        let presenter = ProfilePresenter(codeNumberPhone: telephoneNumber,
+                                         numberPhone: phoneNumberCode,
+                                         databaseService: databaseService,
+                                         moduleBuilder: self)
+        viewController.presenter = presenter
+        presenter.viewController = viewController
+        return viewController
+    }
+    
+    func buildEditProfileModule(_ userModel: UserModel,
+                                _ delegate: EditProfilePresenterDelegate?,
+                                _ phoneNumberCode: String,
+                                _ telephoneNumber: String) -> EditProfileViewController {
+        let viewController = EditProfileViewController()
+        let presenter = EditProfilePresenter(databaseService: databaseService,
+                                             userModel: userModel,
+                                             codeNumberPhone: telephoneNumber,
+                                             numberPhone: phoneNumberCode,
+                                             apiService: apiService,
+                                             keychainService: keychainService
+                                             )
+        viewController.presenter = presenter
+        presenter.viewController = viewController
+        presenter.delegate = delegate
         return viewController
     }
     

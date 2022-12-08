@@ -22,11 +22,11 @@ struct ProfileViewModel {
         self.vk = vk
         self.instagram = instagram
     }
-
-    init(dbModel: UserDBModel) {
-        self.name = dbModel.name
-        self.birthday = dbModel.birthday
-        self.vk = dbModel.vkk
-        self.instagram = dbModel.instagram
+    
+    init(userModel: UserModel) {
+        self.name = userModel.name
+        self.birthday = userModel.birthday
+        self.vk = userModel.vk
+        self.instagram = userModel.instagram
     }
 }

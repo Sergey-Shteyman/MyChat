@@ -78,6 +78,11 @@
 		5ECAC33C2938D405003FD519 /* RegistrationPageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAC33B2938D405003FD519 /* RegistrationPageModel.swift */; };
 		5ECAC33E2938D52D003FD519 /* MasksValidationFields.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ECAC33D2938D52D003FD519 /* MasksValidationFields.swift */; };
 		5ED751162940C4EB00B4607C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED751152940C4EB00B4607C /* ViewController.swift */; };
+		5ED751192940D0F600B4607C /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED751182940D0F600B4607C /* EditProfileViewController.swift */; };
+		5ED7511B2940D10300B4607C /* EditProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED7511A2940D10300B4607C /* EditProfilePresenter.swift */; };
+		5ED7511D2940D13D00B4607C /* UIStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED7511C2940D13D00B4607C /* UIStackView.swift */; };
+		5ED7511F2941125400B4607C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED7511E2941125400B4607C /* UserModel.swift */; };
+		5ED751212941125E00B4607C /* UserAvatarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED751202941125E00B4607C /* UserAvatarModel.swift */; };
 		5EF216D2293CF73E000C13EA /* BorderState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF216D1293CF73E000C13EA /* BorderState.swift */; };
 		5EF216D4293CF7A7000C13EA /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF216D3293CF7A7000C13EA /* UITextField.swift */; };
 		5EFE69662939FD6A00F9740C /* WellcomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE69652939FD6A00F9740C /* WellcomViewController.swift */; };
@@ -181,6 +186,11 @@
 		5ECAC33B2938D405003FD519 /* RegistrationPageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPageModel.swift; sourceTree = "<group>"; };
 		5ECAC33D2938D52D003FD519 /* MasksValidationFields.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasksValidationFields.swift; sourceTree = "<group>"; };
 		5ED751152940C4EB00B4607C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		5ED751182940D0F600B4607C /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		5ED7511A2940D10300B4607C /* EditProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfilePresenter.swift; sourceTree = "<group>"; };
+		5ED7511C2940D13D00B4607C /* UIStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIStackView.swift; sourceTree = "<group>"; };
+		5ED7511E2941125400B4607C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
+		5ED751202941125E00B4607C /* UserAvatarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatarModel.swift; sourceTree = "<group>"; };
 		5EF216D1293CF73E000C13EA /* BorderState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderState.swift; sourceTree = "<group>"; };
 		5EF216D3293CF7A7000C13EA /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		5EFE69652939FD6A00F9740C /* WellcomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellcomViewController.swift; sourceTree = "<group>"; };
@@ -334,6 +344,7 @@
 				5E0F561029361C8600E0178C /* UIScrollView.swift */,
 				5ECAC3342937CF5D003FD519 /* UIFont.swift */,
 				5EF216D3293CF7A7000C13EA /* UITextField.swift */,
+				5ED7511C2940D13D00B4607C /* UIStackView.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -369,6 +380,7 @@
 				5E6B8F97293B66E200C70E54 /* Verification */,
 				5E0F56182937638F00E0178C /* Registration */,
 				5E3A1328293F8D4900BC08EE /* Profile */,
+				5ED751172940D0C500B4607C /* EditProfile */,
 				5E3A1329293F8D7200BC08EE /* ChatList */,
 				5E3A132A293F8D7F00BC08EE /* Chat */,
 			);
@@ -565,8 +577,19 @@
 				5E6B8F8F293A482100C70E54 /* WelcomePageModel.swift */,
 				5E6B8F9C293BCDBC00C70E54 /* AuthPageModel.swift */,
 				5E3A12EA293E4ACB00BC08EE /* VerificationModel.swift */,
+				5ED7511E2941125400B4607C /* UserModel.swift */,
+				5ED751202941125E00B4607C /* UserAvatarModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		5ED751172940D0C500B4607C /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				5ED751182940D0F600B4607C /* EditProfileViewController.swift */,
+				5ED7511A2940D10300B4607C /* EditProfilePresenter.swift */,
+			);
+			path = EditProfile;
 			sourceTree = "<group>";
 		};
 		5EFE69642939FD3700F9740C /* Wellcome */ = {
@@ -828,12 +851,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5ED751192940D0F600B4607C /* EditProfileViewController.swift in Sources */,
 				5E3A131F293F895000BC08EE /* RegisterResponse.swift in Sources */,
 				5E3A12EF293F733D00BC08EE /* LocalError.swift in Sources */,
 				5E3A130D293F889800BC08EE /* GetUserRequest.swift in Sources */,
 				5E3A1319293F891900BC08EE /* GetUserResponse.swift in Sources */,
 				5E3A1307293F883800BC08EE /* APIService.swift in Sources */,
 				5E0F560F29361C5E00E0178C /* UIView.swift in Sources */,
+				5ED7511D2940D13D00B4607C /* UIStackView.swift in Sources */,
 				5E3A1315293F88F500BC08EE /* AuthResponse.swift in Sources */,
 				5E3A1313293F88D200BC08EE /* RegisterRequest.swift in Sources */,
 				5E3A1309293F886900BC08EE /* AuthRequest.swift in Sources */,
@@ -857,6 +882,7 @@
 				5EF216D4293CF7A7000C13EA /* UITextField.swift in Sources */,
 				5E3A1330293F8DE400BC08EE /* ChatListViewController.swift in Sources */,
 				5E0F5614293620F500E0178C /* TextField.swift in Sources */,
+				5ED751212941125E00B4607C /* UserAvatarModel.swift in Sources */,
 				5EFE69662939FD6A00F9740C /* WellcomViewController.swift in Sources */,
 				5E3A1317293F890800BC08EE /* VerifyCodeResponse.swift in Sources */,
 				5E3A12E9293E473400BC08EE /* Images.swift in Sources */,
@@ -878,12 +904,14 @@
 				5E3A12FC293F85FD00BC08EE /* UserDBModel.swift in Sources */,
 				5E3A1303293F880500BC08EE /* RefreshInterceptor.swift in Sources */,
 				5E3A12EB293E4ACB00BC08EE /* VerificationModel.swift in Sources */,
+				5ED7511B2940D10300B4607C /* EditProfilePresenter.swift in Sources */,
 				5E0F55D92934FF2200E0178C /* SceneDelegate.swift in Sources */,
 				5ECAC3352937CF5D003FD519 /* UIFont.swift in Sources */,
 				5E3A1305293F881B00BC08EE /* APIEndpoint.swift in Sources */,
 				5E6B8F8C293A466D00C70E54 /* AuthViewController.swift in Sources */,
 				5E3A1332293F8DFA00BC08EE /* ChatViewController.swift in Sources */,
 				5E0F56072935026900E0178C /* ModuleBuilder.swift in Sources */,
+				5ED7511F2941125400B4607C /* UserModel.swift in Sources */,
 				5E3A1335293F8E3A00BC08EE /* SplashViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
