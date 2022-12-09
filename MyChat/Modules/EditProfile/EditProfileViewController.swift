@@ -12,6 +12,7 @@ protocol EditProfileDisplayLogic: ViewController {
     func updateView(_ viewModel: ProfileViewModel)
     func popToPreviousPage()
     func showEditProfileError()
+    func presentPhotoActionSheet()
 }
 
 // MARK: - EditProfileViewController
@@ -33,7 +34,7 @@ final class EditProfileViewController: ViewController {
         button.layer.cornerRadius = 59
         button.layer.borderWidth = 1
         button.layer.borderColor = UIColor.gray.cgColor
-        button.addTarget(self, action: #selector(didTapAvatarButton), for: .touchDown)
+        button.addTarget(self, action: #selector(didTapChangeProfileAvatar), for: .touchDown)
         return button
     }()
     
@@ -127,13 +128,19 @@ final class EditProfileViewController: ViewController {
     }
     
     @objc
-    private func didTapAvatarButton() {
-        print(#function)
+    private func didTapChangeProfileAvatar() {
+//        presenter?.changeAvatar()
+        presentPhotoActionSheet()
     }
 }
 
 // MARK: - EditProfileDisplayLogic impl
 extension EditProfileViewController: EditProfileDisplayLogic {
+    
+    func presentPhotoActionSheet() {
+        let actionSheet = configuredActionSheet()
+        present(actionSheet, animated: true)
+    }
     
     func popToPreviousPage() {
         navigationController?.popViewController(animated: true)
@@ -184,6 +191,17 @@ extension EditProfileViewController: UITextViewDelegate {
     }
 }
 
+extension EditProfileViewController: UIImagePickerControllerDelegate {
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
+    }
+}
+
 // MARK: - Private methods
 private extension EditProfileViewController {
     
@@ -206,6 +224,21 @@ private extension EditProfileViewController {
         addViewwsOnScrollView()
         scrollView.contentSize = CGSize(width: 0, height: horoscopeTextField.frame.maxY + 20)
         setupScrollViewConstraints()
+    }
+    
+    func configuredActionSheet() -> UIAlertController {
+        let actionSheet = UIAlertController(
+            title: "Аватар профиля",
+            message: "Как бы вы хотели выбрать картинку?",
+            preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Выход", style: .cancel))
+        actionSheet.addAction(UIAlertAction(title: "Сделать снимок", style: .default, handler: { _ in
+            
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Выбрать снимок", style: .default, handler: { _ in
+            
+        }))
+        return actionSheet
     }
     
     func addViewwsOnScrollView() {
