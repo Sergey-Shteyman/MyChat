@@ -84,6 +84,7 @@
 		5ED7511F2941125400B4607C /* UserModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED7511E2941125400B4607C /* UserModel.swift */; };
 		5ED751212941125E00B4607C /* UserAvatarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED751202941125E00B4607C /* UserAvatarModel.swift */; };
 		5ED751232941E5C600B4607C /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED751222941E5C600B4607C /* Router.swift */; };
+		5ED75125294356F700B4607C /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5ED75124294356F700B4607C /* EditProfile.swift */; };
 		5EF216D2293CF73E000C13EA /* BorderState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF216D1293CF73E000C13EA /* BorderState.swift */; };
 		5EF216D4293CF7A7000C13EA /* UITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EF216D3293CF7A7000C13EA /* UITextField.swift */; };
 		5EFE69662939FD6A00F9740C /* WellcomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5EFE69652939FD6A00F9740C /* WellcomViewController.swift */; };
@@ -193,6 +194,7 @@
 		5ED7511E2941125400B4607C /* UserModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModel.swift; sourceTree = "<group>"; };
 		5ED751202941125E00B4607C /* UserAvatarModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserAvatarModel.swift; sourceTree = "<group>"; };
 		5ED751222941E5C600B4607C /* Router.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		5ED75124294356F700B4607C /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		5EF216D1293CF73E000C13EA /* BorderState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BorderState.swift; sourceTree = "<group>"; };
 		5EF216D3293CF7A7000C13EA /* UITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextField.swift; sourceTree = "<group>"; };
 		5EFE69652939FD6A00F9740C /* WellcomViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WellcomViewController.swift; sourceTree = "<group>"; };
@@ -573,6 +575,7 @@
 				5EF216D1293CF73E000C13EA /* BorderState.swift */,
 				5E3A12E8293E473400BC08EE /* Images.swift */,
 				5E3A12EE293F733D00BC08EE /* LocalError.swift */,
+				5ED75124294356F700B4607C /* EditProfile.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -857,6 +860,7 @@
 				5ED751192940D0F600B4607C /* EditProfileViewController.swift in Sources */,
 				5E3A131F293F895000BC08EE /* RegisterResponse.swift in Sources */,
 				5E3A12EF293F733D00BC08EE /* LocalError.swift in Sources */,
+				5ED75125294356F700B4607C /* EditProfile.swift in Sources */,
 				5E3A130D293F889800BC08EE /* GetUserRequest.swift in Sources */,
 				5E3A1319293F891900BC08EE /* GetUserResponse.swift in Sources */,
 				5E3A1307293F883800BC08EE /* APIService.swift in Sources */,

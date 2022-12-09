@@ -20,6 +20,7 @@ final class EditProfileViewController: ViewController {
     var presenter: EditProfilePresentationLogic?
     
     private let robotoFont = RobotoFont.self
+    private let editProfile = EditProfilePage.self
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -62,7 +63,7 @@ final class EditProfileViewController: ViewController {
         textView.layer.cornerRadius = 10
         textView.layer.borderWidth = 0.2
         textView.layer.borderColor = UIColor.gray.cgColor
-        textView.text = "Расскажите о себе"
+        textView.text = editProfile.abotUser
         textView.textColor = .gray
         textView.delegate = self
         return textView
@@ -73,43 +74,43 @@ final class EditProfileViewController: ViewController {
         label.font = UIFont(name: robotoFont.light, size: 14)
         label.textColor = .gray
         label.textAlignment = .center
-        label.text = "Краткая информация"
+        label.text = editProfile.aboutUserDescription
         return label
     }()
 
     private lazy var cityTextField: TextField = {
         let textField = TextField()
-        textField.placeholder = "Город проживания"
+        textField.placeholder = editProfile.city
         textField.font = UIFont(name: UIFont.Roboto.light.rawValue, size: 22)
         textField.clearButtonMode = .whileEditing
         textField.returnKeyType = UIReturnKeyType.done
         textField.backgroundColor = .clear
         textField.changeStateBottomLine(with: .normal)
-//        textField.delegate = self
+        textField.delegate = self
         return textField
     }()
     
-    private lazy var bithdateTextField: TextField = {
+    private lazy var birthdayTextField: TextField = {
         let textField = TextField()
-        textField.placeholder = "Дата рождения"
+        textField.placeholder = editProfile.birthday
         textField.font = UIFont(name: UIFont.Roboto.light.rawValue, size: 22)
         textField.clearButtonMode = .whileEditing
         textField.returnKeyType = UIReturnKeyType.done
         textField.backgroundColor = .clear
         textField.changeStateBottomLine(with: .normal)
-//        textField.delegate = self
+        textField.delegate = self
         return textField
     }()
     
     private lazy var horoscopeTextField: TextField = {
         let textField = TextField()
-        textField.placeholder = "Гороскоп"
+        textField.placeholder = editProfile.horoscope
         textField.font = UIFont(name: UIFont.Roboto.light.rawValue, size: 22)
         textField.clearButtonMode = .whileEditing
         textField.returnKeyType = UIReturnKeyType.done
         textField.backgroundColor = .clear
         textField.changeStateBottomLine(with: .normal)
-//        textField.delegate = self
+        textField.delegate = self
         return textField
     }()
     
@@ -147,18 +148,38 @@ extension EditProfileViewController: EditProfileDisplayLogic {
     }
 }
 
+// MARK: - UITextFieldDelegate impl
+extension EditProfileViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case cityTextField:
+            textField.resignFirstResponder()
+            return true
+        case birthdayTextField:
+            textField.resignFirstResponder()
+            return true
+        case horoscopeTextField:
+            textField.resignFirstResponder()
+            return true
+        default:
+            return false
+        }
+    }
+}
+
 // MARK: - UITextViewDelegate impl
 extension EditProfileViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
-        if aboutTextView.text == "Расскажите о себе" {
+        if aboutTextView.text == editProfile.abotUser {
             setupPlaceHolderForTextView("", .black)
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if aboutTextView.text.isEmpty {
-            setupPlaceHolderForTextView("Расскажите о себе", .gray)
+            setupPlaceHolderForTextView(editProfile.abotUser, .gray)
         }
     }
 }
@@ -196,7 +217,7 @@ private extension EditProfileViewController {
             descriptionAbout,
             phoneLabel,
             cityTextField,
-            bithdateTextField,
+            birthdayTextField,
             horoscopeTextField
         ]
         scrollView.addSubViewOnScrollVeiw(for: views, scrollView: scrollView)
@@ -236,11 +257,11 @@ private extension EditProfileViewController {
             cityTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             cityTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             
-            bithdateTextField.topAnchor.constraint(equalTo: cityTextField.bottomAnchor, constant: 40),
-            bithdateTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            bithdateTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            birthdayTextField.topAnchor.constraint(equalTo: cityTextField.bottomAnchor, constant: 40),
+            birthdayTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            birthdayTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             
-            horoscopeTextField.topAnchor.constraint(equalTo: bithdateTextField.bottomAnchor, constant: 40),
+            horoscopeTextField.topAnchor.constraint(equalTo: birthdayTextField.bottomAnchor, constant: 40),
             horoscopeTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             horoscopeTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             horoscopeTextField.bottomAnchor.constraint(lessThanOrEqualTo: view.keyboardLayoutGuide.topAnchor, constant: -30)
