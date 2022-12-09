@@ -19,7 +19,7 @@ final class AuthPresenter {
     
     private let moduleBuilder: Buildable
     private let apiService: APIServiceable
-    private let masksValidation = MasksValidationFields()
+    private let masksValidation = MasksValidationFields.self
     
     lazy var validNumber = Bool()
     

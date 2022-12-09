@@ -22,7 +22,7 @@ final class ProfileViewController: ViewController {
     private let cityLabel = UILabel()
     private let bithdateLabel = UILabel()
     // TODO: -
-    private let goroskopLabel = UILabel()
+    private let horoscope = UILabel()
     private let aboutLabel = UILabel()
 
     private let stackView: UIStackView = {
@@ -69,7 +69,7 @@ private extension ProfileViewController {
             usernameLabel,
             cityLabel,
             bithdateLabel,
-            goroskopLabel,
+            horoscope,
             aboutLabel
         )
     }

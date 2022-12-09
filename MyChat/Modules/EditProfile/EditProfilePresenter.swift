@@ -14,6 +14,7 @@ protocol EditProfilePresenterDelegate: AnyObject {
 protocol EditProfilePresentationLogic: AnyObject {
     func viewDidLoad()
     func viewWillDisappear()
+    func changeAvatar()
 }
 
 final class EditProfilePresenter {
@@ -48,6 +49,10 @@ final class EditProfilePresenter {
 
 extension EditProfilePresenter: EditProfilePresentationLogic {
     
+    func changeAvatar() {
+        viewController?.presentPhotoActionSheet()
+    }
+    
     func viewWillDisappear() {
         viewController?.showLoading()
         Task {
@@ -70,7 +75,7 @@ extension EditProfilePresenter: EditProfilePresentationLogic {
             } catch {
                 await MainActor.run {
                     viewController?.hideLoading()
-                    viewController?.showError()
+                    viewController?.showEditProfileError()
                 }
             }
         }

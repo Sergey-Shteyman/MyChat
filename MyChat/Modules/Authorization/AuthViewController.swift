@@ -22,14 +22,14 @@ final class AuthViewController: ViewController {
     
     var presenter: PresentationAuthLogic?
     
-    private let authPageModel = AuthPageModel()
-    private let robotoFont = RobotoFont()
+    private let authPage = AuthPage.self
+    private let robotoFont = RobotoFont.self
     
     private lazy var telephoneLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: robotoFont.regular, size: 28)
         label.textAlignment = .center
-        label.text = authPageModel.phoneNumber
+        label.text = authPage.phoneNumber
         return label
     }()
     
@@ -39,13 +39,13 @@ final class AuthViewController: ViewController {
         label.numberOfLines = 0
         label.font = UIFont(name: robotoFont.regular, size: 15)
         label.textAlignment = .center
-        label.text = authPageModel.descriptionPhone
+        label.text = authPage.descriptionPhone
         return label
     }()
     
     private lazy var containerCountryTextField: TextField = {
         let textField = TextField()
-        textField.placeholder = authPageModel.chouseCountry
+        textField.placeholder = authPage.chouseCountry
         textField.font = .systemFont(ofSize: 26)
         return textField
     }()
@@ -75,7 +75,7 @@ final class AuthViewController: ViewController {
 
     private lazy var phoneNumberTextField: TextField = {
         let textField = TextField()
-        textField.placeholder = authPageModel.phonePlaceholder
+        textField.placeholder = authPage.phonePlaceholder
         textField.font = .systemFont(ofSize: 26)
         textField.clearButtonMode = .whileEditing
         textField.keyboardType = UIKeyboardType.numberPad
@@ -88,7 +88,7 @@ final class AuthViewController: ViewController {
     private lazy var authButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = UIFont(name: UIFont.Roboto.regular.rawValue, size: 20)
-        button.setTitle(authPageModel.authButton, for: .normal)
+        button.setTitle(authPage.authButton, for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 20
         button.titleLabel?.textAlignment = .center

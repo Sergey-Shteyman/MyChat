@@ -25,19 +25,30 @@ protocol RegistrationDisplayLogic: ViewController {
 final class RegistrationViewController: ViewController {
         
     var presenter: RegistrationPresentationLogic?
-    let registrationModel = RegistrationPageModel()
+    let registrationPage = RegistrationPage.self
         
     private lazy var registrLabel: UILabel = {
         let label = UILabel()
-        label.text = registrationModel.regTextForLabel
+        label.text = registrationPage.regTextForLabel
         label.font = UIFont(name: UIFont.Roboto.regular.rawValue, size: 28)
         label.textAlignment = .center
         return label
     }()
     
+    private lazy var phoneNumberLabel: UILabel = {
+        let label = UILabel()
+        label.font = .preferredFont(forTextStyle: .title1)
+        label.font = UIFont(name: UIFont.Roboto.thin.rawValue, size: 28)
+        label.textAlignment = .center
+        label.text = "23423"
+        label.textColor = .black
+        label.backgroundColor = .clear
+        return label
+    }()
+    
     private lazy var nameTextField: TextField = {
         let textField = TextField()
-        textField.placeholder = registrationModel.namePlaceHolder
+        textField.placeholder = registrationPage.namePlaceHolder
         textField.font = UIFont(name: UIFont.Roboto.regular.rawValue, size: 26)
         textField.clearButtonMode = .whileEditing
         textField.returnKeyType = UIReturnKeyType.done
@@ -46,10 +57,10 @@ final class RegistrationViewController: ViewController {
         textField.addTarget(self, action: #selector(isValidNameTextField), for: .editingChanged)
         return textField
     }()
-    
+
     private lazy var userNameTextField: TextField = {
         let textField = TextField()
-        textField.placeholder = registrationModel.userNamePlaceholder
+        textField.placeholder = registrationPage.userNamePlaceholder
         textField.font = UIFont(name: UIFont.Roboto.regular.rawValue, size: 26)
         textField.clearButtonMode = .whileEditing
         textField.returnKeyType = UIReturnKeyType.done
@@ -58,25 +69,15 @@ final class RegistrationViewController: ViewController {
         textField.addTarget(self, action: #selector(isValidUserNameTextField), for: .editingChanged)
         return textField
     }()
-    
-    private lazy var phoneNumberLabel: UILabel = {
-        let label = UILabel()
-        label.font = .preferredFont(forTextStyle: .title1)
-        label.font = UIFont(name: UIFont.Roboto.thin.rawValue, size: 28)
-        label.textAlignment = .center
-        label.textColor = .black
-        label.backgroundColor = .clear
-        return label
-    }()
-    
+
     private lazy var accessButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = UIFont(name: UIFont.Roboto.regular.rawValue, size: 20)
-        button.setTitle(registrationModel.regButtonText, for: .normal)
+        button.setTitle(registrationPage.regButtonText, for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 20
         button.titleLabel?.textAlignment = .center
-        accessButton.addTarget(self, action: #selector(buttonIsTapped), for: .touchDown)
+        button.addTarget(self, action: #selector(buttonIsTapped), for: .touchDown)
         return button
     }()
     
@@ -172,17 +173,17 @@ private extension RegistrationViewController {
     
     func cancelAllert() -> UIAlertController {
         lazy var allert = UIAlertController()
-        allert = .init(title: registrationModel.shureClouseRegistration,
-                       message: registrationModel.shouldShure, preferredStyle: .alert)
-        allert.addAction(UIAlertAction(title: registrationModel.exit, style: .destructive, handler: { _ in
+        allert = .init(title: registrationPage.shureClouseRegistration,
+                       message: registrationPage.shouldShure, preferredStyle: .alert)
+        allert.addAction(UIAlertAction(title: registrationPage.exit, style: .destructive, handler: { _ in
             self.presenter?.cancelRegistration()
         }))
-        allert.addAction(UIAlertAction(title: registrationModel.continueRegistration, style: .default))
+        allert.addAction(UIAlertAction(title: registrationPage.continueRegistration, style: .default))
         return allert
     }
     
     func setupBackBarItem() {
-        let backButton = UIBarButtonItem(title: registrationModel.backBarButton,
+        let backButton = UIBarButtonItem(title: registrationPage.backBarButton,
                                          style: .done, target: self, action: #selector(backButtontapped))
         self.navigationItem.leftBarButtonItem = backButton
     }
@@ -192,34 +193,38 @@ private extension RegistrationViewController {
     }
 
     func addSubViews() {
-        let arrayViews = [registrLabel, nameTextField, phoneNumberLabel, userNameTextField,
-                          accessButton]
+        let arrayViews = [
+            registrLabel,
+            phoneNumberLabel,
+            nameTextField,
+            userNameTextField,
+            accessButton
+        ]
         view.myAddSubViews(from: arrayViews)
     }
 
     func addConstraints() {
-        NSLayoutConstraint.activate([registrLabel.topAnchor.constraint(lessThanOrEqualTo: view.topAnchor, constant: 150),
-                                     registrLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                                     
-                                     phoneNumberLabel.topAnchor.constraint(equalTo: registrLabel.bottomAnchor, constant: 50),
-                                     phoneNumberLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                                     
-                                     nameTextField.topAnchor.constraint(equalTo: phoneNumberLabel.bottomAnchor, constant: 50),
-                                     nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-                                     nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -45),
-                                     
-                                     userNameTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 50),
-                                     userNameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-                                     userNameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -45),
-                                     
-                                     accessButton.topAnchor.constraint(greaterThanOrEqualTo: userNameTextField.bottomAnchor,
-                                                                       constant: 50),
-                                     accessButton.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor,
-                                                                          constant: -80),
-                                     accessButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-                                     accessButton.widthAnchor.constraint(equalToConstant: 220),
-                                     accessButton.heightAnchor.constraint(equalToConstant: 40)
-                                    ])
+        NSLayoutConstraint.activate([
+             registrLabel.topAnchor.constraint(lessThanOrEqualTo: view.topAnchor, constant: 150),
+             registrLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+             
+             phoneNumberLabel.topAnchor.constraint(equalTo: registrLabel.bottomAnchor, constant: 50),
+             phoneNumberLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+
+             nameTextField.topAnchor.constraint(equalTo: phoneNumberLabel.bottomAnchor, constant: 50),
+             nameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+             nameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -45),
+
+             userNameTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 50),
+             userNameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+             userNameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -45),
+
+             accessButton.topAnchor.constraint(greaterThanOrEqualTo: userNameTextField.bottomAnchor, constant: 50),
+             accessButton.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor, constant: -80),
+             accessButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+             accessButton.widthAnchor.constraint(equalToConstant: 220),
+             accessButton.heightAnchor.constraint(equalToConstant: 40)
+        ])
     }
 }
 
