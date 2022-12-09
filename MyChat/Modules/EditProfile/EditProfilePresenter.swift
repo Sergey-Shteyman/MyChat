@@ -70,7 +70,7 @@ extension EditProfilePresenter: EditProfilePresentationLogic {
             } catch {
                 await MainActor.run {
                     viewController?.hideLoading()
-                    viewController?.showError()
+                    viewController?.showEditProfileError()
                 }
             }
         }

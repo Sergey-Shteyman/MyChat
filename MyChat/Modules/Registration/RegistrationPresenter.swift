@@ -19,7 +19,7 @@ protocol RegistrationPresentationLogic: AnyObject {
 // MARK: - RegistrationPresenter
 final class RegistrationPresenter {
     
-    let validNameMask = MasksValidationFields().validNameField
+    let validNameMask = MasksValidationFields.validNameField
     
     lazy var validUserName = Bool()
     lazy var validName = Bool()

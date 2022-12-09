@@ -21,8 +21,8 @@ protocol VerificationDisplayLogic: ViewController {
 // MARK: - VerificationViewController
 final class VerificationViewController: ViewController {
 
-    private let robotoFont = RobotoFont()
-    private let verifyModel = VerificationModel()
+    private let robotoFont = RobotoFont.self
+    private let verify = VerificationPage.self
     private let messageImage = Images.message.rawValue
     private let phoneImage = Images.iphone.rawValue
     
@@ -52,7 +52,7 @@ final class VerificationViewController: ViewController {
         let label = UILabel()
         label.font = UIFont(name: UIFont.Roboto.medium.rawValue, size: 25)
         label.textAlignment = .center
-        label.text = verifyModel.checkYorSMS
+        label.text = verify.checkYorSMS
         return label
     }()
     
@@ -60,7 +60,7 @@ final class VerificationViewController: ViewController {
         let label = UILabel()
         label.font = UIFont(name: UIFont.Roboto.regular.rawValue, size: 15)
         label.textAlignment = .center
-        label.text = verifyModel.smsDescription
+        label.text = verify.smsDescription
         label.lineBreakMode = .byWordWrapping
         label.numberOfLines = 2
         return label
@@ -117,7 +117,7 @@ final class VerificationViewController: ViewController {
     private lazy var verifyButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = UIFont(name: UIFont.Roboto.regular.rawValue, size: 20)
-        button.setTitle(verifyModel.nextButton, for: .normal)
+        button.setTitle(verify.nextButton, for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 20
         button.titleLabel?.textAlignment = .center
@@ -293,9 +293,9 @@ private extension VerificationViewController {
     
     func invalidCodeAllert() -> UIAlertController {
         lazy var allert = UIAlertController()
-        allert = .init(title: verifyModel.wrongSMS,
-                       message: verifyModel.checkCorrectFields, preferredStyle: .alert)
-        allert.addAction(UIAlertAction(title: verifyModel.inputOneMoreCode, style: .default, handler: {[weak self] _ in
+        allert = .init(title: verify.wrongSMS,
+                       message: verify.checkCorrectFields, preferredStyle: .alert)
+        allert.addAction(UIAlertAction(title: verify.inputOneMoreCode, style: .default, handler: {[weak self] _ in
             self?.presenter?.prepareScreen()
             self?.firstCodeSquare.becomeFirstResponder()
         }))

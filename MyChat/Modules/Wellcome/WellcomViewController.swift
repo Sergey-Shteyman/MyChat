@@ -17,14 +17,14 @@ final class WellcomViewController: ViewController {
     
     var presenter: WellcomPresentationLogic?
     
-    private let robotoFont = RobotoFont()
-    private let welcomePage = WelcomePageModel()
+    private let robotoFont = RobotoFont.self
+    private let welcome = WelcomePage.self
     
     private lazy var nameApp: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: robotoFont.medium, size: 28)
         label.textAlignment = .center
-        label.text = welcomePage.nameApp
+        label.text = welcome.nameApp
         return label
     }()
     
@@ -32,14 +32,14 @@ final class WellcomViewController: ViewController {
         let label = UILabel()
         label.font = UIFont(name: robotoFont.regular, size: 14)
         label.textAlignment = .center
-        label.text = welcomePage.producedBy
+        label.text = welcome.producedBy
         return label
     }()
     
     private lazy var nameAutor: UILabel = {
         let label = UILabel()
         label.font = UIFont(name: robotoFont.regular, size: 16)
-        label.text = welcomePage.nameAutor
+        label.text = welcome.nameAutor
         label.textAlignment = .center
         return label
     }()
@@ -48,7 +48,7 @@ final class WellcomViewController: ViewController {
     private lazy var startButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = UIFont(name: UIFont.Roboto.regular.rawValue, size: 20)
-        button.setTitle(welcomePage.startButton, for: .normal)
+        button.setTitle(welcome.startButton, for: .normal)
         button.backgroundColor = .systemBlue
         button.layer.cornerRadius = 20
         button.titleLabel?.textAlignment = .center

@@ -21,7 +21,7 @@ final class VerificationPresenter {
     private let moduleBuilder: Buildable
     private let codeTelephoneNumber: String
     private let telephoneNumber: String
-    private let validFields = MasksValidationFields()
+    private let validFields = MasksValidationFields.self
     private let apiService: APIServiceable
     private let keychainService: Storagable
     private let defaultService: DefaultServicable
