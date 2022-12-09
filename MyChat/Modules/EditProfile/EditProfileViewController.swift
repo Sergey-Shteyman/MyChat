@@ -25,17 +25,23 @@ final class EditProfileViewController: ViewController {
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
+        scrollView.isUserInteractionEnabled = true
         scrollView.backgroundColor = .white
         return scrollView
     }()
 
-    private lazy var avatarButton: UIButton = {
-        let button = UIButton(type: .system)
-        button.layer.cornerRadius = 59
-        button.layer.borderWidth = 1
-        button.layer.borderColor = UIColor.gray.cgColor
-        button.addTarget(self, action: #selector(didTapChangeProfileAvatar), for: .touchDown)
-        return button
+    private lazy var avatarImageView: UIImageView = {
+        let imageVeiw = UIImageView()
+        imageVeiw.image = UIImage(systemName: "person")
+        imageVeiw.layer.cornerRadius = 59
+        imageVeiw.layer.borderWidth = 1
+        imageVeiw.layer.borderColor = UIColor.gray.cgColor
+        imageVeiw.contentMode = .scaleAspectFit
+        imageVeiw.layer.masksToBounds = true
+        imageVeiw.isUserInteractionEnabled = true
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapChangeProfileAvatar))
+        imageVeiw.addGestureRecognizer(gesture)
+        return imageVeiw
     }()
     
     private lazy var usernameLabel: UILabel = {
@@ -191,15 +197,25 @@ extension EditProfileViewController: UITextViewDelegate {
     }
 }
 
+// MARK: - UIImagePickerControllerDelegate Impl
 extension EditProfileViewController: UIImagePickerControllerDelegate {
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        
+        picker.dismiss(animated: true)
+        guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
+            return
+        }
+        avatarImageView.image = selectedImage
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        
+        picker.dismiss(animated: true)
     }
+}
+
+// MARK: - UINavigationControllerDelegate Impl
+extension EditProfileViewController: UINavigationControllerDelegate {
+    
 }
 
 // MARK: - Private methods
@@ -209,6 +225,37 @@ private extension EditProfileViewController {
         view.addTapGestureToHideKeyboard()
         setupScrollView()
         setupConstraints()
+    }
+    
+    func presentCamera() {
+        let viewController = UIImagePickerController()
+        viewController.sourceType = .camera
+        viewController.delegate = self
+        viewController.allowsEditing = true
+        present(viewController, animated: true)
+    }
+    
+    func presentPhotoPicker() {
+        let viewController = UIImagePickerController()
+        viewController.sourceType = .photoLibrary
+        viewController.delegate = self
+        viewController.allowsEditing = true
+        present(viewController, animated: true)
+    }
+    
+    func configuredActionSheet() -> UIAlertController {
+        let actionSheet = UIAlertController(
+            title: "Аватар профиля",
+            message: "Как бы вы хотели выбрать картинку?",
+            preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Выход", style: .cancel))
+        actionSheet.addAction(UIAlertAction(title: "Сделать снимок", style: .default, handler: { [weak self] _ in
+            self?.presentCamera()
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Выбрать снимок", style: .default, handler: { [weak self] _ in
+            self?.presentPhotoPicker()
+        }))
+        return actionSheet
     }
     
     func setupPlaceHolderForTextView(_ text: String,
@@ -226,24 +273,9 @@ private extension EditProfileViewController {
         setupScrollViewConstraints()
     }
     
-    func configuredActionSheet() -> UIAlertController {
-        let actionSheet = UIAlertController(
-            title: "Аватар профиля",
-            message: "Как бы вы хотели выбрать картинку?",
-            preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Выход", style: .cancel))
-        actionSheet.addAction(UIAlertAction(title: "Сделать снимок", style: .default, handler: { _ in
-            
-        }))
-        actionSheet.addAction(UIAlertAction(title: "Выбрать снимок", style: .default, handler: { _ in
-            
-        }))
-        return actionSheet
-    }
-    
     func addViewwsOnScrollView() {
         let views = [
-            avatarButton,
+            avatarImageView,
             usernameLabel,
             phoneLabel,
             aboutTextView,
@@ -251,7 +283,7 @@ private extension EditProfileViewController {
             phoneLabel,
             cityTextField,
             birthdayTextField,
-            horoscopeTextField
+            horoscopeTextField,
         ]
         scrollView.addSubViewOnScrollVeiw(for: views, scrollView: scrollView)
     }
@@ -267,12 +299,12 @@ private extension EditProfileViewController {
     
     func setupConstraints() {
         NSLayoutConstraint.activate([
-            avatarButton.topAnchor.constraint(lessThanOrEqualTo: scrollView.topAnchor, constant: 20),
-            avatarButton.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
-            avatarButton.widthAnchor.constraint(equalToConstant: 120),
-            avatarButton.heightAnchor.constraint(equalToConstant: 120),
+            avatarImageView.topAnchor.constraint(lessThanOrEqualTo: scrollView.topAnchor, constant: 20),
+            avatarImageView.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
+            avatarImageView.widthAnchor.constraint(equalToConstant: 120),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 120),
             
-            usernameLabel.topAnchor.constraint(equalTo: avatarButton.bottomAnchor, constant: 20),
+            usernameLabel.topAnchor.constraint(equalTo: avatarImageView.bottomAnchor, constant: 20),
             usernameLabel.centerXAnchor.constraint(equalTo: scrollView.centerXAnchor),
             
             phoneLabel.topAnchor.constraint(equalTo: usernameLabel.bottomAnchor, constant: 20),
