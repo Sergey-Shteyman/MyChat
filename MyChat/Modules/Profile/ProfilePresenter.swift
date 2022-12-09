@@ -57,7 +57,7 @@ extension ProfilePresenter: ProfilePresentationLogic {
     
     func didTapEditButton() {
         guard let userModel = userModel else {
-            viewController?.showError()
+            viewController?.showProfileError()
             return
         }
         let editProfileModule = moduleBuilder.buildEditProfileModule(
@@ -73,7 +73,7 @@ private extension ProfilePresenter {
     func showError() async {
         await MainActor.run {
             viewController?.hideLoading()
-            viewController?.showError()
+            viewController?.showProfileError()
         }
     }
 }
