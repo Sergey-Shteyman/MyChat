@@ -42,7 +42,7 @@ private extension SceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         let router = AppRouter(window: window)
         let moduleBuilder = ModuleBuilder(databaseService: databaseService, router: router)
-        let viewController = ProfileViewController()
+        let viewController = moduleBuilder.buildSplashModule()
         router.setRoot(viewController)
         window.makeKeyAndVisible()
         self.window = window

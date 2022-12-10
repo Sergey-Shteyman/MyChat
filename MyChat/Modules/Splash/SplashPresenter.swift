@@ -32,12 +32,7 @@ final class SplashPresenter {
 
 extension SplashPresenter: SplashPresentationLogic {
     func viewDidLoad() {
-        guard let isUserAuth = defaultsService.fetchObject(type: Bool.self, forKey: .isUserAuth)
-        else {
-            viewController?.showError()
-            return
-        }
-
+        let isUserAuth = defaultsService.fetchObject(type: Bool.self, forKey: .isUserAuth) ?? false
         let viewController = isUserAuth
         ? moduleBuilder.buildChatListViewController()
         : moduleBuilder.buildWellcomeModule()

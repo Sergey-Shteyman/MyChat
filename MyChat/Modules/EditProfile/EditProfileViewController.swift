@@ -240,14 +240,16 @@ private extension EditProfileViewController {
     
     func configuredActionSheet() -> UIAlertController {
         let actionSheet = UIAlertController(
-            title: "Аватар профиля",
-            message: "Как бы вы хотели выбрать картинку?",
+            title: editProfile.titleActionSheet,
+            message: editProfile.messageActionSheet,
             preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Выход", style: .cancel))
-        actionSheet.addAction(UIAlertAction(title: "Сделать снимок", style: .default, handler: { [weak self] _ in
+        actionSheet.addAction(UIAlertAction(title: editProfile.exitActionSheet, style: .cancel))
+        actionSheet.addAction(UIAlertAction(title: editProfile.takePhotoActionSheet,
+                                            style: .default, handler: { [weak self] _ in
             self?.presentCamera()
         }))
-        actionSheet.addAction(UIAlertAction(title: "Выбрать снимок", style: .default, handler: { [weak self] _ in
+        actionSheet.addAction(UIAlertAction(title: editProfile.chousePhotoActionSheet,
+                                            style: .default, handler: { [weak self] _ in
             self?.presentPhotoPicker()
         }))
         return actionSheet

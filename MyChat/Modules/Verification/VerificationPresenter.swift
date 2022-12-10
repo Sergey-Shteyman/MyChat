@@ -85,10 +85,13 @@ private extension VerificationPresenter {
                 let body = VerifyCodeBody(phone: phone, code: code)
                 let request = VerifyCodeRequest(body: body)
                 let response = try await apiService.verifyCode(request: request)
-                try keychainService.save(response.accessToken, for: .accessToken)
-                try keychainService.save(response.refreshToken, for: .refreshToken)
                 
-                if response.isUserExists {
+                if response.isUserExists,
+                   let accessToken = response.accessToken,
+                   let refreshToken = response.refreshToken {
+                    
+                    try keychainService.save(accessToken, for: .accessToken)
+                    try keychainService.save(refreshToken, for: .refreshToken)
                     defaultService.save(true, forKey: .isUserAuth)
                 }
 

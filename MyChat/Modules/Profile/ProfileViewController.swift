@@ -19,6 +19,7 @@ final class ProfileViewController: ViewController {
     var presenter: ProfilePresentationLogic?
     
     private let robotoFont = RobotoFont.self
+    private let profile = ProfilePage.self
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -28,7 +29,7 @@ final class ProfileViewController: ViewController {
 
     private lazy var avatarImageView: UIImageView = {
         let imageVeiw = UIImageView()
-        imageVeiw.image = UIImage(systemName: "person")
+        imageVeiw.image = UIImage(systemName: profile.personImage)
         imageVeiw.layer.cornerRadius = 59
         imageVeiw.layer.borderWidth = 1
         imageVeiw.layer.borderColor = UIColor.gray.cgColor
@@ -63,7 +64,7 @@ final class ProfileViewController: ViewController {
         aboutLabel.layer.cornerRadius = 10
         aboutLabel.layer.borderWidth = 0.2
         aboutLabel.layer.borderColor = UIColor.gray.cgColor
-        aboutLabel.text = "Что-то обо мне..."
+        aboutLabel.text = profile.abotUser
         aboutLabel.textColor = .gray
         aboutLabel.textAlignment = .center
         aboutLabel.numberOfLines = 0
@@ -76,13 +77,13 @@ final class ProfileViewController: ViewController {
         label.font = UIFont(name: robotoFont.light, size: 14)
         label.textColor = .gray
         label.textAlignment = .left
-        label.text = "Краткая информация"
+        label.text = profile.aboutUserDescription
         return label
     }()
     
     private lazy var cityLabel: UILabel = {
         let label = UILabel()
-        label.text = "Город проживания"
+        label.text = profile.city
         label.textColor = .gray
         label.textAlignment = .center
         label.font = UIFont(name: UIFont.Roboto.light.rawValue, size: 17)
@@ -96,7 +97,7 @@ final class ProfileViewController: ViewController {
     
     private lazy var bithdateLabel: UILabel = {
         let label = UILabel()
-        label.text = "Дата рождения"
+        label.text = profile.birthday
         label.textColor = .gray
         label.textAlignment = .center
         label.font = UIFont(name: UIFont.Roboto.light.rawValue, size: 17)
@@ -110,7 +111,7 @@ final class ProfileViewController: ViewController {
     
     private lazy var horoscopeLabel: UILabel = {
         let label = UILabel()
-        label.text = "Гороскоп"
+        label.text = profile.horoscope
         label.textColor = .gray
         label.textAlignment = .center
         label.font = UIFont(name: UIFont.Roboto.light.rawValue, size: 17)
@@ -124,6 +125,7 @@ final class ProfileViewController: ViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
         setupViewController()
         presenter?.viewDidLoad()
     }
@@ -166,7 +168,7 @@ private extension ProfileViewController {
     }
     
     func setupEditBarItem() {
-        let editButton = UIBarButtonItem(title: "Edit",
+        let editButton = UIBarButtonItem(title: profile.editButton,
                                          style: .done, target: self, action: #selector(editButtontapped))
         self.navigationItem.rightBarButtonItem = editButton
     }

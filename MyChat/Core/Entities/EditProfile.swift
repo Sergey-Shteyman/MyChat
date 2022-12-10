@@ -11,4 +11,9 @@ enum EditProfilePage {
     static let city = "Город проживания"
     static let birthday = "Дата рождения"
     static let horoscope = "Гороскоп"
+    static let titleActionSheet = "Аватар профиля"
+    static let messageActionSheet = "Как бы вы хотели выбрать картинку?"
+    static let exitActionSheet = "Выход"
+    static let takePhotoActionSheet = "Сделать снимок"
+    static let chousePhotoActionSheet = "Выбрать снимок"
 }

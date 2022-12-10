@@ -6,9 +6,9 @@
 //
 
 struct VerifyCodeResponse: Decodable {
-    let refreshToken: String
-    let accessToken: String
-    let userID: Int
+    let refreshToken: String?
+    let accessToken: String?
+    let userID: Int?
     let isUserExists: Bool
 
     enum CodingKeys: String, CodingKey {

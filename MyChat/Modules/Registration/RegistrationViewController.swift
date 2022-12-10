@@ -38,7 +38,6 @@ final class RegistrationViewController: ViewController {
         label.font = .preferredFont(forTextStyle: .title1)
         label.font = UIFont(name: UIFont.Roboto.thin.rawValue, size: 28)
         label.textAlignment = .center
-        label.text = "23423"
         label.textColor = .black
         label.backgroundColor = .clear
         return label
@@ -53,6 +52,7 @@ final class RegistrationViewController: ViewController {
         textField.backgroundColor = .clear
         textField.delegate = self
         textField.addTarget(self, action: #selector(isValidNameTextField), for: .editingChanged)
+        textField.autocorrectionType = .no
         return textField
     }()
 
@@ -63,6 +63,7 @@ final class RegistrationViewController: ViewController {
         textField.clearButtonMode = .whileEditing
         textField.returnKeyType = UIReturnKeyType.done
         textField.backgroundColor = .clear
+        textField.autocorrectionType = .no
         textField.delegate = self
         textField.addTarget(self, action: #selector(isValidUserNameTextField), for: .editingChanged)
         return textField
@@ -145,8 +146,16 @@ extension RegistrationViewController: RegistrationDisplayLogic {
 extension RegistrationViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        userNameTextField.resignFirstResponder()
-        return true
+        switch textField {
+        case userNameTextField:
+            userNameTextField.resignFirstResponder()
+            return true
+        case nameTextField:
+            nameTextField.resignFirstResponder()
+            return true
+        default:
+            return false
+        }
     }
 }
 

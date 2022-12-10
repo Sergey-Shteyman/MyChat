@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - Buildable
 protocol Buildable {
-    func buildSplashViewController() -> SplashViewController
+    func buildSplashModule() -> SplashViewController
     func buildWellcomeModule() -> WellcomViewController
     func buildAuthPageModule() -> AuthViewController
     func buildVerificationModule(codeTelephoneNumber: String, telephoneNumber: String) -> VerificationViewController
@@ -52,7 +52,7 @@ final class ModuleBuilder {
 // MARK: - Buildable Impl
 extension ModuleBuilder: Buildable {
     
-    func buildSplashViewController() -> SplashViewController {
+    func buildSplashModule() -> SplashViewController {
         let viewController = SplashViewController()
         let presenter = SplashPresenter(
             router: router,

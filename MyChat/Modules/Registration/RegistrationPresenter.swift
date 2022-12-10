@@ -73,7 +73,7 @@ extension RegistrationPresenter: RegistrationPresentationLogic {
               let userName = userName else {
             return
         }
-        let phone = "\(name)\(userName)"
+        let phone = "\(phoneNumberCode)\(telephoneNumber)"
         if isFieldsAreCorrect() {
             Task {
                 do {
@@ -91,8 +91,8 @@ extension RegistrationPresenter: RegistrationPresentationLogic {
                     defaultService.save(true, forKey: .isUserAuth)
 
                     await MainActor.run {
-                        // TODO: - Вынести в роутер?
-                        let chatListPage = moduleBuilder.buildChatListViewController()
+                        let chatListPage = moduleBuilder.buildProfileViewContrioller(phoneNumberCode,
+                                                                                     telephoneNumber)
                         router.push(chatListPage, true)
                     }
                 } catch {
@@ -142,10 +142,10 @@ private extension RegistrationPresenter {
         }
         if !name.isEmpty {
             viewController?.showNameValidationCorrect()
-            validUserName = true
+            validName = true
         } else {
             viewController?.showNameValidationError()
-            validUserName = false
+            validName = false
         }
     }
     
