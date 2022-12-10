@@ -49,7 +49,7 @@ private extension SceneDelegate {
     }
     
     func setupRealmConficuration() {
-        let version: UInt64 = 3
+        let version: UInt64 = 4
         let config = Realm.Configuration(
             schemaVersion: version,
             migrationBlock: { migration, oldSchemaVersion in

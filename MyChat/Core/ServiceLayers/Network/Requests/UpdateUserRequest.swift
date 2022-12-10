@@ -13,19 +13,15 @@ struct UpdateUserRequest {
 struct UpdateUserBody: Encodable {
     let name: String
     let username: String
-    let birthday: String
-    let city: String
-    let vk: String
-    let instagram: String
-    let status: String
+    let birthday: String?
+    let city: String?
+    let status: String?
     let avatar: UpdateUserAvatar?
     init(
         name: String,
         username: String,
         birthday: String,
         city: String,
-        vk: String,
-        instagram: String,
         status: String,
         avatar: UpdateUserAvatar?
     ) {
@@ -33,20 +29,18 @@ struct UpdateUserBody: Encodable {
         self.username = username
         self.birthday = birthday
         self.city = city
-        self.vk = vk
-        self.instagram = instagram
         self.status = status
         self.avatar = avatar
     }
     init(userModel: UserModel) {
         self.name = userModel.name
         self.username = userModel.username
-        self.birthday = userModel.birthday
+        // TODO: -
+        self.birthday = " " // userModel.birthday
         self.city = userModel.city
-        self.vk = userModel.vk
-        self.instagram = userModel.instagram
         self.status = userModel.status
-        self.avatar = UpdateUserAvatar(userAvatarModel: userModel.avatar)
+        self.avatar = nil
+        //self.avatar = UpdateUserAvatar(userAvatarModel: userModel.avatar)
     }
 }
 

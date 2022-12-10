@@ -13,7 +13,7 @@ protocol EditProfilePresenterDelegate: AnyObject {
 
 protocol EditProfilePresentationLogic: AnyObject {
     func viewDidLoad()
-    func viewWillDisappear()
+    func viewWillDisappear(status: String?, city: String?)
     func changeAvatar()
 }
 
@@ -56,8 +56,10 @@ extension EditProfilePresenter: EditProfilePresentationLogic {
         viewController?.presentPhotoActionSheet()
     }
     
-    func viewWillDisappear() {
+    func viewWillDisappear(status: String?, city: String?) {
         viewController?.showLoading()
+        userModel.status = status
+        userModel.city = city
         Task {
             do {
                 let accessToken = try keychainService.fetch(for: .accessToken)

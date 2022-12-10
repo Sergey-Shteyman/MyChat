@@ -92,13 +92,17 @@ private extension VerificationPresenter {
                     
                     try keychainService.save(accessToken, for: .accessToken)
                     try keychainService.save(refreshToken, for: .refreshToken)
+                    try keychainService.save(codeTelephoneNumber, for: .code)
+                    try keychainService.save(telephoneNumber, for: .phone)
                     defaultService.save(true, forKey: .isUserAuth)
                 }
 
                 await MainActor.run {
                     if response.isUserExists {
-                        let chatListViewController = moduleBuilder.buildChatListViewController()
-                        router.push(chatListViewController, true)
+                        let tabBarController = moduleBuilder.buildTabBarController(phoneNumberCode: codeTelephoneNumber,
+                                                                                         telephoneNumber: telephoneNumber)
+                        router.setRoot(tabBarController)
+                        router.push(tabBarController, true )
                     } else {
                         let registerPage = moduleBuilder.buildRegistrationModule(codeTelephoneNumber,
                                                                                            telephoneNumber)
