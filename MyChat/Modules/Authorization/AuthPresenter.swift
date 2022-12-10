@@ -20,12 +20,19 @@ final class AuthPresenter {
     private let moduleBuilder: Buildable
     private let apiService: APIServiceable
     private let masksValidation = MasksValidationFields.self
+    private let router: Router
+    
     
     lazy var validNumber = Bool()
     
-    init(apiService: APIServiceable, moduleBuilder: Buildable) {
+    init(
+        apiService: APIServiceable,
+        moduleBuilder: Buildable,
+        router: Router
+    ) {
         self.apiService = apiService
         self.moduleBuilder = moduleBuilder
+        self.router = router
     }
 }
 
@@ -70,7 +77,7 @@ private extension AuthPresenter {
                     if response.isSuccess {
                         let verifyPage = moduleBuilder.buildVerificationModule(codeTelephoneNumber: codeNumberPhone,
                                                                                telephoneNumber: number)
-                        viewController?.routTo(verifyPage)
+                        router.push(verifyPage, true)
                     } else {
                         viewController?.showAuthError()
                     }

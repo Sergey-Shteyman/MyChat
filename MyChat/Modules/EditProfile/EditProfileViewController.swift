@@ -10,7 +10,6 @@ import UIKit
 // MARK: - EditProfileDisplayLogic
 protocol EditProfileDisplayLogic: ViewController {
     func updateView(_ viewModel: ProfileViewModel)
-    func popToPreviousPage()
     func showEditProfileError()
     func presentPhotoActionSheet()
 }
@@ -146,10 +145,6 @@ extension EditProfileViewController: EditProfileDisplayLogic {
     func presentPhotoActionSheet() {
         let actionSheet = configuredActionSheet()
         present(actionSheet, animated: true)
-    }
-    
-    func popToPreviousPage() {
-        navigationController?.popViewController(animated: true)
     }
     
     func updateView(_ viewModel: ProfileViewModel) {

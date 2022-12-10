@@ -27,10 +27,12 @@ final class EditProfilePresenter {
     private let databaseService: DatabaseServicable
     private let codeNumberPhone: String
     private let numberPhone: String
+    private let router: Router
 
     private var userModel: UserModel
 
     init(
+        router: Router,
         databaseService: DatabaseServicable,
         userModel: UserModel,
         codeNumberPhone: String,
@@ -38,6 +40,7 @@ final class EditProfilePresenter {
         apiService: APIServiceable,
         keychainService: Storagable
     ) {
+        self.router = router
         self.databaseService = databaseService
         self.userModel = userModel
         self.codeNumberPhone = codeNumberPhone
@@ -70,7 +73,7 @@ extension EditProfilePresenter: EditProfilePresentationLogic {
                 await MainActor.run {
                     viewController?.hideLoading()
                     delegate?.didSaveUser(userModel: userModel)
-                    viewController?.popToPreviousPage()
+                    router.popViewController(true)
                 }
             } catch {
                 await MainActor.run {

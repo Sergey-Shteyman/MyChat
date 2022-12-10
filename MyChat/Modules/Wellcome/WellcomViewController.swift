@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - WellcomDisplayLogic
 protocol WellcomDisplayLogic: ViewController {
-    func routTo(_ viewController: UIViewController)
+    
 }
 
 // MARK: - WellcomViewController
@@ -70,9 +70,7 @@ final class WellcomViewController: ViewController {
 // MARK: - WellcomDisplayLogic Impl
 extension WellcomViewController: WellcomDisplayLogic {
     
-    func routTo(_ viewController: UIViewController) {
-        self.navigationController?.pushViewController(viewController, animated: true)
-    }
+
 }
 
 // MARK: - Private methods

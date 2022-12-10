@@ -69,7 +69,8 @@ extension ModuleBuilder: Buildable {
     
     func buildWellcomeModule() -> WellcomViewController {
         let viewController = WellcomViewController()
-        let presenter = WellcomePresenter(moduleBuilder: self)
+        let presenter = WellcomePresenter(moduleBuilder: self,
+                                          router: router)
         viewController.presenter = presenter
         presenter.viewController = viewController
         return viewController
@@ -77,7 +78,8 @@ extension ModuleBuilder: Buildable {
     
     func buildAuthPageModule() -> AuthViewController {
         let viewController = AuthViewController()
-        let presenter = AuthPresenter(apiService: apiService, moduleBuilder: self)
+        let presenter = AuthPresenter(apiService: apiService,
+                                      moduleBuilder: self, router: router)
         viewController.presenter = presenter
         presenter.viewController = viewController
         return viewController
@@ -85,12 +87,15 @@ extension ModuleBuilder: Buildable {
     
     func buildVerificationModule(codeTelephoneNumber: String, telephoneNumber: String) -> VerificationViewController {
         let viewController = VerificationViewController()
-        let presenter = VerificationPresenter(defaultService: defaultsService,
-                                              apiService: apiService,
-                                              keychainService: keychainService,
-                                              moduleBuilder: self,
-                                              codeTelephoneNumber: codeTelephoneNumber,
-                                              telephoneNumber: telephoneNumber)
+        let presenter = VerificationPresenter(
+            router: router,
+            defaultService: defaultsService,
+            apiService: apiService,
+            keychainService: keychainService,
+            moduleBuilder: self,
+            codeTelephoneNumber: codeTelephoneNumber,
+            telephoneNumber: telephoneNumber
+        )
         viewController.presenter = presenter
         presenter.viewController = viewController
         return viewController
@@ -98,7 +103,8 @@ extension ModuleBuilder: Buildable {
     
     func buildRegistrationModule(_ phoneNumberCode: String, _ telephoneNumber: String) -> RegistrationViewController {
         let viewController = RegistrationViewController()
-        let presenter = RegistrationPresenter(defaultService: defaultsService,
+        let presenter = RegistrationPresenter(router: router,
+                                              defaultService: defaultsService,
                                               apiService: apiService,
                                               keychainService: keychainService,
                                               phoneNumberCode: phoneNumberCode,
@@ -111,7 +117,8 @@ extension ModuleBuilder: Buildable {
     
     func buildProfileViewContrioller(_ phoneNumberCode: String, _ telephoneNumber: String) -> ProfileViewController {
         let viewController = ProfileViewController()
-        let presenter = ProfilePresenter(codeNumberPhone: telephoneNumber,
+        let presenter = ProfilePresenter(router: router,
+                                         codeNumberPhone: telephoneNumber,
                                          numberPhone: phoneNumberCode,
                                          databaseService: databaseService,
                                          moduleBuilder: self)
@@ -126,6 +133,7 @@ extension ModuleBuilder: Buildable {
                                 _ telephoneNumber: String) -> EditProfileViewController {
         let viewController = EditProfileViewController()
         let presenter = EditProfilePresenter(
+            router: router,
             databaseService: databaseService,
             userModel: userModel,
             codeNumberPhone: telephoneNumber,

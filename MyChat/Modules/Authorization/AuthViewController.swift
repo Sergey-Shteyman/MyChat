@@ -13,7 +13,6 @@ import CountryPicker
 protocol DisplayAuthLogic: ViewController {
     func showValidationCorrect()
     func showValidationError()
-    func routTo(_ viewController: UIViewController)
     func showAuthError()
 }
 
@@ -117,10 +116,6 @@ extension AuthViewController: DisplayAuthLogic {
     
     func showAuthError() {
         print(#function)
-    }
-    
-    func routTo(_ viewController: UIViewController) {
-        navigationController?.pushViewController(viewController, animated: true)
     }
     
     func showValidationCorrect() {

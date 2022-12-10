@@ -12,7 +12,7 @@ final class UserDBModel: Object {
     @Persisted var username = ""
     @Persisted var birthday = ""
     @Persisted var city = ""
-    @Persisted var vkk = ""
+    @Persisted var vk = ""
     @Persisted var instagram = ""
     @Persisted var status = ""
     @Persisted var avatar: UserAvatarDBModel?
@@ -32,7 +32,7 @@ final class UserDBModel: Object {
         self.username = username
         self.birthday = birthday
         self.city = city
-        self.vkk = vk
+        self.vk = vk
         self.instagram = instagram
         self.status = status
         self.avatar = avatar
@@ -44,7 +44,7 @@ final class UserDBModel: Object {
         self.username = userModel.username
         self.birthday = userModel.birthday
         self.city = userModel.city
-        self.vkk = userModel.vk
+        self.vk = userModel.vk
         self.instagram = userModel.instagram
         self.status = userModel.status
         self.avatar = UserAvatarDBModel(userAvatarModel: userModel.avatar)

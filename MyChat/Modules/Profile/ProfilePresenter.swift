@@ -15,17 +15,20 @@ final class ProfilePresenter {
     
     private var userModel: UserModel?
 
+    private let router: Router
     private let databaseService: DatabaseServicable
     private let codeNumberPhone: String
     private let numberPhone: String
     private let moduleBuilder: Buildable
 
     init(
+        router: Router,
         codeNumberPhone: String,
         numberPhone: String,
         databaseService: DatabaseServicable,
         moduleBuilder: Buildable
     ) {
+        self.router = router
         self.codeNumberPhone = codeNumberPhone
         self.numberPhone = numberPhone
         self.databaseService = databaseService
@@ -64,7 +67,7 @@ extension ProfilePresenter: ProfilePresentationLogic {
             userModel, self,
             codeNumberPhone, numberPhone
         )
-        viewController?.routTo(editProfileModule)
+        router.push(editProfileModule, true)
     }
 }
 

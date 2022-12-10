@@ -18,6 +18,7 @@ final class VerificationPresenter {
     
     weak var viewController: VerificationDisplayLogic?
     
+    private let router: Router
     private let moduleBuilder: Buildable
     private let codeTelephoneNumber: String
     private let telephoneNumber: String
@@ -27,6 +28,7 @@ final class VerificationPresenter {
     private let defaultService: DefaultServicable
     
     init(
+        router: Router,
         defaultService: DefaultServicable,
         apiService: APIServiceable,
         keychainService: Storagable,
@@ -34,6 +36,7 @@ final class VerificationPresenter {
         codeTelephoneNumber: String,
         telephoneNumber: String
     ) {
+        self.router = router
         self.defaultService = defaultService
         self.apiService = apiService
         self.keychainService = keychainService
@@ -91,13 +94,12 @@ private extension VerificationPresenter {
 
                 await MainActor.run {
                     if response.isUserExists {
-                        // TODO: - Вынести в роутер?
                         let chatListViewController = moduleBuilder.buildChatListViewController()
-                        viewController?.routTo(chatListViewController)
+                        router.push(chatListViewController, true)
                     } else {
                         let registerPage = moduleBuilder.buildRegistrationModule(codeTelephoneNumber,
                                                                                            telephoneNumber)
-                        viewController?.routTo(registerPage)
+                        router.push(registerPage, true)
                     }
                 }
             } catch {

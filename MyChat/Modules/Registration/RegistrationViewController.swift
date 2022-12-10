@@ -16,8 +16,6 @@ protocol RegistrationDisplayLogic: ViewController {
     func showNameValidationError()
     func setupTelephoneNumber(_ codeNumberTelephone: String, _ numberTelephone: String)
     func showCancelAllert()
-    func routToRoot()
-    func routTo(_ viewController: UIViewController)
     func showUserErrorRegisteration()
 }
 
@@ -112,10 +110,6 @@ final class RegistrationViewController: ViewController {
 // MARK: - RegistrationDisplayLogic Impl
 extension RegistrationViewController: RegistrationDisplayLogic {
     
-    func routTo(_ viewController: UIViewController) {
-        navigationController?.pushViewController(viewController, animated: true)
-    }
-    
     func showNameValidationCorrect() {
         nameTextField.changeStateBottomLine(with: .normal)
     }
@@ -126,10 +120,6 @@ extension RegistrationViewController: RegistrationDisplayLogic {
     
     func showUserErrorRegisteration() {
         print(#function)
-    }
-    
-    func routToRoot() {
-        navigationController?.popToRootViewController(animated: true)
     }
     
     func showCancelAllert() {

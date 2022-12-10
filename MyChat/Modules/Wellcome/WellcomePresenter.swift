@@ -15,11 +15,16 @@ protocol WellcomPresentationLogic: AnyObject {
 final class WellcomePresenter {
     
     private let moduleBuilder: Buildable
+    private let router: Router
     
     weak var viewController: WellcomDisplayLogic?
     
-    init(moduleBuilder: Buildable) {
+    init(
+        moduleBuilder: Buildable,
+        router: Router
+    ) {
         self.moduleBuilder = moduleBuilder
+        self.router = router
     }
 }
 
@@ -28,6 +33,6 @@ extension WellcomePresenter: WellcomPresentationLogic {
     
     func didTapButton() {
         let viewController = moduleBuilder.buildAuthPageModule()
-        self.viewController?.routTo(viewController)
+        router.push(viewController, true)
     }
 }

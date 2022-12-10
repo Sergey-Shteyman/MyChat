@@ -11,7 +11,6 @@ import UIKit
 protocol ProfileDisplayLogic: ViewController {
     func updateView(_ viewModel: ProfileViewModel)
     func showProfileError()
-    func routTo(_ viewController: UIViewController)
 }
 
 // MARK: - ProfileViewController
@@ -146,10 +145,6 @@ final class ProfileViewController: ViewController {
 
 // MARK: - ProfileDisplayLogic Impl
 extension ProfileViewController: ProfileDisplayLogic {
-    
-    func routTo(_ viewController: UIViewController) {
-        navigationController?.pushViewController(viewController, animated: true)
-    }
     
     func updateView(_ viewModel: ProfileViewModel) {
         

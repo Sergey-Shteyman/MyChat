@@ -25,6 +25,8 @@ final class RegistrationPresenter {
     lazy var validName = Bool()
     
     weak var viewController: RegistrationDisplayLogic?
+    
+    private let router: Router
     private let apiService: APIServiceable
     private let keychainService: Storagable
     private let defaultService: DefaultServicable
@@ -33,6 +35,7 @@ final class RegistrationPresenter {
     private let telephoneNumber: String
     
     init(
+        router: Router,
         defaultService: DefaultServicable,
         apiService: APIServiceable,
         keychainService: Storagable,
@@ -40,6 +43,7 @@ final class RegistrationPresenter {
         telephoneNumber: String,
         moduleBuilder: Buildable
     ) {
+        self.router = router
         self.defaultService = defaultService
         self.apiService = apiService
         self.keychainService = keychainService
@@ -57,7 +61,7 @@ extension RegistrationPresenter: RegistrationPresentationLogic {
     }
     
     func cancelRegistration() {
-        self.viewController?.routToRoot()
+        self.router.popToRootViewController(true)
     }
     
     func didTapCancelButton() {
@@ -89,7 +93,7 @@ extension RegistrationPresenter: RegistrationPresentationLogic {
                     await MainActor.run {
                         // TODO: - Вынести в роутер?
                         let chatListPage = moduleBuilder.buildChatListViewController()
-                        viewController?.routTo(chatListPage)
+                        router.push(chatListPage, true)
                     }
                 } catch {
                     await MainActor.run {

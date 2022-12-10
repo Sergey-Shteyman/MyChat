@@ -40,7 +40,7 @@ struct UserModel {
         self.username = userDBModel.username
         self.birthday = userDBModel.birthday
         self.city = userDBModel.city
-        self.vk = userDBModel.vkk
+        self.vk = userDBModel.vk
         self.instagram = userDBModel.instagram
         self.status = userDBModel.status
         self.avatar = UserAvatarModel(userAvatarDBModel: userDBModel.avatar)

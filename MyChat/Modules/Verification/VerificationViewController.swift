@@ -14,7 +14,6 @@ protocol VerificationDisplayLogic: ViewController {
     func setupPhoneNumberTitle(phoneCode: String, phone: String)
     func clearFields()
     func filedsResignSelection()
-    func routTo(_ viewController: UIViewController)
     func showVerificationError()
 }
 
@@ -239,15 +238,11 @@ extension VerificationViewController: UITextFieldDelegate {
     }
 }
 
-// MARK: - VerificationDisplayLogic
+// MARK: - VerificationDisplayLogic impl
 extension VerificationViewController: VerificationDisplayLogic {
     
     func showVerificationError() {
         print(#function)
-    }
-    
-    func routTo(_ viewController: UIViewController) {
-        navigationController?.pushViewController(viewController, animated: true)
     }
     
     func showInvalidCodeAllert() {
