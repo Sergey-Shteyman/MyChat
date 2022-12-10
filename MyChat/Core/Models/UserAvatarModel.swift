@@ -17,14 +17,18 @@ struct UserAvatarModel {
         self.base64 = base64
     }
     
-    init?(userAvatarDBModel: UserAvatarDBModel?) {
-        guard let filename = userAvatarDBModel?.filename,
-              let base64 = userAvatarDBModel?.base64
-        else {
-            return nil
-        }
-        self.filename = filename
-        self.base64 = base64
-
-    }
+//    init?(userAvatarDBModel: UserAvatarDBModel?) {
+//        guard let filename = userAvatarDBModel?.filename,
+//              let base64 = userAvatarDBModel?.base64
+//        else {
+//            return nil
+//        }
+//        self.filename = filename
+//        self.base64 = base64
+//    }
+    
+    // TODO: - 
+//    init?(userAvatar: UserAvatar?) {
+//
+//    }
 }

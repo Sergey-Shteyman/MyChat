@@ -129,10 +129,6 @@ final class ProfileViewController: ViewController {
         setupViewController()
         presenter?.viewDidLoad()
     }
-
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-    }
     
     @objc
     private func didTapEditButton() {
@@ -149,7 +145,6 @@ final class ProfileViewController: ViewController {
 extension ProfileViewController: ProfileDisplayLogic {
     
     func updateView(_ viewModel: ProfileViewModel) {
-        
     }
 
     func showProfileError() {

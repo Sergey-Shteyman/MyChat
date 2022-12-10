@@ -8,5 +8,7 @@
 enum KeychainKey: String {
     case accessToken
     case refreshToken
+    case code
+    case phone
 }
 

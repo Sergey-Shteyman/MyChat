@@ -32,10 +32,18 @@ final class SplashPresenter {
 
 extension SplashPresenter: SplashPresentationLogic {
     func viewDidLoad() {
-        let isUserAuth = defaultsService.fetchObject(type: Bool.self, forKey: .isUserAuth) ?? false
-        let viewController = isUserAuth
-        ? moduleBuilder.buildChatListViewController()
-        : moduleBuilder.buildWellcomeModule()
-        router.setRoot(viewController)
+        do {
+            let code = try keychainService.fetch(for: .code)
+            let phone = try keychainService.fetch(for: .phone)
+            let isUserAuth = defaultsService.fetchObject(type: Bool.self, forKey: .isUserAuth) ?? false
+            
+            let viewController = isUserAuth
+            ? moduleBuilder.buildTabBarController(phoneNumberCode: code, telephoneNumber: phone)
+            : moduleBuilder.buildWellcomeModule()
+            router.setRoot(viewController)
+        } catch {
+            let wellcomeModule = moduleBuilder.buildWellcomeModule()
+            router.setRoot(wellcomeModule)
+        }
     }
 }

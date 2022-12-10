@@ -22,6 +22,7 @@
 		5E0F5614293620F500E0178C /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F5613293620F500E0178C /* TextField.swift */; };
 		5E0F561A293763A900E0178C /* RegistrationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E0F5619293763A900E0178C /* RegistrationPresenter.swift */; };
 		5E22B97D29449C79005C8C5F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22B97C29449C79005C8C5F /* Profile.swift */; };
+		5E22B97F29449F52005C8C5F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22B97E29449F52005C8C5F /* TabBarController.swift */; };
 		5E3A12E9293E473400BC08EE /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A12E8293E473400BC08EE /* Images.swift */; };
 		5E3A12EB293E4ACB00BC08EE /* Verification.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A12EA293E4ACB00BC08EE /* Verification.swift */; };
 		5E3A12EF293F733D00BC08EE /* LocalError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A12EE293F733D00BC08EE /* LocalError.swift */; };
@@ -133,6 +134,7 @@
 		5E0F5613293620F500E0178C /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		5E0F5619293763A900E0178C /* RegistrationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationPresenter.swift; sourceTree = "<group>"; };
 		5E22B97C29449C79005C8C5F /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
+		5E22B97E29449F52005C8C5F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		5E3A12E8293E473400BC08EE /* Images.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Images.swift; sourceTree = "<group>"; };
 		5E3A12EA293E4ACB00BC08EE /* Verification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Verification.swift; sourceTree = "<group>"; };
 		5E3A12EE293F733D00BC08EE /* LocalError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalError.swift; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 		5E0F56172937637200E0178C /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				5E22B98029449F63005C8C5F /* Tabbar */,
 				5E3A1333293F8E1400BC08EE /* Splash */,
 				5EFE69642939FD3700F9740C /* Wellcome */,
 				5E6B8F8A293A463200C70E54 /* Authorization */,
@@ -401,6 +404,14 @@
 				5E0F5619293763A900E0178C /* RegistrationPresenter.swift */,
 			);
 			path = Registration;
+			sourceTree = "<group>";
+		};
+		5E22B98029449F63005C8C5F /* Tabbar */ = {
+			isa = PBXGroup;
+			children = (
+				5E22B97E29449F52005C8C5F /* TabBarController.swift */,
+			);
+			path = Tabbar;
 			sourceTree = "<group>";
 		};
 		5E3A12F0293F737B00BC08EE /* Defaults */ = {
@@ -867,6 +878,7 @@
 				5E3A130D293F889800BC08EE /* GetUserRequest.swift in Sources */,
 				5E3A1319293F891900BC08EE /* GetUserResponse.swift in Sources */,
 				5E3A1307293F883800BC08EE /* APIService.swift in Sources */,
+				5E22B97F29449F52005C8C5F /* TabBarController.swift in Sources */,
 				5E0F560F29361C5E00E0178C /* UIView.swift in Sources */,
 				5ED7511D2940D13D00B4607C /* UIStackView.swift in Sources */,
 				5E3A1315293F88F500BC08EE /* AuthResponse.swift in Sources */,

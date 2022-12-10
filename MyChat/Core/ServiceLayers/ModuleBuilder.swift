@@ -15,6 +15,7 @@ protocol Buildable {
     func buildAuthPageModule() -> AuthViewController
     func buildVerificationModule(codeTelephoneNumber: String, telephoneNumber: String) -> VerificationViewController
     func buildRegistrationModule(_ phoneNumberCode: String, _ telephoneNumber: String) -> RegistrationViewController
+    func buildTabBarController(phoneNumberCode: String, telephoneNumber: String) -> TabBarController 
     func buildChatViewController() -> ChatViewController
     func buildChatListViewController() -> ChatListViewController
     func buildProfileViewContrioller(_ phoneNumberCode: String, _ telephoneNumber: String) -> ProfileViewController
@@ -115,13 +116,21 @@ extension ModuleBuilder: Buildable {
         return viewController
     }
     
+    func buildTabBarController(phoneNumberCode: String, telephoneNumber: String) -> TabBarController {
+        return TabBarController(moduleBuilder: self,
+                                phoneNumberCode: phoneNumberCode,
+                                telephoneNumber: telephoneNumber)
+    }
+    
     func buildProfileViewContrioller(_ phoneNumberCode: String, _ telephoneNumber: String) -> ProfileViewController {
         let viewController = ProfileViewController()
         let presenter = ProfilePresenter(router: router,
                                          codeNumberPhone: telephoneNumber,
                                          numberPhone: phoneNumberCode,
                                          databaseService: databaseService,
-                                         moduleBuilder: self)
+                                         moduleBuilder: self,
+                                         apiService: apiService,
+                                         keyChainService: keychainService)
         viewController.presenter = presenter
         presenter.viewController = viewController
         return viewController

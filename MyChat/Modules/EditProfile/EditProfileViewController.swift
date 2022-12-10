@@ -129,7 +129,7 @@ final class EditProfileViewController: ViewController {
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        presenter?.viewWillDisappear()
+        presenter?.viewWillDisappear(status: aboutTextView.text, city: cityTextField.text)
     }
     
     @objc

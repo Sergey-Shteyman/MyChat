@@ -88,12 +88,15 @@ extension RegistrationPresenter: RegistrationPresentationLogic {
 
                     try keychainService.save(response.accessToken, for: .accessToken)
                     try keychainService.save(response.refreshToken, for: .refreshToken)
+                    try keychainService.save(phoneNumberCode, for: .code)
+                    try keychainService.save(telephoneNumber, for: .phone)
                     defaultService.save(true, forKey: .isUserAuth)
 
                     await MainActor.run {
-                        let chatListPage = moduleBuilder.buildProfileViewContrioller(phoneNumberCode,
-                                                                                     telephoneNumber)
-                        router.push(chatListPage, true)
+                        let tabBarController = moduleBuilder.buildTabBarController(phoneNumberCode: phoneNumberCode,
+                                                                                         telephoneNumber: telephoneNumber)
+                        router.setRoot(tabBarController)
+//                        router.push(tabBarController, true)
                     }
                 } catch {
                     await MainActor.run {
