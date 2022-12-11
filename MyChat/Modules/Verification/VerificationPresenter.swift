@@ -101,8 +101,7 @@ private extension VerificationPresenter {
                     if response.isUserExists {
                         let tabBarController = moduleBuilder.buildTabBarController(phoneNumberCode: codeTelephoneNumber,
                                                                                          telephoneNumber: telephoneNumber)
-                        router.setRoot(tabBarController)
-                        router.push(tabBarController, true )
+                        router.setRoot(tabBarController, isNavigationBarHidden: true)
                     } else {
                         let registerPage = moduleBuilder.buildRegistrationModule(codeTelephoneNumber,
                                                                                            telephoneNumber)

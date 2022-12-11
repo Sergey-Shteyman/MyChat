@@ -134,17 +134,19 @@ final class ProfileViewController: ViewController {
     private func didTapEditButton() {
         presenter?.didTapEditButton()
     }
-    
-    @objc
-    private func editButtontapped() {
-        print(#function)
-    }
 }
 
 // MARK: - ProfileDisplayLogic Impl
 extension ProfileViewController: ProfileDisplayLogic {
     
     func updateView(_ viewModel: ProfileViewModel) {
+        print(viewModel)
+        usernameLabel.text = viewModel.name
+        phoneLabel.text = viewModel.phone
+        aboutLabel.text = viewModel.status
+        cityLabel.text = viewModel.city
+        bithdateLabel.text = viewModel.birthday
+        horoscopeLabel.text = viewModel.horoscope
     }
 
     func showProfileError() {
@@ -164,7 +166,7 @@ private extension ProfileViewController {
     
     func setupEditBarItem() {
         let editButton = UIBarButtonItem(title: profile.editButton,
-                                         style: .done, target: self, action: #selector(editButtontapped))
+                                         style: .done, target: self, action: #selector(didTapEditButton))
         self.navigationItem.rightBarButtonItem = editButton
     }
     

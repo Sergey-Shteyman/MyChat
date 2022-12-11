@@ -54,6 +54,7 @@ extension DatabaseService: DatabaseServicable {
 
     func deleteAll(with migration: Migration) {
         migration.deleteData(forType: String(describing: UserDBModel.self))
+        
 //        migration.deleteData(forType: String(describing: UserAvatarDBModel.self))
     }
 }

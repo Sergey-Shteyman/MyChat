@@ -44,6 +44,7 @@ private extension TabBarController {
         chatListPage.tabBarItem.title = "Chat"
         chatListPage.tabBarItem.image = UIImage(systemName: "house")
         let profilePage = moduleBuilder.buildProfileViewContrioller(phoneNumberCode, telephoneNumber)
+        let navbarProfile = UINavigationController(rootViewController: profilePage)
         profilePage.tabBarItem.title = "Profile"
         profilePage.tabBarItem.image = UIImage(systemName: "person")
         
@@ -51,6 +52,6 @@ private extension TabBarController {
 //                                         style: .done, target: nil, action: nil)
 //        profilePage.navigationItem.rightBarButtonItem = editButton
         
-        viewControllers = [chatListPage, profilePage]
+        viewControllers = [chatListPage, navbarProfile]
     }
 }

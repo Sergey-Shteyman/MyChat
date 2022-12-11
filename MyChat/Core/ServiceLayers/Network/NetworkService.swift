@@ -32,6 +32,7 @@ extension NetworkService: Networkable {
                     case 200...210:
                         configuretion.resume(with: self.decoderService.decode(data: response.data))
                     default:
+                        print(response.statusCode)
                         do {
                             let error = try JSONDecoder().decode(ErrorResponse.self, from: response.data)
                             print(error)
@@ -46,14 +47,4 @@ extension NetworkService: Networkable {
             }
         }
     }
-}
-
-struct ErrorResponse: Decodable {
-    let detail: [ErrorDetail]
-}
-
-struct ErrorDetail: Decodable {
-    let loc: [String]?
-    let msg: String?
-    let type: String?
 }

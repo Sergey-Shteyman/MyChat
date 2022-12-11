@@ -40,10 +40,10 @@ extension SplashPresenter: SplashPresentationLogic {
             let viewController = isUserAuth
             ? moduleBuilder.buildTabBarController(phoneNumberCode: code, telephoneNumber: phone)
             : moduleBuilder.buildWellcomeModule()
-            router.setRoot(viewController)
+            router.setRoot(viewController, isNavigationBarHidden: isUserAuth)
         } catch {
             let wellcomeModule = moduleBuilder.buildWellcomeModule()
-            router.setRoot(wellcomeModule)
+            router.setRoot(wellcomeModule, isNavigationBarHidden: false)
         }
     }
 }

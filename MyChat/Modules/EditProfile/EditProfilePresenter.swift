@@ -13,7 +13,7 @@ protocol EditProfilePresenterDelegate: AnyObject {
 
 protocol EditProfilePresentationLogic: AnyObject {
     func viewDidLoad()
-    func viewWillDisappear(status: String?, city: String?)
+    func viewWillDisappear(status: String?, city: String?, birthday: String?)
     func changeAvatar()
 }
 
@@ -56,10 +56,11 @@ extension EditProfilePresenter: EditProfilePresentationLogic {
         viewController?.presentPhotoActionSheet()
     }
     
-    func viewWillDisappear(status: String?, city: String?) {
+    func viewWillDisappear(status: String?, city: String?, birthday: String?) {
         viewController?.showLoading()
         userModel.status = status
         userModel.city = city
+        userModel.birthday = Formatter.formatString(birthday, format: .ddMMyyyy)
         Task {
             do {
                 let accessToken = try keychainService.fetch(for: .accessToken)

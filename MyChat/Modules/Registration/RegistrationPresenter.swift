@@ -95,8 +95,7 @@ extension RegistrationPresenter: RegistrationPresentationLogic {
                     await MainActor.run {
                         let tabBarController = moduleBuilder.buildTabBarController(phoneNumberCode: phoneNumberCode,
                                                                                          telephoneNumber: telephoneNumber)
-                        router.setRoot(tabBarController)
-//                        router.push(tabBarController, true)
+                        router.setRoot(tabBarController, isNavigationBarHidden: true)
                     }
                 } catch {
                     await MainActor.run {

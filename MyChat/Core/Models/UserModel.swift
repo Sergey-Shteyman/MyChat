@@ -44,8 +44,7 @@ struct UserModel {
     init(profileData: UserProfileData) {
         self.name = profileData.name
         self.username = profileData.username
-        // TODO: -
-        self.birthday = Date()
+        self.birthday = Formatter.formatString(profileData.birthday, format: .yyyyMMdd)
         self.city = profileData.city
         self.phone = profileData.phone
         self.status = profileData.status

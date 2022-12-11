@@ -59,7 +59,7 @@ struct ProfileViewModel {
         self.phone = userModel.phone
         self.status = userModel.status
         self.city = userModel.city
-        self.birthday = "01.06.1999"//userModel.birthday
+        self.birthday = Formatter.formatDate(userModel.birthday, format: .ddMMyyyy)
         self.horoscope = "Близнецы"//userModel.horoscope
     }
     

@@ -57,6 +57,7 @@ extension ProfilePresenter: ProfilePresentationLogic {
                 self.userModel = userModel
 
                 await MainActor.run {
+                    viewController?.hideLoading()
                     viewController?.updateView(viewModel)
                 }
             } catch {
@@ -92,7 +93,9 @@ private extension ProfilePresenter {
                 let object = UserDBModel(userModel: userModel)
                 try databaseService.create(object)
                 
+                self.userModel = userModel
                 await MainActor.run {
+                    viewController?.hideLoading()
                     viewController?.updateView(viewModel)
                 }
             } catch {

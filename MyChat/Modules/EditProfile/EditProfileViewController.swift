@@ -70,7 +70,6 @@ final class EditProfileViewController: ViewController {
         textView.layer.borderWidth = 0.2
         textView.layer.borderColor = UIColor.gray.cgColor
         textView.text = editProfile.abotUser
-        textView.textColor = .gray
         textView.delegate = self
         return textView
     }()
@@ -108,16 +107,17 @@ final class EditProfileViewController: ViewController {
         return textField
     }()
     
-    private lazy var horoscopeTextField: TextField = {
-        let textField = TextField()
-        textField.placeholder = editProfile.horoscope
-        textField.font = UIFont(name: UIFont.Roboto.light.rawValue, size: 22)
-        textField.clearButtonMode = .whileEditing
-        textField.returnKeyType = UIReturnKeyType.done
-        textField.backgroundColor = .clear
-        textField.changeStateBottomLine(with: .normal)
-        textField.delegate = self
-        return textField
+    private lazy var horoscopeLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .gray
+        label.textAlignment = .center
+        label.font = UIFont(name: UIFont.Roboto.light.rawValue, size: 17)
+        label.backgroundColor = .clear
+        label.layer.cornerRadius = 10
+        label.layer.borderWidth = 0.2
+        label.layer.borderColor = UIColor.gray.cgColor
+        label.backgroundColor = .systemGray6
+        return label
     }()
     
     override func viewDidLoad() {
@@ -125,17 +125,22 @@ final class EditProfileViewController: ViewController {
         view.backgroundColor = .white
         setupViewController()
         presenter?.viewDidLoad()
+        navigationController?.isNavigationBarHidden = false
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        presenter?.viewWillDisappear(status: aboutTextView.text, city: cityTextField.text)
+        navigationController?.isNavigationBarHidden = true
+        presenter?.viewWillDisappear(
+            status: aboutTextView.text,
+            city: cityTextField.text,
+            birthday: birthdayTextField.text
+        )
     }
     
     @objc
     private func didTapChangeProfileAvatar() {
-//        presenter?.changeAvatar()
-        presentPhotoActionSheet()
+        presenter?.changeAvatar()
     }
 }
 
@@ -148,7 +153,12 @@ extension EditProfileViewController: EditProfileDisplayLogic {
     }
     
     func updateView(_ viewModel: ProfileViewModel) {
-        
+        usernameLabel.text = viewModel.name
+        phoneLabel.text = viewModel.phone
+        aboutTextView.text = viewModel.status
+        cityTextField.text = viewModel.city
+        birthdayTextField.text = viewModel.birthday
+        horoscopeLabel.text = viewModel.horoscope
     }
 
     func showEditProfileError() {
@@ -165,9 +175,6 @@ extension EditProfileViewController: UITextFieldDelegate {
             textField.resignFirstResponder()
             return true
         case birthdayTextField:
-            textField.resignFirstResponder()
-            return true
-        case horoscopeTextField:
             textField.resignFirstResponder()
             return true
         default:
@@ -266,7 +273,7 @@ private extension EditProfileViewController {
     func setupScrollView() {
         view.myAddSubView(scrollView)
         addViewwsOnScrollView()
-        scrollView.contentSize = CGSize(width: 0, height: horoscopeTextField.frame.maxY + 20)
+        scrollView.contentSize = CGSize(width: 0, height: horoscopeLabel.frame.maxY + 20)
         setupScrollViewConstraints()
     }
     
@@ -280,7 +287,7 @@ private extension EditProfileViewController {
             phoneLabel,
             cityTextField,
             birthdayTextField,
-            horoscopeTextField,
+            horoscopeLabel,
         ]
         scrollView.addSubViewOnScrollVeiw(for: views, scrollView: scrollView)
     }
@@ -323,10 +330,11 @@ private extension EditProfileViewController {
             birthdayTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             birthdayTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             
-            horoscopeTextField.topAnchor.constraint(equalTo: birthdayTextField.bottomAnchor, constant: 40),
-            horoscopeTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            horoscopeTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            horoscopeTextField.bottomAnchor.constraint(lessThanOrEqualTo: view.keyboardLayoutGuide.topAnchor, constant: -30)
+            horoscopeLabel.topAnchor.constraint(equalTo: birthdayTextField.bottomAnchor, constant: 40),
+            horoscopeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            horoscopeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            horoscopeLabel.bottomAnchor.constraint(lessThanOrEqualTo: view.keyboardLayoutGuide.topAnchor, constant: -30),
+            horoscopeLabel.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
 }

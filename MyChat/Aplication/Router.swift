@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: - Router
 protocol Router {
-    func setRoot(_ rootViewController: UIViewController)
+    func setRoot(_ rootViewController: UIViewController, isNavigationBarHidden: Bool)
     func push(_ viewController: UIViewController, _ animated: Bool)
     func popViewController(_ animated: Bool)
     func popToRootViewController(_ animated: Bool)
@@ -29,8 +29,9 @@ final class AppRouter {
 // MARK: - Router impl
 extension AppRouter: Router {
     
-    func setRoot(_ rootViewController: UIViewController) {
+    func setRoot(_ rootViewController: UIViewController, isNavigationBarHidden: Bool) {
         navigationController = UINavigationController(rootViewController: rootViewController)
+        navigationController?.isNavigationBarHidden = isNavigationBarHidden
         window.rootViewController = navigationController
     }
     

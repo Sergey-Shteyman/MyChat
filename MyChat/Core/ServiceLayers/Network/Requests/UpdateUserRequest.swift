@@ -35,8 +35,7 @@ struct UpdateUserBody: Encodable {
     init(userModel: UserModel) {
         self.name = userModel.name
         self.username = userModel.username
-        // TODO: -
-        self.birthday = " " // userModel.birthday
+        self.birthday = Formatter.formatDate(userModel.birthday, format: .yyyyMMdd)
         self.city = userModel.city
         self.status = userModel.status
         self.avatar = nil
