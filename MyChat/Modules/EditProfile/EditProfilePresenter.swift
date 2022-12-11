@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 
 // MARK: - EditProfilePresenterDelegate
@@ -20,6 +21,7 @@ protocol EditProfilePresentationLogic: AnyObject {
     func viewWillDisappear(status: String?, city: String?, birthday: String?)
     func changeAvatar()
     func setDate(_ date: Date)
+    func didUpdateAvatar(_ image: UIImage)
 }
 
 // MARK: - EditProfilePresenter
@@ -36,6 +38,7 @@ final class EditProfilePresenter {
     private let router: Router
 
     private var userModel: UserModel
+    private var imageBase64: String?
 
     init(
         router: Router,
@@ -59,6 +62,12 @@ final class EditProfilePresenter {
 // MARK: - EditProfilePresentationLogic Impl
 extension EditProfilePresenter: EditProfilePresentationLogic {
     
+    func didUpdateAvatar(_ image: UIImage) {
+        imageBase64 = image.jpegData(compressionQuality: 1)?.base64EncodedString()
+        viewController?.updateAvatar(image)
+        print("THIS IS IMAGE: ", image)
+    }
+    
     func setDate(_ date: Date) {
         let stringDate = FormatterDate.formatDate(date, format: .ddMMyyyy)
         guard let stringDate = stringDate else {
@@ -79,12 +88,16 @@ extension EditProfilePresenter: EditProfilePresentationLogic {
         userModel.city = city
         userModel.birthday = date
         userModel.horoscope = HoroscopeWorker.fetchHoroscope(from: date)
+        userModel.avatar = imageBase64
         Task {
             do {
                 let accessToken = try keychainService.fetch(for: .accessToken)
-                let body = UpdateUserBody(userModel: userModel)
+                let userAvatar = UpdateUserAvatar(base64: imageBase64)
+                let body = UpdateUserBody(userModel: userModel, avatar: userAvatar)
                 let request = UpdateUserRequest(accessToken: accessToken, body: body)
                 let response = try await apiService.updateUser(request: request)
+                
+                userModel.avatar = response.avatars?.avatar
                 
                 let userDMModel = UserDBModel(userModel: userModel)
                 // TODO: - посмотреть как то удалять попроще

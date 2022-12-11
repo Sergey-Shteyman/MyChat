@@ -5,7 +5,7 @@
 //  Created by Сергей Штейман on 07.12.2022.
 //
 
-import Foundation
+import UIKit
 
 struct UserModel {
     let name: String
@@ -15,16 +15,17 @@ struct UserModel {
     var city: String?
     var status: String?
     var horoscope: HoroscopeType
-    //var avatar: UserAvatarModel?
+    var avatar: String?
     
     init(
         name: String,
-         username: String,
-         phone: String,
-         birthday: Date?,
-         city: String?,
-         status: String?,
-         horoscope: HoroscopeType
+        username: String,
+        phone: String,
+        birthday: Date?,
+        city: String?,
+        status: String?,
+        horoscope: HoroscopeType,
+        avatar: String?
     ) {
         self.name = name
         self.username = username
@@ -33,6 +34,7 @@ struct UserModel {
         self.city = city
         self.status = status
         self.horoscope = horoscope
+        self.avatar = avatar
     }
     
     init(userDBModel: UserDBModel) {
@@ -43,6 +45,7 @@ struct UserModel {
         self.phone = userDBModel.phone
         self.status = userDBModel.status
         self.horoscope = HoroscopeWorker.fetchHoroscope(from: userDBModel.birthday)
+        self.avatar = userDBModel.avatar
     }
     
     init(profileData: UserProfileData) {
@@ -53,5 +56,6 @@ struct UserModel {
         self.phone = profileData.phone
         self.status = profileData.status
         self.horoscope = HoroscopeWorker.fetchHoroscope(from: self.birthday)
+        self.avatar = profileData.avatar
     }
 }

@@ -14,6 +14,7 @@ protocol EditProfileDisplayLogic: ViewController {
     func presentPhotoActionSheet()
     func configuredHoroscopeLabel(_ horoscope: String)
     func displayDate(_ date: String)
+    func updateAvatar(_ image: UIImage)
 }
 
 // MARK: - EditProfileViewController
@@ -125,8 +126,8 @@ final class EditProfileViewController: ViewController {
         label.font = UIFont(name: UIFont.Roboto.light.rawValue, size: 17)
         label.backgroundColor = .clear
         label.layer.cornerRadius = 10
-        label.layer.borderWidth = 0.2
-        label.layer.borderColor = UIColor.gray.cgColor
+        label.layer.borderWidth = 0.6
+        label.layer.borderColor = UIColor.systemBlue.cgColor
         label.backgroundColor = .systemGray6
         return label
     }()
@@ -163,6 +164,10 @@ final class EditProfileViewController: ViewController {
 
 // MARK: - EditProfileDisplayLogic impl
 extension EditProfileViewController: EditProfileDisplayLogic {
+    
+    func updateAvatar(_ image: UIImage) {
+        avatarImageView.image = image
+    }
     
     func displayDate(_ date: String) {
         birthdayTextField.text = date
@@ -230,7 +235,7 @@ extension EditProfileViewController: UIImagePickerControllerDelegate {
         guard let selectedImage = info[UIImagePickerController.InfoKey.editedImage] as? UIImage else {
             return
         }
-        avatarImageView.image = selectedImage
+        presenter?.didUpdateAvatar(selectedImage)
     }
     
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {

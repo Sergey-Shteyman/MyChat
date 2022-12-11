@@ -148,6 +148,14 @@ extension ProfileViewController: ProfileDisplayLogic {
         cityLabel.text = viewModel.city
         bithdateLabel.text = viewModel.birthday
         horoscopeLabel.text = horoscope.rawValue
+        guard let avatar = viewModel.avatar else {
+            return
+        }
+        let newImageData = Data(base64Encoded: avatar)
+        guard let newImageData = newImageData else {
+            return
+        }
+        avatarImageView.image = UIImage(data: newImageData)
     }
 
     func showProfileError() {

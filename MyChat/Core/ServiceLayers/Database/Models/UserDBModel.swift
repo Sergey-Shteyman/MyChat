@@ -14,15 +14,15 @@ final class UserDBModel: Object {
     @Persisted var birthday: Date?
     @Persisted var city: String?
     @Persisted var status: String?
-//    @Persisted var avatar: UserAvatarDBModel?
+    @Persisted var avatar: String?
 
     convenience init(
         name: String,
         username: String,
         birthday: Date,
         city: String,
-        status: String
-//        avatar: UserAvatarDBModel?
+        status: String,
+        avatar: String?
     ) {
         self.init()
         self.name = name
@@ -31,7 +31,7 @@ final class UserDBModel: Object {
         self.birthday = birthday
         self.city = city
         self.status = status
-//        self.avatar = avatar
+        self.avatar = avatar
     }
     
     convenience init(userModel: UserModel) {
@@ -42,31 +42,6 @@ final class UserDBModel: Object {
         self.birthday = userModel.birthday
         self.city = userModel.city
         self.status = userModel.status
+        self.avatar = userModel.avatar
     }
 }
-
-//final class UserAvatarDBModel: Object {
-//    @Persisted var filename = ""
-//    @Persisted var base64 = ""
-//
-//    convenience init(
-//        filename: String,
-//        base64: String
-//    ) {
-//        self.init()
-//        self.filename = filename
-//        self.base64 = base64
-//    }
-//
-//    convenience init?(userAvatarModel: UserAvatarModel?) {
-//        guard let filename = userAvatarModel?.filename,
-//              let base64 = userAvatarModel?.base64
-//        else {
-//            return nil
-//        }
-//        self.init()
-//        self.filename = filename
-//        self.base64 = base64
-//    }
-//}
-

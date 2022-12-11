@@ -32,14 +32,13 @@ struct UpdateUserBody: Encodable {
         self.status = status
         self.avatar = avatar
     }
-    init(userModel: UserModel) {
+    init(userModel: UserModel, avatar: UpdateUserAvatar?) {
         self.name = userModel.name
         self.username = userModel.username
         self.birthday = FormatterDate.formatDate(userModel.birthday, format: .yyyyMMdd)
         self.city = userModel.city
         self.status = userModel.status
-        self.avatar = nil
-        //self.avatar = UpdateUserAvatar(userAvatarModel: userModel.avatar)
+        self.avatar = avatar
     }
 }
 
@@ -60,13 +59,11 @@ struct UpdateUserAvatar: Encodable {
         self.base64 = base64
     }
     
-    init?(userAvatarModel: UserAvatarModel?) {
-        guard let filename = userAvatarModel?.filename,
-              let base64 = userAvatarModel?.base64
-        else {
+    init?(base64: String?) {
+        guard let base64 = base64 else {
             return nil
         }
-        self.filename = filename
+        self.filename = "userAvatar"
         self.base64 = base64
     }
 }
