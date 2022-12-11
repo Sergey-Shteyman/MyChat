@@ -41,6 +41,7 @@ private extension TabBarController {
     
     func setupController() {
         let chatListPage = moduleBuilder.buildChatListViewController()
+        let navBarChatList = UINavigationController(rootViewController: chatListPage)
         chatListPage.tabBarItem.title = "Chat"
         chatListPage.tabBarItem.image = UIImage(systemName: "message")
         let profilePage = moduleBuilder.buildProfileViewContrioller(phoneNumberCode, telephoneNumber)
@@ -49,6 +50,6 @@ private extension TabBarController {
         profilePage.tabBarItem.image = UIImage(systemName: "person")
 
         
-        viewControllers = [chatListPage, navbarProfile]
+        viewControllers = [navBarChatList, navbarProfile]
     }
 }

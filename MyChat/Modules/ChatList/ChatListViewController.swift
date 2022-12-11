@@ -25,6 +25,16 @@ final class ChatListViewController: ViewController {
         return tableView
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.isNavigationBarHidden = false
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.isNavigationBarHidden = true
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupViewController()
@@ -39,7 +49,7 @@ extension ChatListViewController: DisplayChatListLogic {
 // MARK: - UITableViewDelegate
 extension ChatListViewController: UITableViewDelegate {
     
-    func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         presenter?.didTapChat()
     }
@@ -54,7 +64,6 @@ extension ChatListViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.myDequeueReusableCell(type: ChatCell.self, indePath: indexPath)
-        cell.textLabel?.text = "Serega"
         cell.accessoryType = .disclosureIndicator
         return cell
     }
@@ -76,7 +85,7 @@ private extension ChatListViewController {
     
     // TODO: -
     func setupNavigationBar() {
-        title = "MyChat"
+        title = "M Y  C H A T"
         navigationController?.navigationBar.prefersLargeTitles = true
         navigationController?.navigationItem.largeTitleDisplayMode = .always
     }
