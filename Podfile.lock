@@ -1,7 +1,12 @@
 PODS:
   - Alamofire (5.5.0)
   - CountryPickerSwift (1.8.2)
+  - InputBarAccessoryView (5.5.0):
+    - InputBarAccessoryView/Core (= 5.5.0)
+  - InputBarAccessoryView/Core (5.5.0)
   - KeychainSwift (20.0.0)
+  - MessageKit (3.8.0):
+    - InputBarAccessoryView (~> 5.5.0)
   - Moya (15.0.0):
     - Moya/Core (= 15.0.0)
   - Moya/Core (15.0.0):
@@ -15,6 +20,7 @@ PODS:
 DEPENDENCIES:
   - CountryPickerSwift
   - KeychainSwift
+  - MessageKit
   - Moya
   - RealmSwift
 
@@ -22,7 +28,9 @@ SPEC REPOS:
   trunk:
     - Alamofire
     - CountryPickerSwift
+    - InputBarAccessoryView
     - KeychainSwift
+    - MessageKit
     - Moya
     - Realm
     - RealmSwift
@@ -30,11 +38,13 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: 1c4fb5369c3fe93d2857c780d8bbe09f06f97e7c
   CountryPickerSwift: b2cd8b391a0222bd9a97d09ea30426303adac810
+  InputBarAccessoryView: 1d7b0a672b36e370f01f264b3907ef39d03328e3
   KeychainSwift: 0ce6a4d13f7228054d1a71bb1b500448fb2ab837
+  MessageKit: a1ba0c69ebead94029867853eb44dd05b9b3f453
   Moya: 138f0573e53411fb3dc17016add0b748dfbd78ee
   Realm: 978303663d0509166498f423d112e5ee97d4c91b
   RealmSwift: a0c30c1efc49e928a0a6f8fb141bb2629616d79b
 
-PODFILE CHECKSUM: e197922077098b615321859e8ec473e1a897888f
+PODFILE CHECKSUM: bfd0e383b0542f4d904b0501b783723a5c8474a0
 
 COCOAPODS: 1.11.3

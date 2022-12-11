@@ -41,17 +41,15 @@ private extension TabBarController {
     
     func setupController() {
         let chatListPage = moduleBuilder.buildChatListViewController()
+        let navBarChatList = UINavigationController(rootViewController: chatListPage)
         chatListPage.tabBarItem.title = "Chat"
-        chatListPage.tabBarItem.image = UIImage(systemName: "house")
+        chatListPage.tabBarItem.image = UIImage(systemName: "message")
         let profilePage = moduleBuilder.buildProfileViewContrioller(phoneNumberCode, telephoneNumber)
         let navbarProfile = UINavigationController(rootViewController: profilePage)
         profilePage.tabBarItem.title = "Profile"
         profilePage.tabBarItem.image = UIImage(systemName: "person")
+
         
-//        let editButton = UIBarButtonItem(title: "Edit",
-//                                         style: .done, target: nil, action: nil)
-//        profilePage.navigationItem.rightBarButtonItem = editButton
-        
-        viewControllers = [chatListPage, navbarProfile]
+        viewControllers = [navBarChatList, navbarProfile]
     }
 }

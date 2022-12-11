@@ -16,7 +16,7 @@ protocol Buildable {
     func buildVerificationModule(codeTelephoneNumber: String, telephoneNumber: String) -> VerificationViewController
     func buildRegistrationModule(_ phoneNumberCode: String, _ telephoneNumber: String) -> RegistrationViewController
     func buildTabBarController(phoneNumberCode: String, telephoneNumber: String) -> TabBarController 
-    func buildChatViewController() -> ChatViewController
+    func buildChatViewController(namePerson: String) -> ChatViewController
     func buildChatListViewController() -> ChatListViewController
     func buildProfileViewContrioller(_ phoneNumberCode: String, _ telephoneNumber: String) -> ProfileViewController
     func buildEditProfileModule(_ userModel: UserModel,
@@ -157,11 +157,19 @@ extension ModuleBuilder: Buildable {
         return viewController
     }
     
-    func buildChatViewController() -> ChatViewController {
-        ChatViewController()
-    }
-
     func buildChatListViewController() -> ChatListViewController {
-        ChatListViewController()
+        let viewController = ChatListViewController()
+        let presenter = ChatListPresenter(router: router, modulebuilder: self)
+        viewController.presenter = presenter
+        presenter.viewController = viewController
+        return viewController
+    }
+    
+    func buildChatViewController(namePerson: String) -> ChatViewController {
+        let viewController = ChatViewController()
+        let presenter = ChatPresenter(person: namePerson)
+        viewController.presenter = presenter
+        presenter.viewController = viewController
+        return viewController
     }
 }
