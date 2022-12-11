@@ -7,4 +7,21 @@
 
 import UIKit
 
-final class ChatViewController: ViewController {}
+
+// MARK: - DisplayChatLogic
+protocol DisplayChatLogic: ViewController {
+    
+}
+
+// MARK: - ChatViewController
+final class ChatViewController: ViewController {
+    
+    var presenter: PresentationChatLogic?
+    
+    
+}
+
+// MARK: - DisplayChatLogic impl
+extension ChatViewController: DisplayChatLogic {
+    
+}

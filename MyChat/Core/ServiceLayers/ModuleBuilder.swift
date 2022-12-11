@@ -157,11 +157,19 @@ extension ModuleBuilder: Buildable {
         return viewController
     }
     
-    func buildChatViewController() -> ChatViewController {
-        ChatViewController()
-    }
-
     func buildChatListViewController() -> ChatListViewController {
-        ChatListViewController()
+        let viewController = ChatListViewController()
+        let presenter = ChatListPresenter(router: router)
+        viewController.presenter = presenter
+        presenter.viewController = viewController
+        return viewController
+    }
+    
+    func buildChatViewController() -> ChatViewController {
+        let viewController = ChatViewController()
+        let presenter = ChatPresenter()
+        viewController.presenter = presenter
+        presenter.viewController = viewController
+        return viewController
     }
 }
