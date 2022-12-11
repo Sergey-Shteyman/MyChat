@@ -7,7 +7,7 @@
 
 // MARK: - PresentationChatListProtocol
 protocol PresentationChatListLogic: AnyObject {
-    
+    func didTapChat()
 }
 
 // MARK: - ChatListPresenter
@@ -15,13 +15,19 @@ final class ChatListPresenter {
     
     weak var viewController: DisplayChatListLogic?
     private let router: Router
+    private let modulebuilder: Buildable
     
-    init(router: Router) {
+    init(router: Router, modulebuilder: Buildable) {
         self.router = router
+        self.modulebuilder = modulebuilder
     }
 }
 
 // MARK: - PresentationChatListProtocol impl
 extension ChatListPresenter: PresentationChatListLogic {
     
+    func didTapChat() {
+        let chatViewController = modulebuilder.buildChatViewController()
+        router.push(chatViewController, true)
+    }
 }

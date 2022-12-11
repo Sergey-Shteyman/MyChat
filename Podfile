@@ -9,6 +9,7 @@ target 'MyChat' do
   pod 'Moya'
   pod 'KeychainSwift'
   pod 'RealmSwift'
+  pod 'MessageKit'
 
   target 'MyChatTests' do
     inherit! :search_paths

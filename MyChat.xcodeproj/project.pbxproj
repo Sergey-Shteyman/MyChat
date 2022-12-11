@@ -63,6 +63,9 @@
 		5E3A1337293F8E4A00BC08EE /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E3A1336293F8E4A00BC08EE /* SplashPresenter.swift */; };
 		5E57B94229462DCA0002A7A3 /* ChatListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E57B94129462DCA0002A7A3 /* ChatListPresenter.swift */; };
 		5E57B94429462F450002A7A3 /* ChatPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E57B94329462F450002A7A3 /* ChatPresenter.swift */; };
+		5E57B946294634CF0002A7A3 /* UITableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E57B945294634CF0002A7A3 /* UITableView.swift */; };
+		5E57B948294634E40002A7A3 /* UITableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E57B947294634E40002A7A3 /* UITableViewCell.swift */; };
+		5E57B94A294635580002A7A3 /* ChatCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E57B949294635580002A7A3 /* ChatCell.swift */; };
 		5E6B8F8C293A466D00C70E54 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F8B293A466D00C70E54 /* AuthViewController.swift */; };
 		5E6B8F8E293A467900C70E54 /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F8D293A467900C70E54 /* AuthPresenter.swift */; };
 		5E6B8F90293A482100C70E54 /* Welcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E6B8F8F293A482100C70E54 /* Welcome.swift */; };
@@ -182,6 +185,9 @@
 		5E3A1336293F8E4A00BC08EE /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
 		5E57B94129462DCA0002A7A3 /* ChatListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListPresenter.swift; sourceTree = "<group>"; };
 		5E57B94329462F450002A7A3 /* ChatPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatPresenter.swift; sourceTree = "<group>"; };
+		5E57B945294634CF0002A7A3 /* UITableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableView.swift; sourceTree = "<group>"; };
+		5E57B947294634E40002A7A3 /* UITableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITableViewCell.swift; sourceTree = "<group>"; };
+		5E57B949294635580002A7A3 /* ChatCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCell.swift; sourceTree = "<group>"; };
 		5E6B8F8B293A466D00C70E54 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		5E6B8F8D293A467900C70E54 /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
 		5E6B8F8F293A482100C70E54 /* Welcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Welcome.swift; sourceTree = "<group>"; };
@@ -368,6 +374,8 @@
 				5ECAC3342937CF5D003FD519 /* UIFont.swift */,
 				5EF216D3293CF7A7000C13EA /* UITextField.swift */,
 				5ED7511C2940D13D00B4607C /* UIStackView.swift */,
+				5E57B945294634CF0002A7A3 /* UITableView.swift */,
+				5E57B947294634E40002A7A3 /* UITableViewCell.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -545,6 +553,7 @@
 			children = (
 				5E3A132F293F8DE400BC08EE /* ChatListViewController.swift */,
 				5E57B94129462DCA0002A7A3 /* ChatListPresenter.swift */,
+				5E57B949294635580002A7A3 /* ChatCell.swift */,
 			);
 			path = ChatList;
 			sourceTree = "<group>";
@@ -911,6 +920,7 @@
 				5ED751192940D0F600B4607C /* EditProfileViewController.swift in Sources */,
 				5E3A131F293F895000BC08EE /* RegisterResponse.swift in Sources */,
 				5E3A12EF293F733D00BC08EE /* LocalError.swift in Sources */,
+				5E57B946294634CF0002A7A3 /* UITableView.swift in Sources */,
 				5ED75125294356F700B4607C /* EditProfile.swift in Sources */,
 				5E3A130D293F889800BC08EE /* GetUserRequest.swift in Sources */,
 				5E3A1319293F891900BC08EE /* GetUserResponse.swift in Sources */,
@@ -948,6 +958,7 @@
 				5E3A1330293F8DE400BC08EE /* ChatListViewController.swift in Sources */,
 				5E22B982294512A4005C8C5F /* ErrorResponse.swift in Sources */,
 				5E0F5614293620F500E0178C /* TextField.swift in Sources */,
+				5E57B94A294635580002A7A3 /* ChatCell.swift in Sources */,
 				5ED751232941E5C600B4607C /* Router.swift in Sources */,
 				5ED751212941125E00B4607C /* UserAvatarModel.swift in Sources */,
 				5EFE69662939FD6A00F9740C /* WellcomViewController.swift in Sources */,
@@ -967,6 +978,7 @@
 				5E3A1324293F89D000BC08EE /* KeychainKey.swift in Sources */,
 				5ECAC33E2938D52D003FD519 /* MasksValidationFields.swift in Sources */,
 				5E3A1337293F8E4A00BC08EE /* SplashPresenter.swift in Sources */,
+				5E57B948294634E40002A7A3 /* UITableViewCell.swift in Sources */,
 				5E6B8F9B293B671E00C70E54 /* VerificationPresenter.swift in Sources */,
 				5E0F561129361C8600E0178C /* UIScrollView.swift in Sources */,
 				5E3A12FC293F85FD00BC08EE /* UserDBModel.swift in Sources */,
