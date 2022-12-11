@@ -5,18 +5,24 @@
 //  Created by Сергей Штейман on 07.12.2022.
 //
 
+import Foundation
 
+
+// MARK: - EditProfilePresenterDelegate
 protocol EditProfilePresenterDelegate: AnyObject {
     func didSaveUser(userModel: UserModel)
 }
 
 
+// MARK: - EditProfilePresentationLogic
 protocol EditProfilePresentationLogic: AnyObject {
     func viewDidLoad()
     func viewWillDisappear(status: String?, city: String?, birthday: String?)
     func changeAvatar()
+    func setDate(_ date: Date)
 }
 
+// MARK: - EditProfilePresenter
 final class EditProfilePresenter {
     
     weak var viewController: EditProfileDisplayLogic?
@@ -50,17 +56,29 @@ final class EditProfilePresenter {
     }
 }
 
+// MARK: - EditProfilePresentationLogic Impl
 extension EditProfilePresenter: EditProfilePresentationLogic {
+    
+    func setDate(_ date: Date) {
+        let stringDate = FormatterDate.formatDate(date, format: .ddMMyyyy)
+        guard let stringDate = stringDate else {
+            return
+        }
+        setHoroscope(from: stringDate)
+        viewController?.displayDate(stringDate)
+    }
     
     func changeAvatar() {
         viewController?.presentPhotoActionSheet()
     }
     
     func viewWillDisappear(status: String?, city: String?, birthday: String?) {
+        let date = FormatterDate.formatString(birthday, format: .ddMMyyyy)
         viewController?.showLoading()
         userModel.status = status
         userModel.city = city
-        userModel.birthday = Formatter.formatString(birthday, format: .ddMMyyyy)
+        userModel.birthday = date
+        userModel.horoscope = HoroscopeWorker.fetchHoroscope(from: date)
         Task {
             do {
                 let accessToken = try keychainService.fetch(for: .accessToken)
@@ -90,5 +108,15 @@ extension EditProfilePresenter: EditProfilePresentationLogic {
     func viewDidLoad() {
         let viewModel = ProfileViewModel(userModel: userModel)
         viewController?.updateView(viewModel)
+    }
+}
+
+// MARK: - Private methods
+private extension EditProfilePresenter {
+    
+    func setHoroscope(from birthday: String?) {
+        let date = FormatterDate.formatString(birthday, format: .ddMMyyyy)
+        let horoscope = HoroscopeWorker.fetchHoroscope(from: date)
+        viewController?.configuredHoroscopeLabel(horoscope.rawValue)
     }
 }

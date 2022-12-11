@@ -10,3 +10,6 @@ enum FormatType: String {
     case ddMMyyyy = "dd.MM.yyyy"
 }
 
+enum LocaleIdentifires {
+    static let loacaleRu = "ru_RU"
+}

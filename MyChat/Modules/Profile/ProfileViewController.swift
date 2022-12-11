@@ -141,12 +141,13 @@ extension ProfileViewController: ProfileDisplayLogic {
     
     func updateView(_ viewModel: ProfileViewModel) {
         print(viewModel)
+        let horoscope = viewModel.horoscope
         usernameLabel.text = viewModel.name
         phoneLabel.text = viewModel.phone
         aboutLabel.text = viewModel.status
         cityLabel.text = viewModel.city
         bithdateLabel.text = viewModel.birthday
-        horoscopeLabel.text = viewModel.horoscope
+        horoscopeLabel.text = horoscope.rawValue
     }
 
     func showProfileError() {
@@ -173,7 +174,7 @@ private extension ProfileViewController {
     func setupScrollView() {
         view.myAddSubView(scrollView)
         addViewsOnScrollView()
-        scrollView.contentSize = CGSize(width: 0, height: horoscopeLabel.frame.maxY + 20)
+        scrollView.contentSize = CGSize(width: 0, height: horoscopeLabel.frame.maxY + 580)
     }
     
     func addViewsOnScrollView() {

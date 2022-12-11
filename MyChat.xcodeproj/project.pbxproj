@@ -24,7 +24,7 @@
 		5E22B97D29449C79005C8C5F /* Profile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22B97C29449C79005C8C5F /* Profile.swift */; };
 		5E22B97F29449F52005C8C5F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22B97E29449F52005C8C5F /* TabBarController.swift */; };
 		5E22B982294512A4005C8C5F /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22B981294512A4005C8C5F /* ErrorResponse.swift */; };
-		5E22B9842945180F005C8C5F /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22B9832945180F005C8C5F /* DateFormatter.swift */; };
+		5E22B9842945180F005C8C5F /* FormatterDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22B9832945180F005C8C5F /* FormatterDate.swift */; };
 		5E22B9862945E4D7005C8C5F /* HoroscopeWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22B9852945E4D7005C8C5F /* HoroscopeWorker.swift */; };
 		5E22B9892945E7F4005C8C5F /* HoroscopeType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22B9882945E7F4005C8C5F /* HoroscopeType.swift */; };
 		5E22B98C2945E83F005C8C5F /* FormatType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E22B98B2945E83F005C8C5F /* FormatType.swift */; };
@@ -141,7 +141,7 @@
 		5E22B97C29449C79005C8C5F /* Profile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Profile.swift; sourceTree = "<group>"; };
 		5E22B97E29449F52005C8C5F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		5E22B981294512A4005C8C5F /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
-		5E22B9832945180F005C8C5F /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
+		5E22B9832945180F005C8C5F /* FormatterDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatterDate.swift; sourceTree = "<group>"; };
 		5E22B9852945E4D7005C8C5F /* HoroscopeWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeWorker.swift; sourceTree = "<group>"; };
 		5E22B9882945E7F4005C8C5F /* HoroscopeType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HoroscopeType.swift; sourceTree = "<group>"; };
 		5E22B98B2945E83F005C8C5F /* FormatType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatType.swift; sourceTree = "<group>"; };
@@ -371,7 +371,7 @@
 		5E0F560D29361C0B00E0178C /* ServiceLayers */ = {
 			isa = PBXGroup;
 			children = (
-				5E22B98A2945E828005C8C5F /* DateFormatter */,
+				5E22B98A2945E828005C8C5F /* FormatterDate */,
 				5E22B9872945E7D9005C8C5F /* HoroscopeWorker */,
 				5E3A1320293F897200BC08EE /* KeyChain */,
 				5E3A12F7293F859F00BC08EE /* Database */,
@@ -435,13 +435,13 @@
 			path = HoroscopeWorker;
 			sourceTree = "<group>";
 		};
-		5E22B98A2945E828005C8C5F /* DateFormatter */ = {
+		5E22B98A2945E828005C8C5F /* FormatterDate */ = {
 			isa = PBXGroup;
 			children = (
-				5E22B9832945180F005C8C5F /* DateFormatter.swift */,
+				5E22B9832945180F005C8C5F /* FormatterDate.swift */,
 				5E22B98B2945E83F005C8C5F /* FormatType.swift */,
 			);
-			path = DateFormatter;
+			path = FormatterDate;
 			sourceTree = "<group>";
 		};
 		5E3A12F0293F737B00BC08EE /* Defaults */ = {
@@ -927,7 +927,7 @@
 				5E22B9892945E7F4005C8C5F /* HoroscopeType.swift in Sources */,
 				5E0F55DB2934FF2200E0178C /* RegistrationViewController.swift in Sources */,
 				5E3A1311293F88BF00BC08EE /* UpdateUserRequest.swift in Sources */,
-				5E22B9842945180F005C8C5F /* DateFormatter.swift in Sources */,
+				5E22B9842945180F005C8C5F /* FormatterDate.swift in Sources */,
 				5E3A12F2293F739400BC08EE /* DefaultsService.swift in Sources */,
 				5E3A130B293F887F00BC08EE /* VerifyCodeRequest.swift in Sources */,
 				5E3A1301293F87E300BC08EE /* NetworkService.swift in Sources */,

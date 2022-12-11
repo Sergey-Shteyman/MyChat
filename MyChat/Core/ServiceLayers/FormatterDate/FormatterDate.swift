@@ -1,5 +1,5 @@
 //
-//  DateFormatter.swift
+//  FormatterDate.swift
 //  MyChat
 //
 //  Created by Сергей Штейман on 10.12.2022.
@@ -9,7 +9,7 @@ import Foundation
 
 
 // MARK: - Formatter
-final class Formatter {
+final class FormatterDate {
     private static let formatter = DateFormatter()
     
     static func formatDate(_ date: Date?, format: FormatType) -> String? {

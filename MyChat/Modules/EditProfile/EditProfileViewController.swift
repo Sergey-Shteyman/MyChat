@@ -12,6 +12,8 @@ protocol EditProfileDisplayLogic: ViewController {
     func updateView(_ viewModel: ProfileViewModel)
     func showEditProfileError()
     func presentPhotoActionSheet()
+    func configuredHoroscopeLabel(_ horoscope: String)
+    func displayDate(_ date: String)
 }
 
 // MARK: - EditProfileViewController
@@ -21,6 +23,7 @@ final class EditProfileViewController: ViewController {
     
     private let robotoFont = RobotoFont.self
     private let editProfile = EditProfilePage.self
+    private let locale = LocaleIdentifires.self
     
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -100,11 +103,19 @@ final class EditProfileViewController: ViewController {
         textField.placeholder = editProfile.birthday
         textField.font = UIFont(name: UIFont.Roboto.light.rawValue, size: 22)
         textField.clearButtonMode = .whileEditing
-        textField.returnKeyType = UIReturnKeyType.done
         textField.backgroundColor = .clear
         textField.changeStateBottomLine(with: .normal)
         textField.delegate = self
         return textField
+    }()
+    
+    private lazy var datePicker: UIDatePicker = {
+        let datepicker = UIDatePicker()
+        datepicker.datePickerMode = .date
+        datepicker.locale = Locale(identifier: locale.loacaleRu)
+        datepicker.preferredDatePickerStyle = .wheels
+        datepicker.addTarget(self, action: #selector(dateHasChanged), for: .valueChanged)
+        return datepicker
     }()
     
     private lazy var horoscopeLabel: UILabel = {
@@ -123,6 +134,7 @@ final class EditProfileViewController: ViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        birthdayTextField.inputView = datePicker
         setupViewController()
         presenter?.viewDidLoad()
         navigationController?.isNavigationBarHidden = false
@@ -142,10 +154,19 @@ final class EditProfileViewController: ViewController {
     private func didTapChangeProfileAvatar() {
         presenter?.changeAvatar()
     }
+    
+    @objc
+    private func dateHasChanged() {
+        presenter?.setDate(datePicker.date)
+    }
 }
 
 // MARK: - EditProfileDisplayLogic impl
 extension EditProfileViewController: EditProfileDisplayLogic {
+    
+    func displayDate(_ date: String) {
+        birthdayTextField.text = date
+    }
     
     func presentPhotoActionSheet() {
         let actionSheet = configuredActionSheet()
@@ -153,12 +174,17 @@ extension EditProfileViewController: EditProfileDisplayLogic {
     }
     
     func updateView(_ viewModel: ProfileViewModel) {
+        let horoscope = viewModel.horoscope
         usernameLabel.text = viewModel.name
         phoneLabel.text = viewModel.phone
         aboutTextView.text = viewModel.status
         cityTextField.text = viewModel.city
         birthdayTextField.text = viewModel.birthday
-        horoscopeLabel.text = viewModel.horoscope
+        horoscopeLabel.text = horoscope.rawValue
+    }
+    
+    func configuredHoroscopeLabel(_ horoscope: String) {
+        horoscopeLabel.text = horoscope
     }
 
     func showEditProfileError() {
@@ -172,9 +198,6 @@ extension EditProfileViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case cityTextField:
-            textField.resignFirstResponder()
-            return true
-        case birthdayTextField:
             textField.resignFirstResponder()
             return true
         default:

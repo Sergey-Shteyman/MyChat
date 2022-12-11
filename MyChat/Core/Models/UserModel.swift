@@ -14,6 +14,7 @@ struct UserModel {
     var birthday: Date?
     var city: String?
     var status: String?
+    var horoscope: HoroscopeType
     //var avatar: UserAvatarModel?
     
     init(
@@ -22,7 +23,8 @@ struct UserModel {
          phone: String,
          birthday: Date?,
          city: String?,
-         status: String?
+         status: String?,
+         horoscope: HoroscopeType
     ) {
         self.name = name
         self.username = username
@@ -30,6 +32,7 @@ struct UserModel {
         self.birthday = birthday
         self.city = city
         self.status = status
+        self.horoscope = horoscope
     }
     
     init(userDBModel: UserDBModel) {
@@ -39,14 +42,16 @@ struct UserModel {
         self.city = userDBModel.city
         self.phone = userDBModel.phone
         self.status = userDBModel.status
+        self.horoscope = HoroscopeWorker.fetchHoroscope(from: userDBModel.birthday)
     }
     
     init(profileData: UserProfileData) {
         self.name = profileData.name
         self.username = profileData.username
-        self.birthday = Formatter.formatString(profileData.birthday, format: .yyyyMMdd)
+        self.birthday = FormatterDate.formatString(profileData.birthday, format: .yyyyMMdd)
         self.city = profileData.city
         self.phone = profileData.phone
         self.status = profileData.status
+        self.horoscope = HoroscopeWorker.fetchHoroscope(from: self.birthday)
     }
 }
