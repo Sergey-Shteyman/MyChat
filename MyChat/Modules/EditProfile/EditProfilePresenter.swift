@@ -12,6 +12,7 @@ import UIKit
 // MARK: - EditProfilePresenterDelegate
 protocol EditProfilePresenterDelegate: AnyObject {
     func didSaveUser(userModel: UserModel)
+    func didUpdateAvatar(image: UIImage)
 }
 
 
@@ -65,7 +66,7 @@ extension EditProfilePresenter: EditProfilePresentationLogic {
     func didUpdateAvatar(_ image: UIImage) {
         imageBase64 = image.jpegData(compressionQuality: 1)?.base64EncodedString()
         viewController?.updateAvatar(image)
-        print("THIS IS IMAGE: ", image)
+        delegate?.didUpdateAvatar(image: image)
     }
     
     func setDate(_ date: Date) {

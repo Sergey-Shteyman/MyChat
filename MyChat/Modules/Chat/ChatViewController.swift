@@ -53,7 +53,6 @@ final class ChatViewController: MessagesViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter?.viewDidLoad()
-        // Затолкать в презентер. Имя собеседника передавать через ModuleBuilder.
         messages.append(Message(sender: currentUser,
                                 messageId: "1",
                                 sentDate: Date().addingTimeInterval(-86400),

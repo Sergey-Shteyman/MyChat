@@ -23,7 +23,6 @@ extension APIEndpoint: TargetType {
         switch self {
         case .checkJWT:
             headers["Authorization"] = "Bearer token"
-            // TODO: -
         case let .getUser(request):
             headers["Authorization"] = "Bearer \(request.accessToken)"
         case let .refresh(request):
@@ -78,7 +77,6 @@ extension APIEndpoint: TargetType {
 
     var task: Moya.Task {
         switch self {
-            // TODO: -
         case let .auth(request):
             return requestCompositeParameters(request.body)
         case let .verifyCode(request):

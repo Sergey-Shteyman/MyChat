@@ -43,9 +43,9 @@ final class ModuleBuilder {
         self.router = router
         self.databaseService = databaseService
         self.decoderService = DecoderService()
-        self.networkService = NetworkService(decoderService: decoderService)
-        self.apiService = APIService(networkService: networkService)
         self.keychainService = KeychainService()
+        self.networkService = NetworkService(decoderService: decoderService, keychainService: keychainService)
+        self.apiService = APIService(networkService: networkService)
         self.defaultsService = DefaultsService()
     }
 }

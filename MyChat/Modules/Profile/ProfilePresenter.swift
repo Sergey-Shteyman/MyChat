@@ -5,6 +5,8 @@
 //  Created by Сергей Штейман on 06.12.2022.
 //
 
+import UIKit
+
 protocol ProfilePresentationLogic: AnyObject {
     func viewDidLoad()
     func didTapEditButton()
@@ -118,5 +120,9 @@ extension ProfilePresenter: EditProfilePresenterDelegate {
         self.userModel = userModel
         let viewModel = ProfileViewModel(userModel: userModel)
         self.viewController?.updateView(viewModel)
+    }
+    
+    func didUpdateAvatar(image: UIImage) {
+        viewController?.updateAvatar(image: image)
     }
 }

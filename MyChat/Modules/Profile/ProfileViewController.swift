@@ -11,6 +11,7 @@ import UIKit
 protocol ProfileDisplayLogic: ViewController {
     func updateView(_ viewModel: ProfileViewModel)
     func showProfileError()
+    func updateAvatar(image: UIImage)
 }
 
 // MARK: - ProfileViewController
@@ -138,6 +139,10 @@ final class ProfileViewController: ViewController {
 
 // MARK: - ProfileDisplayLogic Impl
 extension ProfileViewController: ProfileDisplayLogic {
+    
+    func updateAvatar(image: UIImage) {
+        avatarImageView.image = image
+    }
     
     func updateView(_ viewModel: ProfileViewModel) {
         print(viewModel)
