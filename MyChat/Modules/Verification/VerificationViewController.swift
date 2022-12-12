@@ -161,7 +161,7 @@ final class VerificationViewController: ViewController {
             case fifthCodeSquare:
                 sixthCodeSquare.becomeFirstResponder()
             case sixthCodeSquare:
-                fourthCodeSquare.resignFirstResponder()
+                sixthCodeSquare.resignFirstResponder()
             default:
                 break
             }

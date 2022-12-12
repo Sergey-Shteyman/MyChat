@@ -30,7 +30,6 @@ final class ProfileViewController: ViewController {
 
     private lazy var avatarImageView: UIImageView = {
         let imageVeiw = UIImageView()
-        imageVeiw.image = UIImage(systemName: profile.personImage)
         imageVeiw.layer.cornerRadius = 59
         imageVeiw.layer.borderWidth = 1
         imageVeiw.layer.borderColor = UIColor.gray.cgColor
@@ -43,7 +42,6 @@ final class ProfileViewController: ViewController {
         let label = UILabel()
         label.font = UIFont(name: robotoFont.medium, size: 26)
         label.textAlignment = .center
-        label.text = "Sergey Shteyman"
         return label
     }()
     
@@ -52,7 +50,6 @@ final class ProfileViewController: ViewController {
         label.font = .preferredFont(forTextStyle: .title1)
         label.font = UIFont(name: UIFont.Roboto.thin.rawValue, size: 25)
         label.textAlignment = .center
-        label.text = "+7 9109664445"
         label.textColor = .black
         label.backgroundColor = .clear
         return label
@@ -112,7 +109,6 @@ final class ProfileViewController: ViewController {
     
     private lazy var horoscopeLabel: UILabel = {
         let label = UILabel()
-        label.text = profile.horoscope
         label.textColor = .gray
         label.textAlignment = .center
         label.font = UIFont(name: UIFont.Roboto.light.rawValue, size: 17)
@@ -154,7 +150,6 @@ extension ProfileViewController: ProfileDisplayLogic {
     }
     
     func updateView(_ viewModel: ProfileViewModel) {
-        print(viewModel)
         let horoscope = viewModel.horoscope
         usernameLabel.text = viewModel.name
         phoneLabel.text = viewModel.phone
@@ -162,6 +157,7 @@ extension ProfileViewController: ProfileDisplayLogic {
         cityLabel.text = viewModel.city
         bithdateLabel.text = viewModel.birthday
         horoscopeLabel.text = horoscope.rawValue
+        ifFieldsAreEmpty()
         guard let avatar = viewModel.avatar else {
             return
         }
@@ -173,7 +169,7 @@ extension ProfileViewController: ProfileDisplayLogic {
     }
 
     func showProfileError() {
-        
+        print(#function)
     }
 }
 
@@ -191,6 +187,25 @@ private extension ProfileViewController {
         let editButton = UIBarButtonItem(title: profile.editButton,
                                          style: .done, target: self, action: #selector(didTapEditButton))
         self.navigationItem.rightBarButtonItem = editButton
+    }
+    
+    func ifFieldsAreEmpty() {
+        guard let status = aboutLabel.text else {
+            return
+        }
+        if status.isEmpty {
+            aboutLabel.text = profile.abotUser
+        }
+        guard let city = cityLabel.text else {
+            return
+        }
+        if city.isEmpty {
+            cityLabel.text = profile.city
+        }
+        guard bithdateLabel.text != nil else {
+            bithdateLabel.text = profile.birthday
+            return
+        }
     }
     
     func setupScrollView() {

@@ -68,6 +68,17 @@ final class RegistrationViewController: ViewController {
         textField.addTarget(self, action: #selector(isValidUserNameTextField), for: .editingChanged)
         return textField
     }()
+    
+    private lazy var descriptionUserNameLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: UIFont.Roboto.regular.rawValue, size: 15)
+        label.textColor = .systemGray
+        label.text = registrationPage.userNameDescription
+        label.numberOfLines = 0
+        label.lineBreakMode = .byWordWrapping
+        label.textAlignment = .center
+        return label
+    }()
 
     private lazy var accessButton: UIButton = {
         let button = UIButton()
@@ -197,6 +208,7 @@ private extension RegistrationViewController {
             phoneNumberLabel,
             nameTextField,
             userNameTextField,
+            descriptionUserNameLabel,
             accessButton
         ]
         view.myAddSubViews(from: arrayViews)
@@ -217,6 +229,10 @@ private extension RegistrationViewController {
              userNameTextField.topAnchor.constraint(equalTo: nameTextField.bottomAnchor, constant: 50),
              userNameTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
              userNameTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -45),
+             
+             descriptionUserNameLabel.topAnchor.constraint(equalTo: userNameTextField.bottomAnchor, constant: 25),
+             descriptionUserNameLabel.leadingAnchor.constraint(equalTo: userNameTextField.leadingAnchor),
+             descriptionUserNameLabel.trailingAnchor.constraint(equalTo: userNameTextField.trailingAnchor),
 
              accessButton.topAnchor.constraint(greaterThanOrEqualTo: userNameTextField.bottomAnchor, constant: 50),
              accessButton.bottomAnchor.constraint(equalTo: view.keyboardLayoutGuide.topAnchor, constant: -80),

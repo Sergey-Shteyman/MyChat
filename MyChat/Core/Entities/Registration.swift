@@ -16,4 +16,5 @@ enum RegistrationPage {
     static let shouldShure = "Если хотите отменить, сначала подумайте, потом нажмите 'Выход'"
     static let exit = "Выход"
     static let continueRegistration = "Продолжить"
+    static let userNameDescription = "Минимальное колличество символов: 5"
 }
