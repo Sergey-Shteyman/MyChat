@@ -92,5 +92,41 @@ Access token (время жизни 10 минут) полученный при �
 +	Данные аватарки: название файла и сам файл base 64.
 
 
+# Демонстрация работы приложения
 
+<h3><p align="center"> Страничка приветствия </p></h3>
+
+<p align="center"> <img src=https://github.com/Sergey-Shteyman/MyChat/blob/develop/Screenshots/WelcomePage.png width="300" height="650"> </p>
+
+<h3><p align="center"> Страничка аутентификации </p></h3>
+
+<p align="center"> <img src=https://github.com/Sergey-Shteyman/MyChat/blob/develop/Screenshots/AuthPage.png width="300" height="650"> </p>
+
+<h3><p align="center"> Страничка верификации </p></h3>
+
+<p align="center"> <img src=https://github.com/Sergey-Shteyman/MyChat/blob/develop/Screenshots/VerifyPage.png width="300" height="650"> </p>
+
+<h3><p align="center"> Страничка регистрации </p></h3>
+
+<p align="center"> <img src=https://github.com/Sergey-Shteyman/MyChat/blob/develop/Screenshots/RegistrationPage.png width="300" height="650"> </p>
+
+<h3><p align="center"> Страничка списка чатов </p></h3>
+
+<p align="center"> <img src=https://github.com/Sergey-Shteyman/MyChat/blob/develop/Screenshots/ChatListPage.png width="300" height="650"> </p>
+
+<h3><p align="center"> Страничка чата </p></h3>
+
+<p align="center"> <img src=https://github.com/Sergey-Shteyman/MyChat/blob/develop/Screenshots/ChatPage.png width="300" height="650"> </p>
+
+<h3><p align="center"> Страничка пустого профиля </p></h3>
+
+<p align="center"> <img src=https://github.com/Sergey-Shteyman/MyChat/blob/develop/Screenshots/ProfilePage.png width="300" height="650"> </p>
+
+<h3><p align="center"> Страничка редактирования профиля </p></h3>
+
+<p align="center"> <img src=https://github.com/Sergey-Shteyman/MyChat/blob/develop/Screenshots/EditProfilePage.png width="300" height="650"> </p>
+
+<h3><p align="center"> Страничка заполненного профиля </p></h3>
+
+<p align="center"> <img src=https://github.com/Sergey-Shteyman/MyChat/blob/develop/Screenshots/FullProfilePage.png width="300" height="650"> </p>
 
