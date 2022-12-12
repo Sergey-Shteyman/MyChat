@@ -34,6 +34,7 @@ final class ModuleBuilder {
     private let apiService: APIServiceable
     private let keychainService: Storagable
     private let defaultsService: DefaultServicable
+    private let imageCashService: ImageCacheService
     private let router: Router
 
     init(
@@ -47,6 +48,7 @@ final class ModuleBuilder {
         self.networkService = NetworkService(decoderService: decoderService, keychainService: keychainService)
         self.apiService = APIService(networkService: networkService)
         self.defaultsService = DefaultsService()
+        self.imageCashService = ImageCacheService()
     }
 }
 
@@ -124,13 +126,16 @@ extension ModuleBuilder: Buildable {
     
     func buildProfileViewContrioller(_ phoneNumberCode: String, _ telephoneNumber: String) -> ProfileViewController {
         let viewController = ProfileViewController()
-        let presenter = ProfilePresenter(router: router,
-                                         codeNumberPhone: telephoneNumber,
-                                         numberPhone: phoneNumberCode,
-                                         databaseService: databaseService,
-                                         moduleBuilder: self,
-                                         apiService: apiService,
-                                         keyChainService: keychainService)
+        let presenter = ProfilePresenter(
+            router: router,
+            codeNumberPhone: telephoneNumber,
+            numberPhone: phoneNumberCode,
+            databaseService: databaseService,
+            moduleBuilder: self,
+            apiService: apiService,
+            keyChainService: keychainService,
+            imageCashService: imageCashService
+        )
         viewController.presenter = presenter
         presenter.viewController = viewController
         return viewController
@@ -148,8 +153,8 @@ extension ModuleBuilder: Buildable {
             codeNumberPhone: telephoneNumber,
             numberPhone: phoneNumberCode,
             apiService: apiService,
-            keychainService: keychainService
-                                             
+            keychainService: keychainService,
+            imageCashService: imageCashService
         )
         viewController.presenter = presenter
         presenter.viewController = viewController

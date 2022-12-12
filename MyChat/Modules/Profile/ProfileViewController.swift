@@ -11,7 +11,7 @@ import UIKit
 protocol ProfileDisplayLogic: ViewController {
     func updateView(_ viewModel: ProfileViewModel)
     func showProfileError()
-    func updateAvatar(image: UIImage)
+    func updateAvatar(image: UIImage?)
 }
 
 // MARK: - ProfileViewController
@@ -124,6 +124,11 @@ final class ProfileViewController: ViewController {
         return label
     }()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        presenter?.viewWillAppear()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.hidesBackButton = true
@@ -140,7 +145,11 @@ final class ProfileViewController: ViewController {
 // MARK: - ProfileDisplayLogic Impl
 extension ProfileViewController: ProfileDisplayLogic {
     
-    func updateAvatar(image: UIImage) {
+    func updateAvatar(image: UIImage?) {
+        guard let image = image else {
+            avatarImageView.image = UIImage(systemName: "person")
+            return
+        }
         avatarImageView.image = image
     }
     

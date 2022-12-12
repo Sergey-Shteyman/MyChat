@@ -6,20 +6,20 @@
 //
 
 import Foundation
-import UIKit
+import class UIKit.UIImage
 
 
 // MARK: - EditProfilePresenterDelegate
 protocol EditProfilePresenterDelegate: AnyObject {
     func didSaveUser(userModel: UserModel)
-    func didUpdateAvatar(image: UIImage)
+    func didUpdateAvatar(image: UIImage?)
 }
 
 
 // MARK: - EditProfilePresentationLogic
 protocol EditProfilePresentationLogic: AnyObject {
     func viewDidLoad()
-    func viewWillDisappear(status: String?, city: String?, birthday: String?)
+    func viewWillDisappear(status: String?, city: String?, birthday: String?, avatar: UIImage?)
     func changeAvatar()
     func setDate(_ date: Date)
     func didUpdateAvatar(_ image: UIImage)
@@ -37,6 +37,7 @@ final class EditProfilePresenter {
     private let codeNumberPhone: String
     private let numberPhone: String
     private let router: Router
+    private let imageCashService: ImageCacheServicable
 
     private var userModel: UserModel
     private var imageBase64: String?
@@ -48,7 +49,8 @@ final class EditProfilePresenter {
         codeNumberPhone: String,
         numberPhone: String,
         apiService: APIServiceable,
-        keychainService: Storagable
+        keychainService: Storagable,
+        imageCashService: ImageCacheServicable
     ) {
         self.router = router
         self.databaseService = databaseService
@@ -57,6 +59,7 @@ final class EditProfilePresenter {
         self.numberPhone = numberPhone
         self.apiService = apiService
         self.keychainService = keychainService
+        self.imageCashService = imageCashService
     }
 }
 
@@ -66,7 +69,6 @@ extension EditProfilePresenter: EditProfilePresentationLogic {
     func didUpdateAvatar(_ image: UIImage) {
         imageBase64 = image.jpegData(compressionQuality: 1)?.base64EncodedString()
         viewController?.updateAvatar(image)
-        delegate?.didUpdateAvatar(image: image)
     }
     
     func setDate(_ date: Date) {
@@ -82,7 +84,7 @@ extension EditProfilePresenter: EditProfilePresentationLogic {
         viewController?.presentPhotoActionSheet()
     }
     
-    func viewWillDisappear(status: String?, city: String?, birthday: String?) {
+    func viewWillDisappear(status: String?, city: String?, birthday: String?, avatar: UIImage?) {
         let date = FormatterDate.formatString(birthday, format: .ddMMyyyy)
         viewController?.showLoading()
         userModel.status = status
@@ -110,6 +112,14 @@ extension EditProfilePresenter: EditProfilePresentationLogic {
                     delegate?.didSaveUser(userModel: userModel)
                     router.popViewController(true)
                 }
+                
+                if let image = avatar {
+                    try imageCashService.save(image: image, fileName: .userAvatarFileName)
+                }
+                
+                await MainActor.run {
+                    delegate?.didUpdateAvatar(image: avatar)
+                }
             } catch {
                 await MainActor.run {
                     viewController?.hideLoading()
@@ -121,7 +131,9 @@ extension EditProfilePresenter: EditProfilePresentationLogic {
     
     func viewDidLoad() {
         let viewModel = ProfileViewModel(userModel: userModel)
+        let image = imageCashService.fetchImage(with: .userAvatarFileName)
         viewController?.updateView(viewModel)
+        viewController?.updateAvatar(image)
     }
 }
 

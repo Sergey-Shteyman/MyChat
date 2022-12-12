@@ -5,13 +5,16 @@
 //  Created by Сергей Штейман on 06.12.2022.
 //
 
-import UIKit
+import class UIKit.UIImage
 
+// MARK: - ProfilePresentationLogic
 protocol ProfilePresentationLogic: AnyObject {
     func viewDidLoad()
     func didTapEditButton()
+    func viewWillAppear()
 }
 
+// MARK: - ProfilePresenter
 final class ProfilePresenter {
     weak var viewController: ProfileDisplayLogic?
     
@@ -24,6 +27,7 @@ final class ProfilePresenter {
     private let moduleBuilder: Buildable
     private let apiService: APIServiceable
     private let keyChainService: Storagable
+    private let imageCashService: ImageCacheServicable
 
     init(
         router: Router,
@@ -32,7 +36,8 @@ final class ProfilePresenter {
         databaseService: DatabaseServicable,
         moduleBuilder: Buildable,
         apiService: APIServiceable,
-        keyChainService: Storagable
+        keyChainService: Storagable,
+        imageCashService: ImageCacheServicable
     ) {
         self.router = router
         self.codeNumberPhone = codeNumberPhone
@@ -41,13 +46,18 @@ final class ProfilePresenter {
         self.moduleBuilder = moduleBuilder
         self.apiService = apiService
         self.keyChainService = keyChainService
+        self.imageCashService = imageCashService
     }
 }
 
+// MARK: - ProfilePresentationLogic impl
 extension ProfilePresenter: ProfilePresentationLogic {
+    
+    func viewWillAppear() {
+        viewController?.showLoading()
+    }
 
     func viewDidLoad() {
-        viewController?.showLoading()
         Task(priority: .utility) {
             do {
                 guard let userDBModel = try databaseService.read(UserDBModel.self).first else {
@@ -56,11 +66,13 @@ extension ProfilePresenter: ProfilePresentationLogic {
                 }
                 let userModel = UserModel(userDBModel: userDBModel)
                 let viewModel = ProfileViewModel(userModel: userModel)
+                let image = imageCashService.fetchImage(with: .userAvatarFileName)
                 self.userModel = userModel
 
                 await MainActor.run {
                     viewController?.hideLoading()
                     viewController?.updateView(viewModel)
+                    viewController?.updateAvatar(image: image)
                 }
             } catch {
                 await showError()
@@ -81,8 +93,23 @@ extension ProfilePresenter: ProfilePresentationLogic {
     }
 }
 
-private extension ProfilePresenter {
+// MARK: - EditProfilePresenterDelegate impl
+extension ProfilePresenter: EditProfilePresenterDelegate {
+    func didSaveUser(userModel: UserModel) {
+        self.userModel = userModel
+        let viewModel = ProfileViewModel(userModel: userModel)
+        self.viewController?.updateView(viewModel)
+        viewController?.hideLoading()
+    }
     
+    func didUpdateAvatar(image: UIImage?) {
+        viewController?.updateAvatar(image: image)
+        viewController?.hideLoading()
+    }
+}
+
+// MARK: - ProfilePresenter private methods
+private extension ProfilePresenter {
     func fetchUser() {
         Task {
             do {
@@ -111,18 +138,5 @@ private extension ProfilePresenter {
             viewController?.hideLoading()
             viewController?.showProfileError()
         }
-    }
-}
-
-extension ProfilePresenter: EditProfilePresenterDelegate {
-    
-    func didSaveUser(userModel: UserModel) {
-        self.userModel = userModel
-        let viewModel = ProfileViewModel(userModel: userModel)
-        self.viewController?.updateView(viewModel)
-    }
-    
-    func didUpdateAvatar(image: UIImage) {
-        viewController?.updateAvatar(image: image)
     }
 }

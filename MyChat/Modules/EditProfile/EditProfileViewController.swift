@@ -14,7 +14,7 @@ protocol EditProfileDisplayLogic: ViewController {
     func presentPhotoActionSheet()
     func configuredHoroscopeLabel(_ horoscope: String)
     func displayDate(_ date: String)
-    func updateAvatar(_ image: UIImage)
+    func updateAvatar(_ image: UIImage?)
 }
 
 // MARK: - EditProfileViewController
@@ -35,7 +35,6 @@ final class EditProfileViewController: ViewController {
 
     private lazy var avatarImageView: UIImageView = {
         let imageVeiw = UIImageView()
-        imageVeiw.image = UIImage(systemName: "person")
         imageVeiw.layer.cornerRadius = 59
         imageVeiw.layer.borderWidth = 1
         imageVeiw.layer.borderColor = UIColor.gray.cgColor
@@ -147,7 +146,8 @@ final class EditProfileViewController: ViewController {
         presenter?.viewWillDisappear(
             status: aboutTextView.text,
             city: cityTextField.text,
-            birthday: birthdayTextField.text
+            birthday: birthdayTextField.text,
+            avatar: avatarImageView.image
         )
     }
     
@@ -165,7 +165,11 @@ final class EditProfileViewController: ViewController {
 // MARK: - EditProfileDisplayLogic impl
 extension EditProfileViewController: EditProfileDisplayLogic {
     
-    func updateAvatar(_ image: UIImage) {
+    func updateAvatar(_ image: UIImage?) {
+        guard let image = image else {
+            avatarImageView.image = UIImage(systemName: "person")
+            return
+        }
         avatarImageView.image = image
     }
     

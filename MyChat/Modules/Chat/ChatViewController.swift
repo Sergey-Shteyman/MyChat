@@ -115,7 +115,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
     func backgroundColor(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> UIColor {
         let sender = message.sender
         if sender.senderId == self.otherUser.senderId {
-            return .cyan
+            return .systemGray4
         }
         return .link
     }
