@@ -6,15 +6,17 @@
 //
 
 import UIKit
+import RealmSwift
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
+    private let databaseService = DatabaseService()
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         setupRootViewController(with: windowScene)
+        setupRealmConficuration()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -38,12 +40,25 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 private extension SceneDelegate {
     func setupRootViewController(with windowScene: UIWindowScene) {
         let window = UIWindow(windowScene: windowScene)
-        let moduleBuilder = ModuleBuilder()
-        let mainViewController = moduleBuilder.buildMainModule()
-        let navigationController = UINavigationController(rootViewController: mainViewController)
-        window.rootViewController = navigationController
+        let router = AppRouter(window: window)
+        let moduleBuilder = ModuleBuilder(databaseService: databaseService, router: router)
+        let viewController = moduleBuilder.buildSplashModule()
+        router.setRoot(viewController, isNavigationBarHidden: false)
         window.makeKeyAndVisible()
         self.window = window
+    }
+    
+    func setupRealmConficuration() {
+        let version: UInt64 = 4
+        let config = Realm.Configuration(
+            schemaVersion: version,
+            migrationBlock: { migration, oldSchemaVersion in
+                if (oldSchemaVersion < version) {
+                    print("Realm Updated to version - \(version)")
+                    self.databaseService.deleteAll(with: migration)
+                }
+            })
+        Realm.Configuration.defaultConfiguration = config
     }
 }
 

@@ -1,5 +1,6 @@
 # Cocoa Pods
 
 /Pods
+.lock
 *.xcworkspace
 .idea/
