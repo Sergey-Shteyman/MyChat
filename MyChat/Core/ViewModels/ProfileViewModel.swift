@@ -10,7 +10,7 @@ struct ProfileViewModel {
     
     let name: String
     let phone: String
-    let status: String?
+    let status: String
     let city: String?
     let birthday: String?
     let horoscope: HoroscopeType
@@ -19,7 +19,7 @@ struct ProfileViewModel {
     init(
         name: String,
         phone: String,
-        status : String?,
+        status : String,
         city: String?,
         birthday: String?,
         horoscope: HoroscopeType,
@@ -37,7 +37,7 @@ struct ProfileViewModel {
     init(userModel: UserModel) {
         self.name = userModel.name
         self.phone = userModel.phone
-        self.status = userModel.status
+        self.status = userModel.status ?? "Расскажите о себе"
         self.city = userModel.city
         self.birthday = FormatterDate.formatDate(userModel.birthday, format: .ddMMyyyy)
         self.horoscope = HoroscopeWorker.fetchHoroscope(from: userModel.birthday)

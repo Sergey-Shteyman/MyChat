@@ -597,6 +597,19 @@
 			path = Verification;
 			sourceTree = "<group>";
 		};
+		5E6CC02B294A7412004C1834 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				5ED75124294356F700B4607C /* EditProfile.swift */,
+				5E22B97C29449C79005C8C5F /* Profile.swift */,
+				5ECAC33B2938D405003FD519 /* Registration.swift */,
+				5E6B8F8F293A482100C70E54 /* Welcome.swift */,
+				5E6B8F9C293BCDBC00C70E54 /* Auth.swift */,
+				5E3A12EA293E4ACB00BC08EE /* Verification.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		5ECAC31A2937BB84003FD519 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -627,18 +640,13 @@
 		5ECAC3372937E74A003FD519 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
-				5ECAC33B2938D405003FD519 /* Registration.swift */,
-				5E6B8F8F293A482100C70E54 /* Welcome.swift */,
-				5E6B8F9C293BCDBC00C70E54 /* Auth.swift */,
-				5E3A12EA293E4ACB00BC08EE /* Verification.swift */,
+				5E6CC02B294A7412004C1834 /* Constants */,
 				5ECAC3382937E760003FD519 /* BottomLineState.swift */,
 				5ECAC33D2938D52D003FD519 /* MasksValidationFields.swift */,
 				5EFE69672939FF3000F9740C /* RobotoFont.swift */,
 				5EF216D1293CF73E000C13EA /* BorderState.swift */,
 				5E3A12E8293E473400BC08EE /* Images.swift */,
 				5E3A12EE293F733D00BC08EE /* LocalError.swift */,
-				5ED75124294356F700B4607C /* EditProfile.swift */,
-				5E22B97C29449C79005C8C5F /* Profile.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";

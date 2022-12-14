@@ -5,7 +5,7 @@
 //  Created by Сергей Штейман on 09.12.2022.
 //
 
-enum EditProfilePage {
+enum EditProfileConstants {
     static let abotUser = "Расскажите о себе"
     static let aboutUserDescription = "Краткая информация"
     static let city = "Город проживания"

@@ -5,7 +5,7 @@
 //  Created by Сергей Штейман on 03.12.2022.
 //
 
-enum AuthPage {
+enum AuthPageConstants {
     
     static let phoneNumber = "Т Е Л Е Ф О Н"
     static let descriptionPhone = "Пожалуйста укажите код страны и введите номер своего телефона."

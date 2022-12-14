@@ -20,7 +20,7 @@ final class ProfileViewController: ViewController {
     var presenter: ProfilePresentationLogic?
     
     private let robotoFont = RobotoFont.self
-    private let profile = ProfilePage.self
+    private let profileConstants = ProfileConstants.self
 
     private lazy var scrollView: UIScrollView = {
         let scrollView = UIScrollView()
@@ -62,9 +62,8 @@ final class ProfileViewController: ViewController {
         aboutLabel.layer.cornerRadius = 10
         aboutLabel.layer.borderWidth = 0.2
         aboutLabel.layer.borderColor = UIColor.gray.cgColor
-        aboutLabel.text = profile.abotUser
         aboutLabel.textColor = .gray
-        aboutLabel.textAlignment = .center
+        aboutLabel.textColor = .systemGray2
         aboutLabel.numberOfLines = 0
         aboutLabel.lineBreakMode = .byWordWrapping
         return aboutLabel
@@ -74,48 +73,47 @@ final class ProfileViewController: ViewController {
         let label = UILabel()
         label.font = UIFont(name: robotoFont.light, size: 14)
         label.textColor = .gray
-        label.textAlignment = .left
-        label.text = profile.aboutUserDescription
+        label.text = profileConstants.aboutUserDescription
         return label
     }()
     
-    private lazy var cityLabel: UILabel = {
-        let label = UILabel()
-        label.text = profile.city
-        label.textColor = .gray
-        label.textAlignment = .center
-        label.font = UIFont(name: UIFont.Roboto.light.rawValue, size: 17)
-        label.backgroundColor = .clear
-        label.layer.cornerRadius = 10
-        label.layer.borderWidth = 0.2
-        label.layer.borderColor = UIColor.gray.cgColor
-        label.backgroundColor = .systemGray6
-        return label
+    private lazy var cityTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = profileConstants.city
+        textField.textColor = .gray
+        textField.font = UIFont(name: UIFont.Roboto.light.rawValue, size: 17)
+        textField.backgroundColor = .clear
+        textField.layer.cornerRadius = 10
+        textField.layer.borderWidth = 0.2
+        textField.layer.borderColor = UIColor.gray.cgColor
+        textField.textColor = .systemGray2
+        textField.backgroundColor = .systemGray6
+        return textField
     }()
     
-    private lazy var bithdateLabel: UILabel = {
-        let label = UILabel()
-        label.text = profile.birthday
-        label.textColor = .gray
-        label.textAlignment = .center
-        label.font = UIFont(name: UIFont.Roboto.light.rawValue, size: 17)
-        label.backgroundColor = .clear
-        label.layer.cornerRadius = 10
-        label.layer.borderWidth = 0.2
-        label.layer.borderColor = UIColor.gray.cgColor
-        label.backgroundColor = .systemGray6
-        return label
+    private lazy var birthdayTextField: UITextField = {
+        let textField = UITextField()
+        textField.placeholder = profileConstants.birthday
+        textField.textColor = .gray
+        textField.font = UIFont(name: UIFont.Roboto.light.rawValue, size: 17)
+        textField.backgroundColor = .clear
+        textField.layer.cornerRadius = 10
+        textField.layer.borderWidth = 0.2
+        textField.layer.borderColor = UIColor.gray.cgColor
+        textField.textColor = .systemGray2
+        textField.backgroundColor = .systemGray6
+        return textField
     }()
     
     private lazy var horoscopeLabel: UILabel = {
         let label = UILabel()
         label.textColor = .gray
-        label.textAlignment = .center
         label.font = UIFont(name: UIFont.Roboto.light.rawValue, size: 17)
         label.backgroundColor = .clear
         label.layer.cornerRadius = 10
         label.layer.borderWidth = 0.2
         label.layer.borderColor = UIColor.gray.cgColor
+        label.textColor = .systemGray2
         label.backgroundColor = .systemGray6
         return label
     }()
@@ -143,7 +141,7 @@ extension ProfileViewController: ProfileDisplayLogic {
     
     func updateAvatar(image: UIImage?) {
         guard let image = image else {
-            avatarImageView.image = UIImage(systemName: "person")
+            avatarImageView.image = UIImage(systemName: profileConstants.defoltImage)
             return
         }
         avatarImageView.image = image
@@ -154,11 +152,11 @@ extension ProfileViewController: ProfileDisplayLogic {
         usernameLabel.text = viewModel.name
         phoneLabel.text = viewModel.phone
         aboutLabel.text = viewModel.status
-        cityLabel.text = viewModel.city
-        bithdateLabel.text = viewModel.birthday
+        cityTextField.text = viewModel.city
+        birthdayTextField.text = viewModel.birthday
         horoscopeLabel.text = horoscope.rawValue
-        ifFieldsAreEmpty()
         guard let avatar = viewModel.avatar else {
+            avatarImageView.image = UIImage(systemName: profileConstants.defoltImage)
             return
         }
         let newImageData = Data(base64Encoded: avatar)
@@ -184,28 +182,9 @@ private extension ProfileViewController {
     }
     
     func setupEditBarItem() {
-        let editButton = UIBarButtonItem(title: profile.editButton,
+        let editButton = UIBarButtonItem(title: profileConstants.editButton,
                                          style: .done, target: self, action: #selector(didTapEditButton))
         self.navigationItem.rightBarButtonItem = editButton
-    }
-    
-    func ifFieldsAreEmpty() {
-        guard let status = aboutLabel.text else {
-            return
-        }
-        if status.isEmpty {
-            aboutLabel.text = profile.abotUser
-        }
-        guard let city = cityLabel.text else {
-            return
-        }
-        if city.isEmpty {
-            cityLabel.text = profile.city
-        }
-        guard bithdateLabel.text != nil else {
-            bithdateLabel.text = profile.birthday
-            return
-        }
     }
     
     func setupScrollView() {
@@ -221,8 +200,8 @@ private extension ProfileViewController {
             phoneLabel,
             aboutLabel,
             descriptionAbout,
-            cityLabel,
-            bithdateLabel,
+            cityTextField,
+            birthdayTextField,
             horoscopeLabel
         ]
         scrollView.addSubViewOnScrollVeiw(for: subViews, scrollView: scrollView)
@@ -254,17 +233,17 @@ private extension ProfileViewController {
             descriptionAbout.leadingAnchor.constraint(equalTo: aboutLabel.leadingAnchor),
             descriptionAbout.bottomAnchor.constraint(equalTo: aboutLabel.topAnchor, constant: -5),
             
-            cityLabel.topAnchor.constraint(equalTo: aboutLabel.bottomAnchor, constant: 30),
-            cityLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            cityLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            cityLabel.heightAnchor.constraint(equalToConstant: 40),
+            cityTextField.topAnchor.constraint(equalTo: aboutLabel.bottomAnchor, constant: 30),
+            cityTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            cityTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            cityTextField.heightAnchor.constraint(equalToConstant: 40),
             
-            bithdateLabel.topAnchor.constraint(equalTo: cityLabel.bottomAnchor, constant: 30),
-            bithdateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
-            bithdateLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
-            bithdateLabel.heightAnchor.constraint(equalToConstant: 40),
+            birthdayTextField.topAnchor.constraint(equalTo: cityTextField.bottomAnchor, constant: 30),
+            birthdayTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
+            birthdayTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
+            birthdayTextField.heightAnchor.constraint(equalToConstant: 40),
             
-            horoscopeLabel.topAnchor.constraint(equalTo: bithdateLabel.bottomAnchor, constant: 30),
+            horoscopeLabel.topAnchor.constraint(equalTo: birthdayTextField.bottomAnchor, constant: 30),
             horoscopeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 30),
             horoscopeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -30),
             horoscopeLabel.heightAnchor.constraint(equalToConstant: 40)

@@ -21,7 +21,7 @@ protocol VerificationDisplayLogic: ViewController {
 final class VerificationViewController: ViewController {
 
     private let robotoFont = RobotoFont.self
-    private let verify = VerificationPage.self
+    private let verify = VerificationConstants.self
     private let messageImage = Images.message.rawValue
     private let phoneImage = Images.iphone.rawValue
     

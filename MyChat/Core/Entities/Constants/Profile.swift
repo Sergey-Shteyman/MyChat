@@ -5,9 +5,8 @@
 //  Created by Сергей Штейман on 10.12.2022.
 //
 
-enum ProfilePage {
-    static let personImage = "person"
-    static let abotUser = "Что-то обо мне..."
+enum ProfileConstants {
+    static let defoltImage = "person"
     static let aboutUserDescription = "Краткая информация"
     static let city = "Город проживания"
     static let birthday = "Дата рождения"

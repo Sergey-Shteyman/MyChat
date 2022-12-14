@@ -23,7 +23,7 @@ final class EditProfileViewController: ViewController {
     var presenter: EditProfilePresentationLogic?
     
     private let robotoFont = RobotoFont.self
-    private let editProfile = EditProfilePage.self
+    private let editProfile = EditProfileConstants.self
     private let locale = LocaleIdentifires.self
     
     private lazy var scrollView: UIScrollView = {
@@ -220,13 +220,13 @@ extension EditProfileViewController: UITextViewDelegate {
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         if aboutTextView.text == editProfile.abotUser {
-            setupPlaceHolderForTextView("", .black)
+            setupPlaceHolderForTextView("")
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         if aboutTextView.text.isEmpty {
-            setupPlaceHolderForTextView(editProfile.abotUser, .gray)
+            setupPlaceHolderForTextView(editProfile.abotUser)
         }
     }
 }
@@ -295,10 +295,8 @@ private extension EditProfileViewController {
     }
     
     func setupPlaceHolderForTextView(_ text: String,
-                                     _ textColor: UIColor,
                                      _ alignment: NSTextAlignment = .left) {
         aboutTextView.text = text
-        aboutTextView.textColor = textColor
         aboutTextView.textAlignment = alignment
     }
     
