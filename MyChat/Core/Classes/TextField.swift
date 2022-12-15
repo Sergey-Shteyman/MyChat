@@ -34,7 +34,7 @@ final class TextField: UITextField {
     }
 }
 
-// MARK: - methods
+// MARK: - Private methods
 private extension TextField {
     
     func addBottomLine(with color: UIColor) {

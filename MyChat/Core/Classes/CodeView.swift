@@ -19,7 +19,7 @@ final class CodeView: UIView {
     
     private let robotoFont = RobotoFont.self
 
-    private var textFields: [UITextField] = []
+    private var textFields: [CodeTextField] = []
 
     private let stackView = make(UIStackView()) { myStackView in
         myStackView.axis = .horizontal
@@ -65,10 +65,11 @@ final class CodeView: UIView {
         enableTextField(tag: firstTag)
     }
 
-    private func makeTextField(tag: Int) -> UITextField {
-        make(UITextField()) { myTextField in
+    private func makeTextField(tag: Int) -> CodeTextField {
+        make(CodeTextField()) { myTextField in
             myTextField.tag = tag
             myTextField.delegate = self
+            myTextField.myDelegate = self
             myTextField.layer.borderColor = UIColor.black.cgColor
             myTextField.layer.borderWidth = 1
             myTextField.layer.cornerRadius = 8
@@ -147,5 +148,20 @@ extension CodeView: UITextFieldDelegate {
         } 
         return true
     }
+}
 
+extension CodeView: CodeTextFieldDelegate {
+    
+    func textFieldDidDelete(_ textField: UITextField) {
+        let previousTag = textField.tag - 1
+        
+        guard let previousResponder = textField.superview?.viewWithTag(previousTag) as? UITextField
+        else {
+            return
+        }
+        enableTextField(tag: previousTag)
+        previousResponder.becomeFirstResponder()
+        previousResponder.text = ""
+        code.removeLast()
+    }
 }
