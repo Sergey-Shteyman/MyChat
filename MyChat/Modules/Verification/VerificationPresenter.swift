@@ -8,9 +8,8 @@
 
 // MARK: - VerificationPresentationLogic
 protocol VerificationPresentationLogic: AnyObject {
-    func didTapVerifyButton(fields: [String?])
     func viewDidLoad()
-    func prepareScreen()
+    func completeCode(_ code: String)
 }
 
 // MARK: - VerificationPresenter
@@ -49,30 +48,20 @@ final class VerificationPresenter {
 // MARK: - VerificationPresentationLogic
 extension VerificationPresenter: VerificationPresentationLogic {
     
-    func prepareScreen() {
-        viewController?.clearFields()
-        viewController?.filedsResignSelection()
+    func completeCode(_ code: String) {
+        if code.count == 6 {
+            if code == validFields.validCodeSMS {
+                let phone = "\(codeTelephoneNumber)\(telephoneNumber)"
+                verifyUser(code, phone)
+            }
+            else {
+                viewController?.showInvalidCodeAllert()
+            }
+        }
     }
     
     func viewDidLoad() {
         viewController?.setupPhoneNumberTitle(phoneCode: codeTelephoneNumber, phone: telephoneNumber)
-    }
-    
-    func didTapVerifyButton(fields: [String?]) {
-        var codeValue = ""
-        for value in fields {
-            guard let value = value else {
-                return
-            }
-            codeValue.append(value)
-        }
-        if codeValue == validFields.validCodeSMS {
-            let phone = "\(codeTelephoneNumber)\(telephoneNumber)"
-            verifyUser(codeValue, phone)
-        } else {
-            codeValue = ""
-            viewController?.showInvalidCodeAllert()
-        }
     }
 }
 
