@@ -23,11 +23,10 @@ struct Message: MessageType {
     var kind: MessageKit.MessageKind
 }
 
-
-
 // MARK: - DisplayChatLogic
 protocol DisplayChatLogic: MessagesViewController {
     func updateTitle(title: String)
+    func updateCollectionView(viewModel: [MessageType])
 }
 
 // MARK: - ChatViewController
@@ -81,6 +80,9 @@ final class ChatViewController: MessagesViewController {
 
 // MARK: - DisplayChatLogic impl
 extension ChatViewController: DisplayChatLogic {
+    func updateCollectionView(viewModel: [MessageKit.MessageType]) {
+        
+    }
     
     func updateTitle(title: String) {
         self.title = title

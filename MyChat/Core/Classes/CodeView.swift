@@ -18,6 +18,7 @@ final class CodeView: UIView {
     weak var delegate: CodeViewDelegate?
     
     private let robotoFont = RobotoFont.self
+    private let resendCodeInputAccessoryView = InputAccessoryView()
 
     private var textFields: [CodeTextField] = []
 
@@ -51,6 +52,10 @@ final class CodeView: UIView {
 
         textFields = tags.map { tag in
             self.makeTextField(tag: tag)
+        }
+        
+        textFields.forEach {
+            $0.inputAccessoryView = resendCodeInputAccessoryView
         }
 
         textFields.forEach {
@@ -145,11 +150,12 @@ extension CodeView: UITextFieldDelegate {
                 code += string
             }
             return false
-        } 
+        }
         return true
     }
 }
 
+// MARK: - CodeTextFieldDelegate
 extension CodeView: CodeTextFieldDelegate {
     
     func textFieldDidDelete(_ textField: UITextField) {

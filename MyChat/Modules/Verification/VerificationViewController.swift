@@ -17,7 +17,16 @@ protocol VerificationDisplayLogic: ViewController {
 
 // MARK: - VerificationViewController
 final class VerificationViewController: ViewController {
+    
+    override var canBecomeFirstResponder: Bool {
+        true
+    }
 
+    override var inputAccessoryView: UIView? {
+        resendCodeInputAccessoryView
+    }
+    
+    private let resendCodeInputAccessoryView = InputAccessoryView()
     private let robotoFont = RobotoFont.self
     private let verify = VerificationConstants.self
     private let messageImage = Images.message.rawValue
