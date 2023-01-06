@@ -23,7 +23,7 @@ protocol RegistrationDisplayLogic: ViewController {
 final class RegistrationViewController: ViewController {
         
     var presenter: RegistrationPresentationLogic?
-    let registrationPage = RegistrationPage.self
+    let registrationPage = RegistrationPageConstants.self
         
     private lazy var registrLabel: UILabel = {
         let label = UILabel()

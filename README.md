@@ -112,7 +112,7 @@ Access token (время жизни 10 минут) полученный при �
 
 <h3><p align="center"> Страничка списка чатов </p></h3>
 
-<p align="center"> <img src=https://github.com/Sergey-Shteyman/MyChat/blob/main/Screenshots/ChatListPage.pngwidth="300" height="650"> </p>
+<p align="center"> <img src=https://github.com/Sergey-Shteyman/MyChat/blob/main/Screenshots/ChatListPage.png width="300" height="650"> </p>
 
 <h3><p align="center"> Страничка чата </p></h3>
 

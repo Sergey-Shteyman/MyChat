@@ -6,7 +6,7 @@
 //
 
 
-enum RegistrationPage {
+enum RegistrationPageConstants {
     static let regTextForLabel = "Регистрация"
     static let namePlaceHolder = "Ваше имя:"
     static let userNamePlaceholder = "Ваше имя пользователя:"

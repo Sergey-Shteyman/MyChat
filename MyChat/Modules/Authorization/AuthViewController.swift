@@ -21,7 +21,7 @@ final class AuthViewController: ViewController {
     
     var presenter: PresentationAuthLogic?
     
-    private let authPage = AuthPage.self
+    private let authPage = AuthPageConstants.self
     private let robotoFont = RobotoFont.self
     
     private lazy var telephoneLabel: UILabel = {

@@ -18,7 +18,7 @@ final class WellcomViewController: ViewController {
     var presenter: WellcomPresentationLogic?
     
     private let robotoFont = RobotoFont.self
-    private let welcome = WelcomePage.self
+    private let welcome = WelcomePageConstants.self
     
     private lazy var nameApp: UILabel = {
         let label = UILabel()
