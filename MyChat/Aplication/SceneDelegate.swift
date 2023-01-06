@@ -42,7 +42,7 @@ private extension SceneDelegate {
         let window = UIWindow(windowScene: windowScene)
         let router = AppRouter(window: window)
         let moduleBuilder = ModuleBuilder(databaseService: databaseService, router: router)
-        let viewController = moduleBuilder.buildVerificationModule(codeTelephoneNumber: "+7", telephoneNumber: "9109664445")
+        let viewController = moduleBuilder.buildSplashModule()
         router.setRoot(viewController, isNavigationBarHidden: false)
         window.makeKeyAndVisible()
         self.window = window

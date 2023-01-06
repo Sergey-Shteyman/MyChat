@@ -27,7 +27,11 @@ final class ChatListPresenter {
 extension ChatListPresenter: PresentationChatListLogic {
     
     func didTapChat() {
-        let chatViewController = modulebuilder.buildChatViewController(namePerson: "Person")
+        let chatViewController = modulebuilder.buildChatViewController(
+            namePerson: "Person",
+            currentUser: Sender(senderId: "self", displayName: "Sergey"),
+            otherUser: Sender(senderId: "other", displayName: "Person")
+        )
         router.push(chatViewController, true)
     }
 }
